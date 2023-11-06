@@ -1,27 +1,5 @@
-/.xdp-related works.aux-u2w1mI
-/.xdp-related works.bbl-V0nKvj
-/.xdp-related works.blg-5F1BPk
-/.xdp-related works.log-I6pU0r
-/.xdp-related works.pdf-y6s6F8
-/.xdp-related works.synctex(busy)-GkyFob
-/.xdp-relatedworks.aux-Fw93CP
-/.xdp-relatedworks.aux-o9euE8
-/.xdp-relatedworks.bbl-RcVIUY
-/.xdp-relatedworks.bbl-nuVqo7
-/.xdp-relatedworks.blg-3jdfjo
-/.xdp-relatedworks.blg-gvgnUl
-/.xdp-relatedworks.log-8G6tBJ
-/.xdp-relatedworks.log-IXeXAR
-/.xdp-relatedworks.pdf-MrJu4A
-/.xdp-relatedworks.pdf-RvDX85
-/.xdp-relatedworks.synctex(busy)-4rHik0
-/.xdp-relatedworks.synctex(busy)-9ht994
-/related works.aux
-/related works.log
-/related works.pdf
-/related works.run.xml
-/related works.synctex.gz
-/relatedworks.aux
-/relatedworks.bbl
-/relatedworks.log
-/relatedworks.synctex.gz
+*.gz
+*.aux
+*.log
+*.bbl
+*.xml
