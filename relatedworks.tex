@@ -1,4 +1,5 @@
 \documentclass[10pt,letterpaper,final]{article}
+\usepackage[left=4cm,rigth=4cm,top=4cm,bottom=4cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -27,7 +28,8 @@
     Esta investigación busca abordar esta problemática crítica, avanzando hacia un futuro en el que los vehículos autónomos
     sean capaces de igualar e incluso superar las habilidades de conducción humana en términos de detección y respuesta
     a situaciones de colisión.
-    \pagebreak
+    \clearpage
+
     \section*{Related Works}
     \newline
     \begin{longtable}
@@ -35,29 +37,62 @@
         \noindent \textbf{Referencia:}~\cite{alam2022cost} \\
         \textbf{Título:} \\
         Autonomous Driving Architectures: Insights of Machine Learning and Deep Learning Algorithms \\
+        \textbf{Autores:}
+        Bachute, Mrinal R and Subhedar, Javed M \\
+        \textbf{Año:}
+        2021 \\
+        \textbf{Revista:}
+        Machine Learning with Applications \\
         \textbf{URL:}
         \url{https://www.sciencedirect.com/science/article/pii/S2666827021000827}
         \textbf{Resumen:}
         \begin{itemize}
+            \item El artículo ofrece una visión general de cómo se aplican algoritmos de Aprendizaje Automático y Aprendizaje
+            Profundo en sistemas de conducción autónoma y se enfoca en la evaluación de su desempeño en diversas tareas clave.
             \item Se centra en la investigación en el campo de la conducción autónoma y destaca que esta área está ganando
             impulso debido a las ventajas inherentes de los sistemas de conducción autónoma.
             \item Ventajas de la conducción autónoma, como la reducción de la intervención humana y la disociación del conductor del vehículo.
             \item La complejidad de los sistemas de conducción autónoma, que involucra la integración de múltiples subsistemas.
-            \item Diversas tareas en la conducción autónoma, incluyendo la planificación de movimiento, la localización del vehículo,
+            \item Se analizan diversas tareas en la conducción autónoma, incluyendo la planificación de movimiento, la localización del vehículo,
             la detección de peatones, la detección de señales de tráfico, la detección de marcas viales, el estacionamiento automatizado,
             la ciberseguridad del vehículo y el diagnóstico de fallas del sistema.
             \item Uso de algoritmos de Aprendizaje Automático y Aprendizaje Profundo en arquitecturas de conducción autónoma para realizar estas tareas.
             \item Evaluación y comparación de algoritmos basada en métricas como mIoU, AP, tasa de detección perdida, tasa de omisión,
             falsos positivos por imagen y promedio de detección de fotogramas falsos.
-            \item Organización del estudio en función de las diferentes tareas del sistema de conducción autónoma.
         \end{itemize}
-        el artículo ofrece una visión general de cómo se aplican algoritmos de Aprendizaje Automático y Aprendizaje
-        Profundo en sistemas de conducción autónoma y se enfoca en la evaluación de su desempeño en diversas tareas clave. \\
-        \pagebreak
+
+        \begin{figure}[!ht]
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/1- Screenshot_20231106_142913}\label{fig:11}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/12Screenshot_20231106_142954}\label{fig:12}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.6\textwidth]{img/13Screenshot_20231106_143018}\label{fig:13}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.6\textwidth]{img/15Screenshot_20231106_143633}\label{fig:15}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.9\textwidth]{img/14 Screenshot_20231106_143419}\label{fig:14}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.8\textwidth]{img/16Screenshot_20231106_143701}\label{fig:16}
+            \end{subfigure}
+        \end{figure}
+        \clearpage
+
         \hline
         \noindent \textbf{Referencia:}~\cite{althoff2009model} \\
         \textbf{Título:} \\
         Vision-based autonomous car racing using deep imitative reinforcement learning \\
+        \textbf{Autores:}
+        Cai, Peide and Wang, Hengli and Huang, Huaiyang and Liu, Yuxuan and Liu \\
+        \textbf{Año:}
+        2021 \\
+        \textbf{Revista:}
+        IEEE Robotics and Automation Letters \\
         \textbf{URL:}
         \url{https://ieeexplore.ieee.org/abstract/document/9488179} \\
         \textbf{Resumen:}
@@ -83,11 +118,41 @@
         \noindent \textbf{Referencia:}~\cite{bachute2021autonomous} \\
         \textbf{Título:} \\
         Model-based probabilistic collision detection in autonomous driving \\
+        \textbf{Autores:}
+        Althoff, Matthias and Stursberg, Olaf and Buss \\
+        \textbf{Año:}
+        2009 \\
+        \textbf{Revista:}
+        IEEE Transactions on Intelligent Transportation Systems \\
+        \textbf{URL:}
+        \url{https://ieeexplore.ieee.org/abstract/document/4895669} \\
         \textbf{Resumen:} \\
-        & (Resumen en inglés para la referencia 3)      \\
-
+        \begin{itemize}
+            \item El artículo se centra en la seguridad de los caminos planificados para autos autónomos en relación con otros participantes en el tráfico.
+            \item Se predice la ocupación de la carretera por otros vehículos de manera estocástica.
+            \item La predicción tiene en cuenta las incertidumbres derivadas de las mediciones y los posibles comportamientos
+            de los otros participantes en el tráfico.
+            \item También se considera la interacción entre los participantes en el tráfico y las limitaciones de las maniobras
+            de conducción debido a la geometría de la carretera.
+            \item El resultado principal del enfoque presentado es la probabilidad de que ocurra un choque para una trayectoria específica de un auto autónomo.
+            \item El enfoque se destaca por su eficiencia, ya que la mayoría de los cálculos intensivos se realizan de manera
+            offline, lo que permite disponer de un algoritmo en línea eficiente para aplicaciones en tiempo real.
+        \end{itemize} \\
+        \hline
+        \pagebreak
         \hline
         & \textbf{Referencia:}~\cite{cai2021vision}     \\
+        \textbf{Título:} \\
+        Motion Planning and Object Recognition Algorithms, Vehicle Navigation and Collision Avoidance Technologies,
+        and Geospatial Data Visualization in Network Connectivity Systems \\
+        \textbf{Autores:}
+        Cai, Peide and Wang, Hengli and Huang, Huaiyang and Liu, Yuxuan and Liu \\
+        \textbf{Año:}
+        2022 \\
+        \textbf{Revista:}
+        IEEE Robotics and Automation Letters \\
+        \textbf{URL:}
+        \url{https://ieeexplore.ieee.org/abstract/document/9488179} \\
         & \textbf{Resumen en inglés:}                   \\
         & (Resumen en inglés para la referencia 4)      \\
         &                                               \\
