@@ -1,5 +1,5 @@
 \documentclass[10pt,letterpaper,final]{article}
-\usepackage[left=4cm,rigth=4cm,top=4cm,bottom=4cm]{geometry}
+\usepackage[left=4cm,rigth=4cm,top=4cm,bottom=2cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -34,17 +34,17 @@
     \newline
     \begin{longtable}
         \hline
-        \noindent \textbf{Referencia:}~\cite{alam2022cost} \\
+        \noindent \textbf{Referencia:}~\cite{bachute2021autonomous} \\
         \textbf{Título:} \\
         Autonomous Driving Architectures: Insights of Machine Learning and Deep Learning Algorithms \\
-        \textbf{Autores:}
+        \textbf{Autores:}\\
         Bachute, Mrinal R and Subhedar, Javed M \\
-        \textbf{Año:}
+        \textbf{Año:}\\
         2021 \\
         \textbf{Revista:}
         Machine Learning with Applications \\
         \textbf{URL:}
-        \url{https://www.sciencedirect.com/science/article/pii/S2666827021000827}
+        \url{https://www.sciencedirect.com/science/article/pii/S2666827021000827}\\
         \textbf{Resumen:}
         \begin{itemize}
             \item El artículo ofrece una visión general de cómo se aplican algoritmos de Aprendizaje Automático y Aprendizaje
@@ -84,7 +84,7 @@
         \clearpage
 
         \hline
-        \noindent \textbf{Referencia:}~\cite{althoff2009model} \\
+        \noindent \textbf{Referencia:}~\cite{cai2021vision} \\
         \textbf{Título:} \\
         Vision-based autonomous car racing using deep imitative reinforcement learning \\
         \textbf{Autores:}
@@ -99,7 +99,7 @@
         \begin{itemize}
             \item El automovilismo autónomo es un desafío en el campo del control robótico, que históricamente ha requerido mapas precisos,
             localización y planificación, lo que lo hace computacionalmente ineficiente y sensible a cambios en el entorno.
-            \item  Recientemente, se han desarrollado sistemas de aprendizaje profundo de extremo a extremo que muestran resultados prometedores
+            \item Recientemente, se han desarrollado sistemas de aprendizaje profundo de extremo a extremo que muestran resultados prometedores
             en la conducción/racing autónoma.Sin embargo, estos sistemas suelen basarse en aprendizaje por imitación supervisada (IL),
             que enfrenta problemas de discrepancia en la distribución de datos.
             \item También se han utilizado métodos de aprendizaje por refuerzo (RL), pero requieren una gran cantidad de datos de interacción riesgosa.
@@ -109,13 +109,38 @@
             permitiendo al agente aprender de instructores humanos y mejorar su rendimiento interactuando con un modelo de mundo offline.
             \item Se valida el algoritmo en una simulación de conducción de alta fidelidad y en un automóvil RC a escala 1/20
             en el mundo real con capacidad computacional limitada.
-            \item  Los resultados de la evaluación muestran que el método supera a los enfoques anteriores de IL y RL en eficiencia
+            \item Los resultados de la evaluación muestran que el método supera a los enfoques anteriores de IL y RL en eficiencia
             de muestra y rendimiento en la tarea.
         \end{itemize} \\
+        \begin{figure}[!ht]
+            \begin{subfigure}
+                \includegraphics[width=\textwidth]{img/21}\label{fig:21}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=\textwidth]{img/22}\label{fig:22}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.6\textwidth]{img/23}\label{fig:23}
+            \end{subfigure}
+        \end{figure}
+
+%        \begin{minipage}{0.5\textwidth}
+%            \includegraphics[width=\textwidth]{img/23}
+%        \end{minipage}
+%        \begin{minipage}{0.5\textwidth}
+%            Rendimiento de conducción del coche.\\
+%            (a) Se toma el punto A en la trayectoria para el análisis y los relacionados
+%            Los ensueños se muestran en la fila inferior con imágenes futuras reales para
+%            comparación. Tenga en cuenta que los ensueños no se obtienen durante las pruebas, sino que son posteriores.
+%            renderizado con observaciones actuales y acciones de bucle abierto.\\
+%            (b) El planificado acciones de circuito abierto (planificadas por la red de políticas en cada paso, pero solo el
+%            se ejecutará el primero) en el punto A y acciones de bucle cerrado relacionadas (el
+%            acciones realmente ejecutadas registradas por el coche).
+%        \end{minipage}
+
+        \clearpage
         \hline
-        \pagebreak
-        \hline
-        \noindent \textbf{Referencia:}~\cite{bachute2021autonomous} \\
+        \noindent \textbf{Referencia:}~\cite{althoff2009model} \\
         \textbf{Título:} \\
         Model-based probabilistic collision detection in autonomous driving \\
         \textbf{Autores:}
@@ -138,50 +163,125 @@
             \item El enfoque se destaca por su eficiencia, ya que la mayoría de los cálculos intensivos se realizan de manera
             offline, lo que permite disponer de un algoritmo en línea eficiente para aplicaciones en tiempo real.
         \end{itemize} \\
+        \begin{figure}[!ht]
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/31}\label{fig:31}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/32}\label{fig:32}
+            \end{subfigure}
+            \vspace{2cm}
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/33}\label{fig:33}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/34}\label{fig:34}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.7\textwidth]{img/35}\label{fig:35}
+            \end{subfigure}
+        \end{figure}
+        \clearpage
+        
         \hline
-        \pagebreak
-        \hline
-        & \textbf{Referencia:}~\cite{cai2021vision}     \\
+        \noindent \textbf{Referencia:}~\cite{pavel2022vision} \\
         \textbf{Título:} \\
-        Motion Planning and Object Recognition Algorithms, Vehicle Navigation and Collision Avoidance Technologies,
-        and Geospatial Data Visualization in Network Connectivity Systems \\
+        Vision-based autonomous vehicle systems based on deep learning: A systematic literature review \\
         \textbf{Autores:}
-        Cai, Peide and Wang, Hengli and Huang, Huaiyang and Liu, Yuxuan and Liu \\
+        Pavel, Monirul Islam and Tan, Siok Yee and Abdullah, Azizi \\
         \textbf{Año:}
         2022 \\
         \textbf{Revista:}
-        IEEE Robotics and Automation Letters \\
+        Applied Sciences \\
         \textbf{URL:}
-        \url{https://ieeexplore.ieee.org/abstract/document/9488179} \\
-        & \textbf{Resumen en inglés:}                   \\
-        & (Resumen en inglés para la referencia 4)      \\
-        &                                               \\
+        \url{https://www.mdpi.com/2076-3417/12/14/6831} \\
+        \textbf{Resumen:} \\
+        \begin{itemize}
+            \item Durante la última década, los sistemas de vehículos autónomos (AVS) han avanzado considerablemente debido a mejoras
+            en la inteligencia artificial, con un impacto significativo en la seguridad vial y el futuro de los sistemas de transporte.
+            \item Sin embargo, la producción a gran escala de AVS aún se enfrenta a desafíos debido al alto costo de la fusión
+            de sensores y la falta de soluciones completas para abordar la incertidumbre en las carreteras.
+            \item Se propone el uso de enfoques basados en el aprendizaje profundo como una alternativa para reducir la dependencia
+            de sensores y fomentar la investigación y la producción de AVS más prácticos.
+            \item El artículo realiza una revisión sistemática de la literatura sobre el uso del aprendizaje profundo en AVS
+            durante la última década, con el objetivo de su implementación en aplicaciones del mundo real en campos centrales.
+            \item La revisión se divide en varios módulos que cubren diferentes aspectos, como análisis de percepción, toma de decisiones,
+            control, planificación de trayectorias y visualización en sistemas de realidad aumentada tipo HUD.
+            \item Se analizan investigaciones realizadas desde 2011 hasta 2021 que se centran en el uso de cámaras RGB como sensores principales.
+            \item Se presta especial atención a los resultados finales, como la visualización en sistemas de realidad aumentada basados en HUD,
+            que incluyen advertencias tempranas, marcadores en la carretera para mejorar la navegación y la seguridad al superponer información
+            en vehículos y peatones en condiciones visuales extremas para reducir colisiones.
+            \item La revisión destaca los métodos actuales de aprendizaje profundo que se basan únicamente en la visión de cámaras RGB
+            en lugar de la compleja fusión de sensores.
+            \item Se espera que este enfoque proporcione una vía para el desarrollo rápido de sistemas de vehículos autónomos prácticos,
+            eficientes y seguros en términos de costos.
+        \end{itemize} \\
+        \begin{figure}[!ht]
+            \begin{subfigure}
+                \includegraphics[width=1\textwidth]{img/71}\label{fig:71}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/72}\label{fig:72}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/73}\label{fig:73}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/74}\label{fig:74}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/75}\label{fig:75}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=1\textwidth]{img/76}\label{fig:76}
+            \end{subfigure}
+        \end{figure}
+        \clearpage
+
         \hline
-        & \textbf{Referencia:}~\cite{konecny2022motion} \\
-        & \textbf{Resumen en inglés:}                   \\
-        & (Resumen en inglés para la referencia 5)      \\
-        &                                               \\
-        \hline
-        & \textbf{Referencia:}~\cite{li2022human}       \\
-        & \textbf{Resumen en inglés:}                   \\
-        & (Resumen en inglés para la referencia 6)      \\
-        &                                               \\
-        \hline
-        & \textbf{Referencia:}~\cite{pavel2022vision}   \\
-        & \textbf{Resumen en inglés:}                   \\
-        & (Resumen en inglés para la referencia 7)      \\
-        &                                               \\
-        \hline
-        & \textbf{Referencia:}~\cite{prasad2023design}  \\
-        & \textbf{Resumen en inglés:}                   \\
-        & (Resumen en inglés para la referencia 8)      \\
-        &                                               \\
-        \hline
-        & \textbf{Referencia:}~\cite{sushma2023dynamic} \\
-        & \textbf{Resumen en inglés:}                   \\
-        & (Resumen en inglés para la referencia 9)      \\
-        &                                               \\
-        \hline
+        \noindent \textbf{Referencia:}~\cite{alam2022cost} \\
+        \textbf{Título:} \\
+        A cost-effective computer vision-based vehicle detection system \\
+        \textbf{Autores:}
+        Alam, Altaf and Jaffery, Zainul Abdin and Sharma, Himanshu \\
+        \textbf{Año:}
+        2022 \\
+        \textbf{Revista:}
+        Concurrent Engineering \\
+        \textbf{URL:}
+        \url{https://journals.sagepub.com/doi/abs/10.1177/1063293X211069193} \\
+        \textbf{Resumen:} \\
+        \begin{itemize}
+            \item El artículo se centra en la detección de vehículos, una parte crucial en el desarrollo de sistemas de conducción autónoma.
+            \item Destaca la importancia del procesamiento rápido y la detección precisa de vehículos en un sistema de detección autónoma.
+            \item Propone un sistema de detección de vehículos basado en visión por computadora que utiliza un algoritmo
+            de Gentle Adaptive Boosting con características tipo Haar para generar hipótesis de vehículos de manera rápida.
+            \item Para abordar este problema, se propone el uso de un algoritmo de Máquinas de Vectores de Soporte (SVM) entrenado con
+             características del histograma de gradientes orientados (HOG) para filtrar las hipótesis falsas.
+            \item El descriptor HOG utiliza la forma y los contornos de los vehículos, lo que mejora la precisión de la detección.
+            \item Se combina el uso de características tipo Haar y características HOG para lograr los objetivos de detección en la conducción autónoma.
+            \item El rendimiento del sistema propuesto se evalúa con imágenes capturadas tanto de día como de noche y se compara
+            con tres detectores de vehículos existentes.
+            \item Se observa que la precisión promedio del sistema propuesto es del 0.97 para imágenes capturadas de día
+            y del 0.94 para imágenes capturadas de noche.
+            \item Además, el sistema propuesto requiere 15 veces menos tiempo de entrenamiento en comparación con técnicas
+            existentes para la misma cantidad de datos de imágenes y en la misma unidad de procesamiento central (CPU).
+        \end{itemize}
+        \begin{figure}[!ht]
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/81}\label{fig:81}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/86}\label{fig:82}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/84}\label{fig:84}
+            \end{subfigure}
+            \begin{subfigure}
+                \includegraphics[width=0.5\textwidth]{img/82}\label{fig:86}
+            \end{subfigure}
+        \end{figure}
+        \clearpage
     \end{longtable}
 %    \begin{itemize}
 %        \item \cite{alam2022cost}
@@ -194,7 +294,7 @@
 %        \item \cite{prasad2023design}
 %        \item \cite{sushma2023dynamic}
 %    \end{itemize}
-    \nocite{*}
+%    \nocite{*}
     \bibliographystyle{acm}
     \bibliography{referecias}
 \end{document}
