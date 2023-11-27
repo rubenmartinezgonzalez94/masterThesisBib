@@ -18,6 +18,7 @@
 \usepackage{tcolorbox}
 \usepackage{braket}
 \usepackage{tikz}
+\usepackage{colortbl}
 \captionsetup{font=scriptsize,labelfont=scriptsize}
 \tcbset{colbacktitle=blue!75!black, colframe=blue!25!black, colback=blue!20!white, fonttitle=\bfseries}
 \author[]
@@ -39,16 +40,16 @@ Rubén Martínez González}
 }
 \subject{Seminario de investigación}
 \begin{document}
-    
+
     \begin{frame}
         \titlepage
     \end{frame}
-    
+
 %    \begin{frame}{Contenido}
 %        \tableofcontents
 %    \end{frame}
-    
-    
+
+
     \section{Introducción}
     \begin{frame}{Introducción}
         \begin{itemize}
@@ -59,8 +60,8 @@ Rubén Martínez González}
             \item La detección y respuesta a situaciones de peligro, como colisiones inminentes, siguen siendo un desafı́o complejo.
         \end{itemize}
     \end{frame}
-    
-    
+
+
     \section{Problemática}
     \begin{frame}{Contexto y problemática}
         \begin{itemize}
@@ -85,8 +86,8 @@ Rubén Martínez González}
         "La implementación de un sistema de detección y evasión de colisiones basado en visión computacional en vehículos autónomos
         mejorará la capacidad de anticipación y respuesta ante posibles situaciones de riesgo"
     \end{frame}
-    
-    
+
+
     \section{Objetivos}
     \begin{frame}{Objetivo general}
         Implementar un sistema de detección y evasión de colisiones basado en visión computacional para vehículos autónomos,
@@ -99,7 +100,8 @@ Rubén Martínez González}
             \item Procesar los datos y aprender a reaccionar.
         \end{itemize}
     \end{frame}
-    
+
+
     \section{Estado del arte}
     \begin{frame}{Trabajos previos relacionados}
         Bachute, M. R., and Subhedar, J. M. Autonomous driving architectures: insights of
@@ -119,7 +121,7 @@ Rubén Martínez González}
         Ofrece una visión general de cómo se aplican algoritmos de Aprendizaje Automático y Aprendizaje
         Profundo en sistemas de conducción autónoma
     \end{frame}
-    
+
     \begin{frame}{Trabajos previos relacionados}
         Cai, P., Wang, H., Huang, H., Liu, Y., and Liu, M. Vision-based autonomous car racing
         using deep imitative reinforcement learning. IEEE Robotics and Automation Letters 6, 4
@@ -132,7 +134,7 @@ Rubén Martínez González}
         se presenta un enfoque general de aprendizaje profundo imitativo y de refuerzo (DIRL) que logra el automovilismo
         autónomo ágil utilizando entradas visuales.
     \end{frame}
-    
+
     \begin{frame}{Trabajos previos relacionados}
         Althoff, M., Stursberg, O., and Buss, M. Model-based probabilistic collision detection in
         autonomous driving. IEEE Transactions on Intelligent Transportation Systems 10, 2 (2009),
@@ -151,7 +153,7 @@ Rubén Martínez González}
         Se centra en la seguridad de los caminos planificados para autos autónomos en relación con otros participantes en el tráfico.
         Se predice la ocupación de la carretera por otros vehículos de manera estocástica.
     \end{frame}
-    
+
     \begin{frame}{Trabajos previos relacionados}
         APavel, M. I., Tan, S. Y., and Abdullah, A. Vision-based autonomous vehicle systems
         based on deep learning: A systematic literature review. Applied Sciences 12, 14 (2022),
@@ -165,7 +167,7 @@ Rubén Martínez González}
             \end{subfigure}
         \end{figure}
         El artículo realiza una revisión sistemática de la literatura sobre el uso del aprendizaje profundo en AVS durante la última década.
-    
+
     \end{frame}
     \begin{frame}{Trabajos previos relacionados}
         Alam, A., Jaffery, Z. A., and Sharma, H. A cost-effective computer vision-based vehicle
@@ -181,7 +183,7 @@ Rubén Martínez González}
         Propone un sistema de detección de vehículos basado en visión por computadora que utiliza un algoritmo
         de Gentle Adaptive Boosting con características tipo Haar para generar hipótesis de vehículos de manera rápida.
     \end{frame}
-    
+
     \begin{frame}{Tabla comparativa}
         \begin{table}
             \footnotesize
@@ -217,53 +219,60 @@ Rubén Martínez González}
             \end{tabular}
         \end{table}
     \end{frame}
-    
-    
+
+
     \section{Metodología}
     \begin{frame}{Metodología}
         La metodología propuesta se fundamenta en un enfoque iterativo que abarca diversas etapas para la implementación del sistema de detección
         y evasión de colisiones en vehículos autónomos.
-    \begin{itemize}
-        
-        \item Se establecerá un entorno de simulación realista que refleje las condiciones de tráfico habituales.
-        \item Adquisición y procesamiento de datos provenientes de los sensores de dicho entorno simulado.
-        \item Diseño y la implementación de algoritmos de visión computacional para la detección temprana de eventos críticos en tiempo real.
-        \item Estos algoritmos serán sometidos a un proceso de entrenamiento y ajuste utilizando técnicas de aprendizaje automático.
-        \item Se llevarán a cabo pruebas para validar la efectividad y la precisión del sistema propuesto en situaciones simuladas de riesgo vial.
-    \end{itemize}
+        \begin{itemize}
+
+            \item Se establecerá un entorno de simulación realista que refleje las condiciones de tráfico habituales.
+            \item Adquisición y procesamiento de datos provenientes de los sensores de dicho entorno simulado.
+            \item Diseño y la implementación de algoritmos de visión computacional para la detección temprana de eventos críticos en tiempo real.
+            \item Estos algoritmos serán sometidos a un proceso de entrenamiento y ajuste utilizando técnicas de aprendizaje automático.
+            \item Se llevarán a cabo pruebas para validar la efectividad y la precisión del sistema propuesto en situaciones simuladas de riesgo vial.
+        \end{itemize}
     \end{frame}
-    
-    
+
+
     \section{Calendario}
     \begin{frame}{Calendario de actividades}
-        \footnotesize % Cambio de tamaño
         \begin{center}
-            \begin{tabular}{|p{2cm}|p{0.1cm}|p{0.1cm}|p{0.1cm}|p{0.1cm}|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
-                \hline
-                \textbf{Actividad} & \multicolumn{7}{c|}{\textbf{Duración}} \\
-                \hline
-                & \multicolumn{1}{p{1cm}|}{Octubre} & \multicolumn{1}{p{1cm}|}{Noviembre} & \multicolumn{1}{p{1cm}|}{Diciembre} & \multicolumn{1}{p{1cm}|}{Enero} & \multicolumn{1}{p{1cm}|}{Febrero} & \multicolumn{1}{p{1cm}|}{Marzo} & \multicolumn{1}{p{1cm}|}{Abril} \\
-                \hline
-                Investigación Preliminar                    & \cellcolor{gray!30}               & \cellcolor{gray!30}                 &                                     &                                 &                                   &                                 &                                 \\
-                \hline
-                Diseño y Configuración del Entorno Simulado &                                   & \cellcolor{gray!30}                 & \cellcolor{gray!30} & & & & \\
-                \hline
-                Adquisición y Procesamiento de Datos        &                                   &                                     &                                     & \cellcolor{gray!30}             & \cellcolor{gray!30}               & \cellcolor{gray!30} & \\
-                \hline
-                Desarrollo y Entrenamiento de Algoritmos    &                                   &                                     &                                     &                                 & \cellcolor{gray!30}               & \cellcolor{gray!30} & \cellcolor{gray!30} \\
-                \hline
-                Evaluación y Ajuste del Sistema             &                                   &                                     &                                     &                                 &                                   & \cellcolor{gray!30}             & \cellcolor{gray!30}             \\
-                \hline
-                Documentación y Análisis de Resultados      &                                   &                                     &                                     &                                 &                                   &                                 & \cellcolor{gray!30}             \\
-                \hline
-                Redacción y Presentación de la Tesis        &                                   &                                     &                                     &                                 &                                   &                                 & \cellcolor{gray!30}             \\
-                \hline
-            \end{tabular}
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{|p{3cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+                    \hline
+                    \textbf{Actividad} & \multicolumn{7}{c|}{\textbf{Duración}} \\
+                    \hline
+                    & \multicolumn{1}{p{1cm}|}{Dic}
+                    & \multicolumn{1}{p{1cm}|}{Ene}
+                    & \multicolumn{1}{p{1cm}|}{Feb}
+                    & \multicolumn{1}{p{1cm}|}{Marz}
+                    & \multicolumn{1}{p{1cm}|}{Abr}
+                    & \multicolumn{1}{p{1cm}|}{May}
+                    & \multicolumn{1}{p{1cm}|}{Jun}
+                    \\
+                    \hline
+                    Investigación Preliminar                    & \cellcolor{gray!30} & \cellcolor{gray!30} &                     &                     &                     &                     &                     \\
+                    \hline
+                    Diseño y Configuración del Entorno Simulado &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & & & & \\
+                    \hline
+                    Adquisición y Procesamiento de Datos        &                     &                     &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \\
+                    \hline
+                    Desarrollo y Entrenamiento de Algoritmos    &                     &                     &                     &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} \\
+                    \hline
+                    Evaluación y Ajuste del Sistema             &                     &                     &                     &                     &                     & \cellcolor{gray!30} & \cellcolor{gray!30} \\
+                    \hline
+                    Documentación y Análisis de Resultados      &                     &                     &                     &                     &                     &                     & \cellcolor{gray!30} \\
+                    \hline
+                    Redacción y Presentación de la Tesis        &                     &                     &                     &                     &                     &                     & \cellcolor{gray!30} \\
+                    \hline
+                \end{tabular}
+            }
         \end{center}
-    
     \end{frame}
-    
-    
+
+
     \section{Referencias}
     \begin{frame}{Referencias bibliográficas}
         \\[1] Alam, A., Jaffery, Z. A., and Sharma, H. A cost-effective computer vision-based vehicle
@@ -280,7 +289,7 @@ Rubén Martínez González}
         \\[5] Pavel, M. I., Tan, S. Y., and Abdullah, A. Vision-based autonomous vehicle systems
         based on deep learning: A systematic literature review. Applied Sciences 12, 14 (2022),
         6831.
-    
+
     \end{frame}
 
 \end{document}
