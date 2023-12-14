@@ -25,24 +25,40 @@
     Existe la necesidad de desarrollar sistemas ``inteligentes'' que permitan a estos vehículos aprender a conducir de manera autónoma y,
     al mismo tiempo, detectar posibles colisiones y reaccionar de manera similar a como lo haría un conductor humano.
     La convergencia de la inteligencia artificial, la visión computacional y los sistemas de control ha generado una nueva era en la movilidad,
-    desafiando y redefiniendo las fronteras de la conducción convencional.\\ \newline
-    En este contexto, este trabajo se centra en el desarrollo de un sistema de detección y evasión de colisiones basado en visión computacional.
+    desafiando y redefiniendo las fronteras de la conducción convencional.
     Si bien los avances en la conducción autónoma han sido significativos, la detección y respuesta a
     situaciones de peligro, como colisiones inminentes, siguen siendo un desafío complejo.\\ \newline
+    En este contexto, este trabajo se centra en el desarrollo de un sistema de detección y evasión de colisiones basado en visión computacional.
+    Para lograr este desarrollo se conformará un entorno simulado que refleje el escenario de conducción de un vehículo,
+    y mediante algoritmos de visión computacional se analizará la información proveniente de cámaras y sensores.
+    Con el procesamiento de estos datos se podrá modelar el medio que rodea al vehículo, lo que posibilitará
+    el desarrollo de estrategias de detección y evasión de colisiones en diferentes situaciones de manejo.\\ \newline
     La seguridad en la carretera y la confianza del público en esta tecnología dependen en gran medida de la capacidad
-    de los vehículos autónomos para enfrentar situaciones de tráfico de manera eficiente y segura.\\ \newline
-    Esta investigación busca abordar esta problemática crítica, avanzando hacia un futuro en el que los vehículos autónomos
+    de los vehículos autónomos para enfrentar situaciones de tráfico de manera eficiente y segura.
+    Esta investigación busca abordar esta problemática crítica, avanzando hacia el escenario en el que los vehículos autónomos
     sean capaces de igualar e incluso superar las habilidades de conducción humana en términos de detección y respuesta
     a situaciones de colisión.
     \clearpage
     
     \section*{Contexto y problemática}
-    \noindent En la constante evolución de la movilidad, los vehículos autónomos representan una innovación trascendental.
-    No obstante, el desafío primordial reside en dotar a estos vehículos con la capacidad de identificar y reaccionar ante situaciones de riesgo
-    de manera precisa y oportuna. La detección temprana de posibles colisiones, amenazas viales y transgresiones graves a las normativas de tráfico
-    es un aspecto esencial para garantizar la seguridad y la eficacia de estos sistemas autónomos. La visión computacional,
-    utilizando las cámaras de video y sensores, se presenta como una estrategia central para esta detección,
-    pero aún persisten desafíos tecnológicos significativos en la identificación y procesamiento oportuno de dichos eventos.
+    \noindent En la constante evolución de la movilidad, el desarrollo de los vehículos autónomos representan una innovación trascendental.
+    No obstante, su implementación se enfrenta a un desafío crucial: dotar a estos vehículos de la capacidad para identificar
+    y reaccionar ante situaciones de riesgo con precisión y celeridad. \\
+    La detección temprana de posibles colisiones, amenazas viales y violaciones a las normativas de tráfico
+    es un aspecto esencial para garantizar la seguridad y la eficacia de estos sistemas autónomos.\\
+    La visión computacional,utilizando las cámaras de video y sensores, se presenta como una estrategia central para esta detección.
+    Dentro de las posibilidades que ofrece la visión computacional, esta investigación se enfocará en la obtención de métricas del entorno,
+    utilizando Algoritmos como:
+    YOLO (You Only Look Once) para la detección de objetos en tiempo real,
+    algoritmos de seguimiento de múltiples objetivos (MOT) para el seguimiento de vehículos y peatones, y
+    técnicas de clasificación y segmentación de imágenes para el reconocimiento de señales de tráfico.
+    Con la combinación de estas técnicas se puede construir una herramienta para analizar de manera precisa y rápida
+    la información captada por las cámaras y sensores, permitiendo así modelar y comprender el ambiente alrededor del vehículo de forma completa y detallada.\\
+    La delimitación de este enfoque se centrará en la recreación de un entorno simulado y la obtención de todas las métricas posibles
+    del medio circundante al vehículo autónomo, con el propósito de analizarlas mediante estas técnicas de visión computacional.
+    Este análisis se orientará hacia la modelización precisa del entorno vehicular, permitiendo una mejor comprensión y preparación para posibles
+    eventos críticos en el camino hacia la autonomía segura y eficiente en la movilidad.
+    \clearpage
     
     \section*{Preguntas de investigación}
     \begin{itemize}
