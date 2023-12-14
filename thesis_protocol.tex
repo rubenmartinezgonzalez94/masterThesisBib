@@ -11,6 +11,7 @@
 \usepackage{natbib}
 \usepackage{colortbl}
 \usepackage{tikz}
+\usepackage{ragged2e} % Paquete para justificar el texto
 %\newcommand{\X}{\multicolumn{1}{|c|}{$\times$}}
 
 
@@ -32,7 +33,12 @@
     Para lograr este desarrollo se conformará un entorno simulado que refleje el escenario de conducción de un vehículo,
     y mediante algoritmos de visión computacional se analizará la información proveniente de cámaras y sensores.
     Con el procesamiento de estos datos se podrá modelar el medio que rodea al vehículo, lo que posibilitará
-    el desarrollo de estrategias de detección y evasión de colisiones en diferentes situaciones de manejo.\\ \newline
+    el desarrollo de estrategias de detección y evasión de colisiones en diferentes situaciones de manejo.
+    Una vez que se ha realizado el procesamiento exhaustivo de los datos provenientes de cámaras y sensores mediante técnicas de visión computacional,
+    se plantea la posibilidad de emplear algoritmos de aprendizaje por refuerzo.
+    Los algoritmos de aprendizaje por refuerzo, al recibir estos datos procesados como entrada, tienen la capacidad de aprender de manera progresiva
+    a tomar decisiones inteligentes en tiempo real.
+    Aprovechando la retroalimentación proporcionada por el entorno, estos algoritmos pueden mejorar continuamente su capacidad para reaccionar y evitar colisiones.\\ \newline
     La seguridad en la carretera y la confianza del público en esta tecnología dependen en gran medida de la capacidad
     de los vehículos autónomos para enfrentar situaciones de tráfico de manera eficiente y segura.
     Esta investigación busca abordar esta problemática crítica, avanzando hacia el escenario en el que los vehículos autónomos
@@ -48,15 +54,16 @@
     es un aspecto esencial para garantizar la seguridad y la eficacia de estos sistemas autónomos.\\
     La visión computacional,utilizando las cámaras de video y sensores, se presenta como una estrategia central para esta detección.
     Dentro de las posibilidades que ofrece la visión computacional, esta investigación se enfocará en la obtención de métricas del entorno,
-    utilizando Algoritmos como:
+    utilizando algoritmos como:
     YOLO (You Only Look Once) para la detección de objetos en tiempo real,
-    algoritmos de seguimiento de múltiples objetivos (MOT) para el seguimiento de vehículos y peatones, y
+    algoritmos de seguimiento de múltiples objetivos (MOT) para el seguimiento de vehículos, y
     técnicas de clasificación y segmentación de imágenes para el reconocimiento de señales de tráfico.
     Con la combinación de estas técnicas se puede construir una herramienta para analizar de manera precisa y rápida
     la información captada por las cámaras y sensores, permitiendo así modelar y comprender el ambiente alrededor del vehículo de forma completa y detallada.\\
     La delimitación de este enfoque se centrará en la recreación de un entorno simulado y la obtención de todas las métricas posibles
     del medio circundante al vehículo autónomo, con el propósito de analizarlas mediante estas técnicas de visión computacional.
-    Este análisis se orientará hacia la modelización precisa del entorno vehicular, permitiendo una mejor comprensión y preparación para posibles
+    Este análisis se orientará hacia la modelización precisa del entorno vehicular para procesar los datos y aprender a reaccionar
+    usando algoritmos de aprendizaje por refuerzo. Permitiendo una mejor comprensión y preparación para posibles
     eventos críticos en el camino hacia la autonomía segura y eficiente en la movilidad.
     \clearpage
     
@@ -82,7 +89,7 @@
         \item Modelar un ambiente de simulación donde un vehiculo circule por calles transitadas.
         \item Obtener datos de los sensores del vehiculo en simulación.
         \item Interpretar los datos de los sensores mediante técnicas de visión computacional.
-        \item Procesar los datos y aprender a reaccionar.
+        \item Procesar los datos y aprender a reaccionar usando algoritmos de aprendizaje por refuerzo.
     \end{itemize}
     \clearpage
     \section*{Estado del arte - Trabajos previos relacionados}
@@ -314,7 +321,8 @@
     \clearpage
     
     \section*{Metodología}
-    \noindent La metodología propuesta se fundamenta en un enfoque iterativo que abarca diversas etapas para la implementación del sistema de detección
+    \justify
+     La metodología propuesta se fundamenta en un enfoque iterativo que abarca diversas etapas para la implementación del sistema de detección
     y evasión de colisiones en vehículos autónomos. En primera instancia, se establecerá un entorno de simulación realista que refleje las condiciones de tráfico habituales.
     Posteriormente, se procederá a la adquisición y procesamiento de datos provenientes de los sensores de dicho entorno simulado. La fase siguiente implicará el diseño
     y la implementación de algoritmos de visión computacional para la detección temprana de eventos críticos en tiempo real. Estos algoritmos serán sometidos a un proceso
