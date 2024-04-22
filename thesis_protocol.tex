@@ -1,5 +1,5 @@
 \documentclass[12pt,letterpaper,final]{article}
-\usepackage[left=1.5cm,rigth=1.5cm,top=1cm,bottom=1.5cm]{geometry}
+\usepackage[left=2cm,rigth=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -13,13 +13,18 @@
 \usepackage{tikz}
 \usepackage{ragged2e} % Paquete para justificar el texto
 
-\title{Sistema de Detección y Evasión de Colisiones basado en Visión Computacional para Vehículos Autónomos}
+\title{Estimación de la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores para parqueo automático en simulación}
 \author{Rubén Martínez González}
+%\tutor{Dr. Arturo Espinosa Romero}
 \date{Marzo 2024}
 
 \begin{document}
 
     \maketitle
+    \begin{center}
+        Asesor: Dr. Arturo Espinosa Romero
+
+    \end{center}
     \clearpage
 
     \section*{Introducción}
@@ -47,51 +52,64 @@
     sean capaces de igualar e incluso superar las habilidades de conducción humana en términos de detección y respuesta
     a situaciones de colisión.
     \clearpage
-    
+
     \section*{Contexto y problemática}
-    \noindent En la constante evolución de la movilidad, el desarrollo de los vehículos autónomos representan una innovación trascendental.
-    No obstante, su implementación se enfrenta a un desafío crucial: dotar a estos vehículos de la capacidad para identificar
-    y reaccionar ante situaciones de riesgo con precisión y celeridad. \\
-    La detección temprana de posibles colisiones, amenazas viales y violaciones a las normativas de tráfico
-    es un aspecto esencial para garantizar la seguridad y la eficacia de estos sistemas autónomos.\\
-    La visión computacional,utilizando las cámaras de video y sensores, se presenta como una estrategia central para esta detección.
-    Dentro de las posibilidades que ofrece la visión computacional, esta investigación se enfocará en la obtención de métricas del entorno,
-    utilizando algoritmos como:
-    YOLO (You Only Look Once) para la detección de objetos en tiempo real,
-    algoritmos de seguimiento de múltiples objetivos (MOT) para el seguimiento de vehículos, y
-    técnicas de clasificación y segmentación de imágenes para el reconocimiento de señales de tráfico.
-    Con la combinación de estas técnicas se puede construir una herramienta para analizar de manera precisa y rápida
-    la información captada por las cámaras y sensores, permitiendo así modelar y comprender el ambiente alrededor del vehículo de forma completa y detallada.\\
-    La delimitación de este enfoque se centrará en la recreación de un entorno simulado y la obtención de todas las métricas posibles
-    del medio circundante al vehículo autónomo, con el propósito de analizarlas mediante estas técnicas de visión computacional.
-    Este análisis se orientará hacia la modelización precisa del entorno vehicular para procesar los datos y aprender a reaccionar
-    usando algoritmos de aprendizaje por refuerzo. Permitiendo una mejor comprensión y preparación para posibles
-    eventos críticos en el camino hacia la autonomía segura y eficiente en la movilidad.
+    \noindent
+%    problemas en los estacionamientos
+    Los estacionamientos son imprescindibles en la via urbana, ya que permiten a los conductores estacionar sus vehículos
+    de manera segura y eficiente. Sin embargo, el proceso de estacionamiento puede ser complicado y estresante,
+    especialmente en áreas congestionadas con espacio limitado y visibilidad reducida.
+    Factores como la falta de espacio, la presencia de obstáculos y la poca visibilidad para el conductor ocasionan
+    dificultades al estacionar un vehículo, lo que puede aumentar el riesgo de colisiones y daños al vehículo.
+    \\
+%   se han logrado sistemas de asistencia al conductor
+    En la actualidad, la búsqueda de soluciones para mejorar la eficiencia y seguridad en el desplazamiento vehicular
+    ha llevado al desarrollo de sistemas avanzados de asistencia al conductor.
+    Entre estos sistemas, el estacionamiento automático ha ganado relevancia como una función que puede contribuir
+    a reducir los riesgos asociados con el estacionamiento en entornos urbanos congestionados.
+    \\
+%   problemas de sistemas de estacionamiento automático
+    Sin embargo, el desarrollo de sistemas de estacionamiento automático presenta desafíos significativos,
+    especialmente en lo que respecta a la estimación de la posición del vehículo con respecto al espacio de estacionamiento.
+    El cálculo incorrecto de esta posición puede resultar en maniobras de estacionamiento inseguras o peligrosas,
+    especialmente en entornos donde el espacio de estacionamiento es limitado o con poca visibilidad para el conductor.
+    \\
+%   necesidad de sistemas de asistencia al conductor más autónomos
+    En este contexto, continua la necesidad de desarrollar soluciones de utilidad para que los sistemas de asistencia al conductor
+    sean cada vez más atosuficientes y no dependan de la intervención limitada del conductor.
+    \\
+%   en que consiste la investigación
+    Esta investigación se enfoca en poder estimar la posición de un vehículo con respecto a su espacio de estacionamiento
+    utilizando cámaras y sensores, y utilizar esta posición estimada para lograr un sistema de parqueo automático en simulación.
+
+
+
     \clearpage
-    
+
     \section*{Preguntas de investigación}
     \begin{itemize}
-        \item ¿Cómo se puede implementar un sistema de detección y evasión de colisiones basado en visión computacional para vehículos autónomos?
-        \item ¿Cómo se puede mejorar la precisión y la velocidad de detección de posibles colisiones mediante técnicas avanzadas de visión computacional?
-        \item ¿Cuál es el impacto de la integración de múltiples sensores en la detección y evasión de colisiones para vehículos autónomos?
+        \item ¿Cómo se puede representar la posición de un vehículo con respecto a su espacio de estacionamiento?
+        \item ¿Cómo se puede estimar esta posición utilizando las cámaras y sensores del vehículo?
+        \item ¿Cómo usar esta posición estimada para que el vehículo se estacione automáticamente?
     \end{itemize}
-    
+
     \section*{Hipótesis}
-    \("\)El desarrollo de un sistema de detección y evasión de colisiones basado en visión computacional en vehículos autónomos
-    proporcionará a estos la capacidad de anticipación y respuesta ante posibles situaciones de riesgo\("\)
-    
+    \("\)Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores,
+    y utilizando esta posición, se puede lograr un sistema de parqueo automático en simulación.\("\)
+
     \section*{Objetivos}
     \noindent{Objetivo general:}
     \newline
-    \noindent Desarrollar un sistema de detección y evasión de colisiones basado en visión computacional para vehículos autónomos en simulación.
+    \noindent Desarrollar un sistema de estimación de la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores para parqueo automático.
     \newline
     \newline
     \noindent{Objetivos específicos:}
     \begin{itemize}
-        \item Modelar un ambiente de simulación donde un vehiculo circule por calles transitadas.
+        \item Modelar un ambiente de simulación de un vehículo y estacionamiento.
         \item Obtener datos de los sensores del vehiculo en simulación.
         \item Interpretar los datos de los sensores mediante técnicas de visión computacional.
-        \item Procesar los datos y aprender a reaccionar usando algoritmos de aprendizaje por refuerzo.
+        \item Procesar los datos y estimar la posición del vehículo con respecto al estacionamiento.
+        \item Utilizar la posición estimada para lograr un sistema de parqueo automático en simulación.
     \end{itemize}
     \clearpage
 
@@ -135,16 +153,17 @@
         }
     \end{center}
     \clearpage
-    
+
     \section*{Metodología}
     \justify
-     La metodología propuesta se fundamenta en un enfoque iterativo que abarca diversas etapas para la implementación del sistema de detección
-    y evasión de colisiones en vehículos autónomos. En primera instancia, se establecerá un entorno de simulación realista que refleje las condiciones de tráfico habituales.
-    Posteriormente, se procederá a la adquisición y procesamiento de datos provenientes de los sensores de dicho entorno simulado. La fase siguiente implicará el diseño
-    y la implementación de algoritmos de visión computacional para la detección temprana de eventos críticos en tiempo real. Estos algoritmos serán sometidos a un proceso
-    de entrenamiento y ajuste utilizando técnicas de aprendizaje automático. Finalmente, se llevarán a cabo pruebas exhaustivas y evaluaciones para validar la efectividad
-    y la precisión del sistema propuesto en situaciones simuladas de riesgo vial.
-    
+    La metodología propuesta se fundamenta en un enfoque iterativo que abarca diversas etapas para la implementación del sistema
+    de estimación de la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores para parqueo automático en simulación.
+    En primera instancia, se establecerá un entorno de simulación realista que refleje el escenario de un vehículo en movimiento y su entorno de estacionamiento.
+    Posteriormente, se procederá a la adquisición y procesamiento de datos provenientes de los sensores de dicho entorno simulado.
+    La fase siguiente implicará el diseño y la implementación de algoritmos de visión computacional para la detección temprana de eventos críticos en tiempo real.
+    Estos algoritmos serán sometidos a un proceso de entrenamiento y ajuste utilizando técnicas de aprendizaje automático.
+    Finalmente, se llevarán a cabo pruebas exhaustivas y evaluaciones para validar la efectividad y la precisión del sistema propuesto en situaciones simuladas.
+
     \section*{Calendario de actividades}
     \begin{center}
         \resizebox{\textwidth}{!}{
@@ -155,19 +174,19 @@
                 & Ene & Feb & Mar & Abr & May & Jun & Jul & Ago & Sep & Oct & Nov & Dic
                 & Ene & Feb & Mar & Abr & May \\
                 \hline
-                Investigación Preliminar                    & \cellcolor{gray!30} & \cellcolor{gray!30} &                     &                     &                     &                     &                     &                     &                     &                     &                     &                     &                     &                     &                     &                     &                     & \\
+                Investigación y revisión bibliográfica      & \cellcolor{gray!30} & \cellcolor{gray!30} & & & & & & & & & & & & & & & & \\
                 \hline
-                Diseño y Configuración del Entorno Simulado &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & & & & & & & & & & & & & & & \\
+                Diseño y Configuración del Entorno Simulado &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & & & & & & & & & & & & & & \\
                 \hline
-                Adquisición y Procesamiento de Datos        &                     &                     &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & & & & & & & & & & & & \\
+                Adquisición y Procesamiento de Datos        &                     &                     &                     &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & & & & & & & & & & & \\
                 \hline
-                Desarrollo y Entrenamiento de Algoritmos    &                     &                     &                     &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & & & & & & & & & & & \\
+                Desarrollo y Entrenamiento de Algoritmos    &                     &                     &                     &                     &                     &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} &  & & & & & & & & \\
                 \hline
-                Evaluación y Ajuste del Sistema             &                     &                     &                     &                     &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & & & & & & & & & & \\
+                Evaluación y Ajuste del Sistema             &                     &                     &                     &                     &                     &                     &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & & & & & & & \\
                 \hline
-                Documentación y Análisis de Resultados      &                     &                     &                     &                     &                     &                     &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & & & & & & & & \\
+                Documentación y Análisis de Resultados      &                     &                     &                     &                     &                     &                     &                     &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & & & & & \\
                 \hline
-                Redacción y Presentación de la Tesis        &                     &                     &                     &                     &                     &                     &                     &                     &                     &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \\
+                Redacción y Revisión del documento de tesis &                     &                     &                     &                     &                     &                     &                     &                     &                     &                     & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \\
                 \hline
             \end{tabular}
         }
