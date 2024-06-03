@@ -1,5 +1,12 @@
 \documentclass[12pt,letterpaper,final]{article}
-\usepackage[left=2cm,rigth=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+
+\usepackage[spanish]{babel}
+\spanishdecimal{.}
+
+% \usepackage[left=2cm, rigth=1.5cm, top=1.5cm, bottom=1.5cm]{geometry}
+% Esta linea tenia un error debiera ser 'right' en lugar de 'rigth'.
+\usepackage[left=2cm, right=1.5cm, top=1.5cm, bottom=1.5cm]{geometry}
+
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -12,9 +19,11 @@
 \usepackage{colortbl}
 \usepackage{tikz}
 \usepackage{ragged2e}
-\usepackage{caption} % Paquete para justificar el texto
+\usepackage{caption}
+\usepackage{subcaption} % Paquete para justificar el texto
 
-\title{Estimación de la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores para parqueo automático en simulación}
+%\title{Estimación de la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores para parqueo automático en simulación}
+\title{Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación}
 \author{Rubén Martínez González}
 %\tutor{Dr. Arturo Espinosa Romero}
 \date{Marzo 2024}
@@ -44,8 +53,8 @@
     \end{itemize}
 
     \section*{Hipótesis}
-    \("\)Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores,
-    y utilizando esta posición, se puede lograr un sistema de parqueo automático en simulación.\("\)
+    ``Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores,
+    y utilizando esta posición, se puede lograr un sistema de parqueo automático en simulación.''
 
     \section*{Objetivos}
     \input{content/objectives}
