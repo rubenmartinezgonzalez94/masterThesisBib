@@ -1,23 +1,25 @@
-\noindent
-Para representar la posición relativa del vehículo con respecto al espacio de estacionamiento,
-se propone un sistema de coordenadas cilíndricas en el cual el origen se encuentre en la cámara del vehículo.
-Esta elección provee un marco de referencia que facilita la medición de las distancias
-y ángulos necesarios para maniobrar adecuadamente durante el estacionamiento.\\
-\noindent
-Utilizando coordenadas cilíndricas, es posible describir la posición del vehículo en términos de distancia radial, ángulo y altura,
-con el origen en la cámara del vehículo permite representar de manera directa
-las relaciones espaciales entre el vehículo y los límites del espacio de estacionamiento.
-La altura conocida de la cámara respecto al suelo proporciona un eje de referencia constante,
-mientras que los ejes orientados según la dirección y lateralidad del vehículo facilitan la interpretación y cálculo de la orientación
-y desplazamiento necesarios para estacionar correctamente.\\
-
+\noindent  Para  representar la  posición  relativa  del vehículo  con
+respecto  al espacio  de  estacionamiento, se  propone  un sistema  de
+coordenadas cilíndricas en el cual el origen se encuentre en la cámara
+del vehículo. Esta elección provee un marco de referencia que facilita
+la  medición de  las distancias  y ángulos  necesarios para  maniobrar
+adecuadamente  durante   el  estacionamiento.
+\noindent Utilizando coordenadas cilíndricas,  es posible describir la
+posición  del  vehículo en  términos  de  distancia radial,  ángulo  y
+altura, con el origen en la cámara del vehículo permite representar de
+manera  directa las  relaciones  espaciales entre  el  vehículo y  los
+límites  del espacio  de  estacionamiento. La  altura  conocida de  la
+cámara respecto al  suelo proporciona un eje  de referencia constante,
+mientras que los ejes orientados  según la dirección y lateralidad del
+vehículo facilitan  la interpretación  y cálculo  de la  orientación y
+desplazamiento necesarios para estacionar correctamente.
 
 \subsection{Origen del sistema de coordenadas}
-Para representar el origen se establecerán tres ejes coordenados:
+Consideramos que el origen del sistema está centrado en la cámara del vehículos, de tal manera que los ejes ortonormales del sistema se definen como sigue:
 \begin{itemize}
-    \item El eje $z$ se define como la altura conocida de la cámara con respecto al suelo.
-    \item El eje $x$ se define como la orientación del vehículo.
-    \item El eje $y$ se define como la orientación lateral del vehículo.
+    \item El eje $z$ se define como un vector unitario en dirección vertical  apuntando hacia el suelo.
+    \item El eje $x$ se define como un vector unitario que apunta hacia el frente del vehículo.
+    \item El eje $y$ se define como un vector unitario que apunta hacia el lado derecho del vehículo.
 \end{itemize}
 
 \begin{figure}[!ht]
