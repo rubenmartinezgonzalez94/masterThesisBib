@@ -1,4 +1,4 @@
-\documentclass[12pt,letterpaper,final]{article}
+\documentclass[11pt,letterpaper,final]{article}
 
 \usepackage[spanish]{babel}
 \spanishdecimal{.}
@@ -26,13 +26,13 @@
 \title{Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación}
 \author{Rubén Martínez González}
 %\tutor{Dr. Arturo Espinosa Romero}
-\date{Marzo 2024}
+\date{Diciembre 2024}
 
 \begin{document}
 
     \maketitle
     \begin{center}
-        Asesores: \\Dr. Arturo Espinosa Romero\\ Dr. Víctor Uc Cetina
+        Asesor: \\Dr. Arturo Espinosa Romero
 
     \end{center}
     \clearpage
@@ -53,6 +53,7 @@
     \end{itemize}
 
     \section*{Hipótesis}
+    \noindent
     ``Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores,
     y utilizando esta posición, se puede lograr un sistema de parqueo automático en simulación.''
 
@@ -64,13 +65,16 @@
     \justify
     \input{content/methodology}
 
-    \section*{Calendario de actividades}
-    \input{content/activities-calendar}
-    \clearpage
+
 
     \section*{Entorno de simulación}
     \input{content/simulation}
     \clearpage
+
+    \section*{Detección de la retícula de estacionamiento}
+    \input{content/reticule}
+    \clearpage
+
 
     \section*{Representación de la posición relativa al estacionamiento}
     \input{content/position-representation}
@@ -81,6 +85,9 @@
 %    \section*{Experimentos y resultados}
 %    \clearpage
 
+    \section*{Calendario de actividades}
+    \input{content/activities-calendar}
+    \clearpage
 
     \section*{Estado del arte - Trabajos previos relacionados}
     \input{content/related-works}
