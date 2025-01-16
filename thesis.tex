@@ -1,0 +1,54 @@
+%! Author = ruben
+%! Date = 1/16/2025
+\documentclass[11pt]{article}
+
+% Paquetes
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{tocbibind} % Para incluir referencias en el índice
+
+% Información del documento
+\title{Título de la Tesis}
+\author{Rubén Martínez González}
+\date{Enero 2025}
+\newcommand{\university}{Nombre de la Universidad}
+\newcommand{\advisor}{Dr. Arturo Espinosa Romero}
+
+\begin{document}
+
+% Portada
+\maketitle
+\begin{center}
+    Asesor: \advisor \\
+    \university
+\end{center}
+\clearpage
+
+% Índice
+\tableofcontents
+\clearpage
+
+% Capítulo 1: Introducción
+\section{Introducción}
+\subsection{Contexto}
+\subsection{Objetivos}
+\subsubsection{Objetivo General}
+\subsection{Estructura del Documento}
+
+% Capítulo 2: Metodología
+\section{Metodología}
+\subsection{Diseño de Investigación}
+\subsection{Procedimientos}
+\subsubsection{Análisis de Datos}
+
+% Capítulo 3: Resultados
+\section{Resultados}
+
+% Referencias
+\bibliographystyle{acm}
+\bibliography{referencias}
+
+\end{document}
