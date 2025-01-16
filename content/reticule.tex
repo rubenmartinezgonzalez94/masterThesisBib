@@ -1,6 +1,6 @@
 \noindent
-Cuando proyectamos un escenario del mundo real en 3 dimensiones como un estacionamiento a un plano de 2 dimensiones como el lente de una cámara, se produce una distorsión en la imagen.
-Esta distorsión provoca que las líneas paralelas en el mundo real, al proyectarse en el plano de la cámara, se interseten en un punto de fuga.
+Cuando proyectamos un escena del mundo real en tres dimensiones a un plano de dos dimensiones como la película o el sensor de una cámara, se produce una transformación en la imagen.
+Esta transformación, que se conoce como transformación proyectiva, provoca que las líneas paralelas en el mundo real al proyectarse en el plano de la cámara se intersecten en un punto. A dicho punto se le conoce como punto de fuga.
 
 \begin{figure}[!ht]
     \centering
@@ -39,9 +39,7 @@ Esto permite utilizar técnicas de detección de líneas para identificar los pu
 \begin{itemize}
     \item Área de interés:
 
-    Teniendo en cuenta que la camara del vehículo se encuentra ubicada en la parte delantera a una altura conocida
-    y en un ángulo paralelo al suelo, el área de interés de la imagen donde se encuentran las líneas de los cajones de estacionamiento
-    quedara siempre por debajo del horizonte de la imagen.
+    Teniendo en cuenta que la camara del vehículo se encuentra ubicada en la parte delantera a una altura conocida y en un ángulo paralelo al suelo, el área de interés de la imagen donde se encuentran las líneas de los cajones de estacionamiento quedara siempre por debajo del horizonte de la imagen.
     Por lo tanto, se puede eliminar la parte superior de la imagen para
     reducir el ruido y mejorar la detección de las líneas.
     \begin{figure}[!ht]
@@ -51,10 +49,9 @@ Esto permite utilizar técnicas de detección de líneas para identificar los pu
         \label{fig:roi}
     \end{figure}
 
-    \item Ubralización:
+    \item Umbralización:
 
-    Al área de interés de la imagen se le aplica una umbralización para realzar las líneas blancas de los cajones de estacionamiento
-    y eliminar otros elementos no relevantes que puedan interferir en la detección.
+    Al área de interés de la imagen se le aplica una umbralización para realzar las líneas blancas de los cajones de estacionamiento y eliminar otros elementos no relevantes que puedan interferir en la detección.
     \begin{figure}[!ht]
         \centering
         \includegraphics[width=0.6\textwidth]{img/reticule/thresholded}
@@ -93,12 +90,12 @@ Esto permite utilizar técnicas de detección de líneas para identificar los pu
 
     Una vez obtenidas las coordenadas de inicio y fin de cada línea paralela, podemos utilizar la ecuación general de la recta:
     \begin{equation}
-        0 = Ax + By + C
+        Ax + By + C = 0
     \end{equation}
     Esta ecuación nos permite determinar la orientación de cada línea.
-    Dado que las coordenadas iniciales y finales de cada línea corresponden a los valores de x y y, respectivamente,
-    estas se pueden emplear para formular un sistema de ecuaciones que describa los parámetros de la recta (A, B, C).
-    Dicho sistema puede representarse de manera matricial como
+    Dado que las coordenadas iniciales y finales de cada línea corresponden a los valores de $x$ y $y$, respectivamente,    estas se pueden emplear para formular un sistema de ecuaciones que describa los parámetros de la recta $[A, B, C]$.
+    Dicho sistema puede representarse de manera matricial como sigue:
+ \begin{equation}   
     \begin{aligned}
         \left[\begin{array}{ccc}
                   x_1 & y_1 & 1 \\
@@ -115,52 +112,49 @@ Esto permite utilizar técnicas de detección de líneas para identificar los pu
             0
         \end{bmatrix}
     \end{aligned}
+\end{equation}
 
-    Esta representación permite calcular de forma precisa los coeficientes de la ecuación de la recta para cada línea detectada,
-    lo que es fundamental para analizar su orientación y posición dentro de la retícula de estacionamiento.
+    Esta representación permite calcular de forma precisa los coeficientes de la ecuación de la recta para cada línea detectada, lo que es fundamental para analizar su orientación y posición dentro de la retícula de estacionamiento.
 
     \item Cálculo de ecuaciones de las líneas:
 
-    Para calcular los coeficientes (A, B, C) de las ecuaciones de las líneas detectadas, se utiliza
-    el concepto de espacio nulo (null space)
-    . Este enfoque se basa en el hecho de que cualquier vector en el espacio nulo de una matriz M satisface la ecuación
+    Para calcular los coeficientes $[A, B, C]$ de las ecuaciones de las líneas detectadas, se utiliza el concepto de espacio nulo (\emph{null space}). Este enfoque se basa en el hecho de que cualquier vector en el espacio nulo de una matriz $\mathbf{M}$ satisface la ecuación
     \begin{equation}
-        M*v = 0
+        \mathbf{Mv} = 0
     \end{equation}
-    \
 
-    Cada línea se representa mediante dos puntos \((x_1, y_1)\) y \((x_2, y_2)\). A partir de estas coordenadas homogeneas, construimos una matriz \(M\) de la forma:
+%Comentario: No has definido el vector v.
+  
+
+    Cada línea se representa mediante dos puntos $(x_1, y_1)$ y $(x_2, y_2)$. A partir de estas coordenadas homogeneas, construimos una matriz $\mathbf{M}$ de la forma:
     \[
-        M = \begin{bmatrix}
+        \mathbf{M} = \begin{bmatrix}
                 x_1 & y_1 & 1 \\
                 x_2 & y_2 & 1
         \end{bmatrix}
     \]
     Esta matriz define el sistema de ecuaciones que describe la recta que pasa por los puntos dados.
-    El espacio nulo de \(M\) corresponde al conjunto de vectores \([\!A\!~\!B\!~\!C\!]\) que satisfacen
+    El espacio nulo de $\mathbf{M}$ corresponde al conjunto de vectores $[A,B,C]$ que satisfacen
     \[
-        M \cdot \begin{bmatrix}
+        \mathbf{M} \cdot \begin{bmatrix}
                     A \\ B \\ C
         \end{bmatrix} = \mathbf{0}.
     \]
     Se utiliza la Descomposición en Valores Singulares (SVD) para calcular este espacio nulo, ya que es una herramienta robusta y numéricamente estable.
-    La SVD descompone la matriz \(M\) en tres matrices \(U\), \(S\) y \(V\), donde el espacio nulo de \(M\)
-    se puede obtener a partir de la última columna de la matriz \(V\), que corresponde al vector singular más pequeño (el más cercano al cero).
-    El vector resultante del espacio nulo se normaliza para que tenga una magnitud manejable.
-    Esto asegura que los coeficientes \(A\), \(B\) y \(C\) sean comparables entre distintas líneas.
+    La SVD descompone la matriz \(M\) en tres matrices \(U\), \(S\) y \(V\), donde el espacio nulo de \(M\) se puede obtener a partir de la última columna de la matriz \(V\), que corresponde al vector singular más pequeño (el más cercano al cero).
+    El vector resultante del espacio nulo se normaliza para que tenga una magnitud manejable. Esto asegura que los coeficientes \(A\), \(B\) y \(C\) sean comparables entre distintas líneas.
 
     \item Cálculo de intersecciones:
 
-    Dado que ya se tendrian las ecuaciones de todas las líneas paralelas en el plano de la cámara,
-    se pueden calcular las intersecciones de estas líneas realizando un producto cruz entre las
-    ecuaciones homogéneas [\(A\),\(B\),\(C\)] de todos los pares de líneas.
-    El resultado de este producto cruz nos da un punto homogéneo en el espacio que corresponde a la intersección de las líneas.
-    Si este punto es finito (cuando la tercera componente no es cero), se puede deshomogenizar para obtener las coordenadas
-    cartesianas en el plano de la cámara.
+    Dado que ya se tendrian las ecuaciones de todas las líneas paralelas en el plano de la cámara, se pueden calcular las intersecciones de estas líneas realizando un producto cruz entre las ecuaciones homogéneas [\(A\),\(B\),\(C\)] de todos los pares de líneas.
+    
+    El resultado de este producto cruz es la coordenada homogénea de un punto en el espacio que corresponde a la intersección de las líneas.
+    Si este punto es finito (cuando la tercera componente no es cero), se puede deshomogenizar para obtener las coordenadas cartesianas en el plano de la cámara.
     En cambio, si el punto es infinito (cuando la tercera componente muy cercana a cero), significa que las líneas son paralelas y se intersectan en el infinito.
 
 
     \item  Agrupación de intersecciones:
+    %https://scikit-learn.org/stable/modules/clustering.html#hierarchical-clustering
 
     Analizando todos los puntos de intersecciones obtenidos que se encuentran en el plano de la cámara, se pueden agrupar para determinar donde estan
     concentrada la mayor cantidad de intersecciones. Este punto de concentración de intersecciones debe corresponder al punto de fuga principal de la retícula de estacionamiento.
