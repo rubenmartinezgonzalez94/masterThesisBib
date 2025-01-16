@@ -1,24 +1,73 @@
 \begin{center}
-    \resizebox{\textwidth}{!}{
-        \begin{tabular}{|p{3cm}|*{18}{p{1cm}|}}
+    \begin{ganttchart}
+        [
+        hgrid,
+        vgrid,
+        title/.append style={fill=none},
+        title label font=\bfseries\footnotesize,
+        title label anchor/.append style={below=-1.6ex},
+        title label text width=2cm,
+        include title in canvas=false,
+        bar/.append style={fill=blue!30},
+        bar incomplete/.append style={fill=red},
+        bar height=0.6,
+        group label text width=2cm,
+        bar label text width=1cm
+        group right shift=0,
+        group top shift=0.7,
+        group height=.3,
+        group peaks width={0.2},
+        x unit=0.5cm,
+        y unit chart=0.6cm,
+        milestone/.append style={fill=green}
+        ]{1}{18}
+        \gantttitle{2024}{12} \gantttitle{2025}{6} \\
+        \gantttitlelist{1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6}{1} \\
+        \ganttgroup{Investigación y revisión bibliográfica}{1}{7} \\
+        \ganttbar{Revisión de trabajos relacionados con vehículos autónomos}{1}{3} \\
+        \ganttbar{Revisión de trabajos relacionados con parqueo automático}{1}{3} \\
+        \ganttbar{Selección de tecnología para simulación}{1}{4} \\
+        \ganttbar{Revisión de técnicas de detección de contornos}{3}{7} \\
+        \ganttbar{Revisión de técnicas de detección de líneas}{3}{7} \\
+        \ganttbar{Revisión de técnicas para manejo de homografías}{3}{7} \\
 
-\hline
-\textbf{Actividad} & \textbf{Ene} & \textbf{Feb} & \textbf{Mar} & \textbf{Abr} & \textbf{May} & \textbf{Jun} & \textbf{Jul} & \textbf{Ago} & \textbf{Sep} & \textbf{Oct} & \textbf{Nov} & \textbf{Dic} & \textbf{Ene} & \textbf{Feb} & \textbf{Mar} & \textbf{Abr} & \textbf{May} & \textbf{Jun} \\
-\hline
-\endhead
+        \ganttgroup{Diseño y configuración del entorno de simulación}{4}{10} \\
+        \ganttbar{Instalación de CARLA Simulator}{4}{5} \\
+        \ganttbar{Estudio de la documentación de CARLA Simulator}{4}{10} \\
+        \ganttbar{Diseño y Configuración del Entorno de simulación}{5}{10} \\
+        \ganttbar{Adquisición de datos de sensores en simulación}{5}{10} \\
 
-Investigación y revisión bibliográfica & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} &  &  &  &  &  \\ \hline
-Diseño y Configuración del Entorno Simulado & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
-Adquisición y pre-procesamiento de Datos &  &  &  &  & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} &  &  &  &  &  &  &  &  &  &  &  \\ \hline
-Interpretar los datos de los sensores &  &  &  &  &  &  & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} &  &  &  &  &  &  &  &  &  \\ \hline
-Estimación de la posición de la retícula &  &  &  &  &  &  &  & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} &  &  &  &  &  &  &  \\ \hline
-Predicción de distancias &  &  &  &  &  &  &  &  &  &  & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} &  &  &  &  &  \\ \hline
-Desarrollo y Entrenamiento de Algoritmos &  &  &  &  &  &  &  &  &  &  &  &  & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} \\ \hline
-Evaluación y Ajuste del Sistema &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} \\ \hline
-Documentación y Análisis de Resultados & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} \\ \hline
-Redacción y Revisión del documento de tesis &  &  &  &  &  &  &  &  &  &  &  &  &  & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} & \cellcolor{gray!30} \\ \hline
+        \ganttgroup{Adquisición y procesamiento de imágenes}{10}{13} \\
+%        \ganttbar{Extracción de secuencias de imágenes RGB de maniobras de estacionamiento}{10}{10} \\
+        \ganttbar{Extracción de imágenes RGB de maniobras de estacionamiento}{10}{10} \\
+%        \ganttbar{Extracción de contornos relevantes de las imágenes utilizando el algoritmo de Canny}{10}{10} \\
+        \ganttbar{Extracción de contornos relevantes de las imágenes}{10}{10} \\
+%        \ganttbar{Extracción de líneas de los contornos utilizando la transformada de Hough}{10}{10} \\
+        \ganttbar{Extracción de líneas de los contornos }{10}{10} \\
+%        \ganttbar{Extracción de las ecuaciones de las líneas detectadas utilizando SVD}{10}{12} \\
+        \ganttbar{Extracción de las ecuaciones de las líneas}{10}{12} \\
+%        \ganttbar{Extracción de intersecciones de las líneas utilizando el producto cruz}{10}{12} \\
+        \ganttbar{Extracción de intersecciones de las líneas}{10}{12} \\
+%        \ganttbar{Selección de 1er punto de fuga mediante algoritmos de clustering}{12}{13} \\
+        \ganttbar{Selección del primer punto de fuga mediante clustering}{12}{13} \\
+        \ganttbar{Selección del segundo punto de fuga mediante lógica geométrica}{12}{13} \\
+        \ganttbar{Reconstrucción de la retícula de estacionamiento}{12}{14} \\
+%        \ganttbar{Minimización de errores en la reconstrucción utilizando el filtro de Kalman}{12}{14} \\
+        \ganttbar{Mejora de la reconstrucción de la retícula (Filtro de Kalman)}{12}{14} \\
+        \ganttbar{Representación de homografía correspondiente en 3D}{13}{15} \\
+        \ganttbar{Seguimiento de uno de los cajones de estacionamiento}{13}{15} \\
+        \ganttbar{Cálculo de las distancias a las cuatro esquinas del cajón}{13}{15} \\
+        \ganttbar{Representación de pose del vehículo relativa al cajón}{13}{15} \\
 
+        \ganttgroup{Apliación de la pose relativa en estacionamiento automático}{15}{17} \\
+        \ganttbar{Diseño e implementación de un enviroment RL}{15}{17} \\
+        \ganttbar{Diseño del action space y observation space}{15}{17} \\
+        \ganttbar{Diseño de función de recompensa}{15}{17} \\
+        \ganttbar{Entrenamiento de un agente RL para estacionamiento}{16}{17} \\
+        \ganttbar{Experimentación y documentación de resultados}{17}{18} \\
 
-        \end{tabular}
-    }
+        \ganttgroup{Documentación y Análisis de Resultados}{10}{18} \\
+        \ganttgroup{Redacción y Revisión del documento de tesis}{10}{18} \\
+
+    \end{ganttchart}
 \end{center}
