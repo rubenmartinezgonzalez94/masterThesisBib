@@ -1,4 +1,4 @@
-\documentclass[6pt,letterpaper,final]{article}
+\documentclass[8pt,letterpaper,final]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -17,6 +17,9 @@
 \usepackage{longtable}
 \usepackage{tabularx}
 \usepackage{pgfgantt}
+
+\newcommand{\gbar}[4]{\ganttbar{\begin{minipage}{#1\textwidth}#2\end{minipage}}{#3}{#4} \\}
+\newcommand{\ggroup}[4]{\ganttgroup{\begin{minipage}{#1\textwidth}#2\end{minipage}}{#3}{#4} \\}
 
 \begin{document}
 

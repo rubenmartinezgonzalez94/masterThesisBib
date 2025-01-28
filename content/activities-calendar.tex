@@ -6,13 +6,13 @@
         title/.append style={fill=none},
         title label font=\bfseries\footnotesize,
         title label anchor/.append style={below=-1.6ex},
-        title label text width=2cm,
+        %title label text width=2cm,
         include title in canvas=false,
         bar/.append style={fill=blue!30},
         bar incomplete/.append style={fill=red},
         bar height=0.6,
-        group label text width=2cm,
-        bar label text width=1cm
+        %group label text width=2cm,
+        %bar label text width=1cm,
         group right shift=0,
         group top shift=0.7,
         group height=.3,
@@ -23,51 +23,51 @@
         ]{1}{18}
         \gantttitle{2024}{12} \gantttitle{2025}{6} \\
         \gantttitlelist{1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6}{1} \\
-        \ganttgroup{Investigación y revisión bibliográfica}{1}{7} \\
-        \ganttbar{Revisión de trabajos relacionados con vehículos autónomos}{1}{3} \\
-        \ganttbar{Revisión de trabajos relacionados con parqueo automático}{1}{3} \\
-        \ganttbar{Selección de tecnología para simulación}{1}{4} \\
-        \ganttbar{Revisión de técnicas de detección de contornos}{3}{7} \\
-        \ganttbar{Revisión de técnicas de detección de líneas}{3}{7} \\
-        \ganttbar{Revisión de técnicas para manejo de homografías}{3}{7} \\
+        \ggroup{0.25}{Investigación y revisión bibliográfica}{1}{7} \\
+        \gbar{0.25}{Revisión de trabajos relacionados con vehículos autónomos}{1}{3} \\
+        \gbar{0.25}{Revisión de trabajos relacionados con parqueo automático}{1}{3} \\
+        \gbar{0.25}{Selección de tecnología para simulación}{1}{4} \\
+        \gbar{0.25}{Revisión de técnicas de detección de contornos}{3}{7} \\
+        \gbar{0.25}{Revisión de técnicas de detección de líneas}{3}{7} \\
+        \gbar{0.25}{Revisión de técnicas para manejo de homografías}{3}{7} \\
 
-        \ganttgroup{Diseño y configuración del entorno de simulación}{4}{10} \\
-        \ganttbar{Instalación de CARLA Simulator}{4}{5} \\
-        \ganttbar{Estudio de la documentación de CARLA Simulator}{4}{10} \\
-        \ganttbar{Diseño y Configuración del Entorno de simulación}{5}{10} \\
-        \ganttbar{Adquisición de datos de sensores en simulación}{5}{10} \\
+        \ggroup{0.25}{Diseño y configuración del entorno de simulación}{4}{10} \\
+        \gbar{0.25}{Instalación de CARLA Simulator}{4}{5} \\
+        \gbar{0.25}{Estudio de la documentación de CARLA Simulator}{4}{10} \\
+        \gbar{0.25}{Diseño y Configuración del Entorno de simulación}{5}{10} \\
+        \gbar{0.25}{Adquisición de datos de sensores en simulación}{5}{10} \\
 
-        \ganttgroup{Adquisición y procesamiento de imágenes}{10}{13} \\
-%        \ganttbar{Extracción de secuencias de imágenes RGB de maniobras de estacionamiento}{10}{10} \\
-        \ganttbar{Extracción de imágenes RGB de maniobras de estacionamiento}{10}{10} \\
-%        \ganttbar{Extracción de contornos relevantes de las imágenes utilizando el algoritmo de Canny}{10}{10} \\
-        \ganttbar{Extracción de contornos relevantes de las imágenes}{10}{10} \\
-%        \ganttbar{Extracción de líneas de los contornos utilizando la transformada de Hough}{10}{10} \\
-        \ganttbar{Extracción de líneas de los contornos }{10}{10} \\
-%        \ganttbar{Extracción de las ecuaciones de las líneas detectadas utilizando SVD}{10}{12} \\
-        \ganttbar{Extracción de las ecuaciones de las líneas}{10}{12} \\
-%        \ganttbar{Extracción de intersecciones de las líneas utilizando el producto cruz}{10}{12} \\
-        \ganttbar{Extracción de intersecciones de las líneas}{10}{12} \\
-%        \ganttbar{Selección de 1er punto de fuga mediante algoritmos de clustering}{12}{13} \\
-        \ganttbar{Selección del primer punto de fuga mediante clustering}{12}{13} \\
-        \ganttbar{Selección del segundo punto de fuga mediante lógica geométrica}{12}{13} \\
-        \ganttbar{Reconstrucción de la retícula de estacionamiento}{12}{14} \\
-%        \ganttbar{Minimización de errores en la reconstrucción utilizando el filtro de Kalman}{12}{14} \\
-        \ganttbar{Mejora de la reconstrucción de la retícula (Filtro de Kalman)}{12}{14} \\
-        \ganttbar{Representación de homografía correspondiente en 3D}{13}{15} \\
-        \ganttbar{Seguimiento de uno de los cajones de estacionamiento}{13}{15} \\
-        \ganttbar{Cálculo de las distancias a las cuatro esquinas del cajón}{13}{15} \\
-        \ganttbar{Representación de pose del vehículo relativa al cajón}{13}{15} \\
+        \ggroup{0.25}{Adquisición y procesamiento de imágenes}{10}{13} \\
+%        \gbar{0.25}{Extracción de secuencias de imágenes RGB de maniobras de estacionamiento}{10}{10} \\
+        \gbar{0.25}{Extracción de imágenes RGB de maniobras de estacionamiento}{10}{10} \\
+%        \gbar{0.25}{Extracción de contornos relevantes de las imágenes utilizando el algoritmo de Canny}{10}{10} \\
+        \gbar{0.25}{Extracción de contornos relevantes de las imágenes}{10}{10} \\
+%        \gbar{0.25}{Extracción de líneas de los contornos utilizando la transformada de Hough}{10}{10} \\
+        \gbar{0.25}{Extracción de líneas de los contornos }{10}{10} \\
+%        \gbar{0.25}{Extracción de las ecuaciones de las líneas detectadas utilizando SVD}{10}{12} \\
+        \gbar{0.25}{Extracción de las ecuaciones de las líneas}{10}{12} \\
+%        \gbar{0.25}{Extracción de intersecciones de las líneas utilizando el producto cruz}{10}{12} \\
+        \gbar{0.25}{Extracción de intersecciones de las líneas}{10}{12} \\
+%        \gbar{0.25}{Selección de 1er punto de fuga mediante algoritmos de clustering}{12}{13} \\
+        \gbar{0.25}{Selección del primer punto de fuga mediante clustering}{12}{13} \\
+        \gbar{0.25}{Selección del segundo punto de fuga mediante lógica geométrica}{12}{13} \\
+        \gbar{0.25}{Reconstrucción de la retícula de estacionamiento}{12}{14} \\
+%        \gbar{0.25}{Minimización de errores en la reconstrucción utilizando el filtro de Kalman}{12}{14} \\
+        \gbar{0.25}{Mejora de la reconstrucción de la retícula (Filtro de Kalman)}{12}{14} \\
+        \gbar{0.25}{Representación de homografía correspondiente en 3D}{13}{15} \\
+        \gbar{0.25}{Seguimiento de uno de los cajones de estacionamiento}{13}{15} \\
+        \gbar{0.25}{Cálculo de las distancias a las cuatro esquinas del cajón}{13}{15} \\
+        \gbar{0.25}{Representación de pose del vehículo relativa al cajón}{13}{15} \\
 
-        \ganttgroup{Apliación de la pose relativa en estacionamiento automático}{15}{17} \\
-        \ganttbar{Diseño e implementación de un enviroment RL}{15}{17} \\
-        \ganttbar{Diseño del action space y observation space}{15}{17} \\
-        \ganttbar{Diseño de función de recompensa}{15}{17} \\
-        \ganttbar{Entrenamiento de un agente RL para estacionamiento}{16}{17} \\
-        \ganttbar{Experimentación y documentación de resultados}{17}{18} \\
+        \ggroup{0.25}{Apliación de la pose relativa en estacionamiento automático}{15}{17} \\
+        \gbar{0.25}{Diseño e implementación de un enviroment RL}{15}{17} \\
+        \gbar{0.25}{Diseño del action space y observation space}{15}{17} \\
+        \gbar{0.25}{Diseño de función de recompensa}{15}{17} \\
+        \gbar{0.25}{Entrenamiento de un agente RL para estacionamiento}{16}{17} \\
+        \gbar{0.25}{Experimentación y documentación de resultados}{17}{18} \\
 
-        \ganttgroup{Documentación y Análisis de Resultados}{10}{18} \\
-        \ganttgroup{Redacción y Revisión del documento de tesis}{10}{18} \\
+        \ggroup{0.25}{Documentación y Análisis de Resultados}{10}{18} \\
+        \ggroup{0.25}{Redacción y Revisión del documento de tesis}{10}{18} \\
 
     \end{ganttchart}
 \end{center}
