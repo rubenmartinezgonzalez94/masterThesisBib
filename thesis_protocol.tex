@@ -1,12 +1,12 @@
-\documentclass[11pt,letterpaper,final]{article}
+\documentclass[10pt,letterpaper,final]{article}
 
 \usepackage[spanish]{babel}
 \spanishdecimal{.}
 
 % \usepackage[left=2cm, rigth=1.5cm, top=1.5cm, bottom=1.5cm]{geometry}
+
 % Esta linea tenia un error debiera ser 'right' en lugar de 'rigth'.
 \usepackage[left=2cm, right=1.5cm, top=1.5cm, bottom=1.5cm]{geometry}
-
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -21,20 +21,30 @@
 \usepackage{ragged2e}
 \usepackage{caption}
 \usepackage{subcaption} % Paquete para justificar el texto
+%gantt chart
+\usepackage{pgfgantt}
+
 
 %\title{Estimación de la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores para parqueo automático en simulación}
 \title{Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación}
-\author{Rubén Martínez González}
+%\author{Rubén Martínez González}
 %\tutor{Dr. Arturo Espinosa Romero}
-\date{Diciembre 2024}
+\date{Enero 2025}
 
 \begin{document}
 
     \maketitle
-    \begin{center}
-        Asesor: \\Dr. Arturo Espinosa Romero
-
-    \end{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \rule{6cm}{0.4pt} \\ % Línea para firma
+        Autor: Ing. Rubén Martínez González
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \rule{6cm}{0.4pt} \\ % Línea para firma
+        Asesor: Dr. Arturo Espinosa Romero
+    \end{minipage}
     \clearpage
 
     \section*{Introducción}
@@ -85,7 +95,7 @@
 %    \section*{Experimentos y resultados}
 %    \clearpage
 
-    \section*{Calendario de actividades}
+    \section*{Cronograma de actividades}
     \input{content/activities-calendar}
     \clearpage
 

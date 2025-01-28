@@ -1,4 +1,4 @@
-\documentclass[10pt,letterpaper,final]{article}
+\documentclass[6pt,letterpaper,final]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -9,16 +9,20 @@
 %margenes
 \usepackage[left=2cm, right=1.5cm, top=1.5cm, bottom=1.5cm]{geometry}
 
-\usepackage{tabularx}
 %color
 \usepackage{colortbl}
-\usepackage{tikz}
+\usepackage{xcolor}
 
+\usepackage{tikz}
+\usepackage{longtable}
+\usepackage{tabularx}
 \usepackage{pgfgantt}
 
 \begin{document}
 
     \section*{Calendario de actividades}
+    \input{content/activities-table}
+    \section*{Cronograma de actividades}
     \input{content/activities-calendar}
     \clearpage
 
