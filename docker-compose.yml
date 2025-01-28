@@ -1,0 +1,6 @@
+services:
+  latex:
+    image: texlive/texlive
+    volumes:
+      - ./masterThesisBib:/miktex/work
+    working_dir: /miktex/work
