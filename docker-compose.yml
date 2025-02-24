@@ -4,3 +4,4 @@ services:
     volumes:
       - ./masterThesisBib:/miktex/work
     working_dir: /miktex/work
+    command: /bin/sh -c "tlmgr install bibtex && tail -f /dev/null"
