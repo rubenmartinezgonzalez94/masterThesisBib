@@ -26,6 +26,12 @@
 \usepackage{listings}
 
 
+\newlength{\spacing}
+\setlength{\spacing}{\baselineskip}
+
+\newcommand{\nspace}[1]{\setlength{\baselineskip}{#1\spacing}}
+\newenvironment{linespacing}[1]{\nspace{#1}}{}
+
 %\title{Estimación de la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores para parqueo automático en simulación}
 \title{Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación}
 %\author{Rubén Martínez González}
@@ -47,6 +53,8 @@
         Asesor: Dr. Arturo Espinosa Romero
     \end{minipage}
     \clearpage
+
+    \begin{linespacing}{1.5}
 
     \section*{Introducción}
     \input{content/intro}
@@ -96,9 +104,8 @@
 %    \section*{Experimentos y resultados}
 %    \clearpage
 
-    \section*{Cronograma de actividades}
-    \input{content/activities-calendar}
-    \clearpage
+%    \section*{Cronograma de actividades}
+%    \input{content/activities-calendar}
 
     \section*{Estado del arte - Trabajos previos relacionados}
     \input{content/related-works}
@@ -106,6 +113,8 @@
     \section*{Tabla comparativa}
     \input{content/related-works-comparison}
     \clearpage
+
+\end{linespacing}
 
     \section*{Referencias bibliográficas}
     \bibliographystyle{acm}

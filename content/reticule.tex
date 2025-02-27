@@ -159,15 +159,16 @@ Esto permite utilizar técnicas de detección de líneas para identificar los pu
 
     Analizando los puntos de intersecciones obtenidos que se encuentran en el plano de la cámara, se pueden agrupar para determinar donde están
     concentrada la mayor cantidad de intersecciones.
-    Este punto de concentración de intersecciones debe corresponder al punto de fuga principal de la retícula de estacionamiento.
+    Este punto de concentración de intersecciones debe corresponder al punto de fuga principal de la retícula de estacionamiento.\\
+    
     \begin{figure}[!ht]
         \centering
         \includegraphics[width=0.8\textwidth]{img/reticule/svd-km}
         \caption{Agrupacion de intersecciones de las líneas detectadas}
         \label{fig:intersections}
     \end{figure}
-
-    \\Para estimar la ubicación de este punto de fuga principal no es necesario tener en cuenta todas las intersecciones detectadas,
+    
+    Para estimar la ubicación de este punto de fuga principal no es necesario tener en cuenta todas las intersecciones detectadas,
     sino solo aquellas que se encuentran en una zona cercana al horizonte de la imagen.
     Esto se debe a que, debido a la perspectiva de la cámara, las líneas paralelas en el mundo real convergen hacia el horizonte en la imagen,
     haciendo que los puntos de fuga se ubiquen cerca de esta línea.
@@ -253,7 +254,21 @@ Los parámetros ajustables que se consideraron son:
 Para analizar el impacto del cambio en los parámetros en tiempo real, la aplicación provee un menu de acciones que permite
 representar en la imagen los resultados de cada paso del algoritmo
 %bloque de codigo
-\begin{lstlisting}[language=Python,label={lst:lstlisting22}]
+%\begin{lstlisting}[language=Python,label={lst:lstlisting22}]
+%    --- Leyenda de Teclas ---
+%P: Iniciar/Pausar la secuencia de imágenes.
+%C: Mostrar/Ocultar contornos.
+%L: Mostrar/Ocultar líneas.
+%I: Mostrar/Ocultar intersecciones.
+%R: Mostrar/Ocultar intersecciones relevantes.
+%E: Mostrar/Ocultar líneas relevantes.
+%A: Mostrar/Ocultar cúmulos de intersecciones.
+%F: Mostrar/Ocultar puntos de fuga.
+%G: Mostrar/Ocultar imagen binaria.
+%ESC: Salir.
+%\end{lstlisting}
+
+\begin{verbatim}
     --- Leyenda de Teclas ---
 P: Iniciar/Pausar la secuencia de imágenes.
 C: Mostrar/Ocultar contornos.
@@ -265,7 +280,7 @@ A: Mostrar/Ocultar cúmulos de intersecciones.
 F: Mostrar/Ocultar puntos de fuga.
 G: Mostrar/Ocultar imagen binaria.
 ESC: Salir.
-\end{lstlisting}
+\end{verbatim}
 
 A continuación se muestra un ejemplo de la aplicación en ejecución en uno de los frames de la secuencia de imágenes,
 donde se visualizan los contornos, las líneas detectadas, las intersecciones, las intersecciones relevantes, las líneas relevantes,
