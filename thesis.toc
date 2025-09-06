@@ -1,0 +1,27 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\'{I}ndice}{2}{section*.1}%
+\contentsline {section}{\'{I}ndice de figuras}{2}{section*.2}%
+\contentsline {section}{\numberline {1}Introducción}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Contexto y problemática}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Preguntas de investigación}{5}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Hipótesis}{5}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Objetivos}{5}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}Objetivo General}{5}{subsubsection.1.4.1}%
+\contentsline {subsubsection}{\numberline {1.4.2}Objetivos específicos}{5}{subsubsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.5}Estado del arte - Trabajos previos relacionados}{6}{subsection.1.5}%
+\contentsline {subsubsection}{Tabla comparativa}{12}{section*.8}%
+\contentsline {section}{Metodología}{13}{section*.9}%
+\contentsline {subsection}{Entorno de simulación}{13}{section*.10}%
+\contentsline {subsection}{Carla Simulator}{13}{section*.11}%
+\contentsline {subsection}{Diseño del entorno de simulación}{14}{section*.13}%
+\contentsline {subsection}{Detección de la retícula de estacionamiento}{15}{section*.16}%
+\contentsline {subsection}{Detección de líneas paralelas:}{15}{section*.19}%
+\contentsline {subsection}{Experimentación y ajuste de parámetros:}{22}{section*.28}%
+\contentsline {subsection}{Representación de la posición relativa al estacionamiento}{23}{section*.30}%
+\contentsline {subsection}{Origen del sistema de coordenadas}{24}{section*.31}%
+\contentsline {subsection}{Puntos de referencia}{26}{section*.33}%
+\contentsline {subsection}{Coordenadas cilíndricas}{27}{section*.35}%
+\contentsline {subsection}{Posición relativa}{27}{section*.37}%
+\contentsline {section}{Resultados}{28}{section*.38}%
+\contentsline {section}{Conclusiones y trabajo futuro}{29}{section*.39}%
+\contentsline {section}{Referencias}{30}{section*.40}%

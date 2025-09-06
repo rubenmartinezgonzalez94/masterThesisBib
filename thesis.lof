@@ -1,0 +1,15 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {figure}{\numberline {6}{\ignorespaces Condiciones ambientales en el simulador CARLA.}}{14}{figure.caption.12}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Diseño del entorno de simulación en CARLA.}}{14}{figure.caption.14}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Vista de la cámara en el entorno de simulación.}}{15}{figure.caption.15}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Líneas paralelas de la retícula de estacionamiento}}{16}{figure.caption.18}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Área de interés de la imagen}}{16}{figure.caption.20}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Imagen umbralizada}}{17}{figure.caption.21}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Detección de bordes mediante el algoritmo de Canny}}{18}{figure.caption.22}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Agrupacion de intersecciones de las líneas detectadas}}{20}{figure.caption.24}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Intersecciones detectadas en la imagen original}}{21}{figure.caption.25}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Intersecciones agrupadas en clusters}}{21}{figure.caption.26}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Punto de fuga principal estimado}}{22}{figure.caption.27}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Origen del sistema de coordenadas.}}{25}{figure.caption.32}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Puntos de referencia.}}{26}{figure.caption.34}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Sistema de coordenadas cilíndricas.}}{27}{figure.caption.36}%

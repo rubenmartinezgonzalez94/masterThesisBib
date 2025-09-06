@@ -1,6 +1,4 @@
-%! Author = ruben
-%! Date = 1/16/2025
-\documentclass[11pt]{article}
+\documentclass[10pt,letterpaper,final]{article}
 
 % Paquetes
 \usepackage[utf8]{inputenc}
@@ -9,46 +7,125 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{tocbibind} % Para incluir referencias en el índice
+\usepackage{caption}
+\usepackage{subcaption} % Paquete para justificar el texto
 
 % Información del documento
-\title{Título de la Tesis}
-\author{Rubén Martínez González}
-\date{Enero 2025}
-\newcommand{\university}{Nombre de la Universidad}
+\title{Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación}
+\author{Ing. Rubén Martínez González}
+\date{Septiembre 2025}
+\newcommand{\university}{Universidad Autónoma de Yucatán}
+\newcommand{\faculty}{Facultad de Matemáticas}
 \newcommand{\advisor}{Dr. Arturo Espinosa Romero}
+\newcommand{\myauthor}{Ing. Rubén Martínez González}
+\newcommand{\degree}{Maestría en Ciencias de la Computación}
+\newcommand{\tesisInv}{Tesis de investigación}
+\newcommand{\mydate}{Septiembre 2025}
+\newcommand{\mytitle}{Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación}
 
 \begin{document}
 
-% Portada
-\maketitle
-\begin{center}
-    Asesor: \advisor \\
-    \university
-\end{center}
+% Portada moderna
+\begin{titlepage}
+    \centering
+    % Logos
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{img/fmat.png}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        {\scshape\small \university \par}
+        \vspace{0.2cm}
+        {\scshape\small \faculty \par}
+        \vspace{0.2cm}
+        {\scshape\small \degree \par}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{img/UADY.jpg}
+    \end{minipage}
+
+    \vspace{1.5cm}
+    {\LARGE\bfseries \mytitle \par}
+    \vspace{1.5cm}
+    {\Large \tesisInv \par}
+    \vspace{1cm}
+    {\large Autor: \textbf{\myauthor}\par}
+    \vspace{0.5cm}
+    {\large Asesor: \textbf{\advisor}\par}
+    \vfill
+    \vspace{0.5cm}
+    {\large \mydate \par}
+\end{titlepage}
+
+% Resumen
+\begin{abstract}
+    \input{content/abstract}
+\end{abstract}
 \clearpage
+
 
 % Índice
 \tableofcontents
+\listoffigures
 \clearpage
 
 % Capítulo 1: Introducción
 \section{Introducción}
-\subsection{Contexto}
+\input{content/1-intro/intro}
+
+\subsection{Contexto y problemática}
+\input{content/1-intro/context}
+
+\subsection{Preguntas de investigación}
+\input{content/1-intro/questions}
+
+\subsection{Hipótesis}
+\input{content/1-intro/hypothesis}
+
 \subsection{Objetivos}
 \subsubsection{Objetivo General}
-\subsection{Estructura del Documento}
+\input{content/1-intro/objective}
+\subsubsection{Objetivos específicos}
+\input{content/1-intro/objectives_specifics}
+
+\subsection{Estado del arte - Trabajos previos relacionados}
+\input{content/1-intro/related-works}
+
+\subsubsection{Tabla comparativa}
+\input{content/1-intro/related-works-comparison}
+
 
 % Capítulo 2: Metodología
+\clearpage
 \section{Metodología}
-\subsection{Diseño de Investigación}
-\subsection{Procedimientos}
-\subsubsection{Análisis de Datos}
+\input{content/2-metodo/methodology}
+
+\subsection{Entorno de simulación}
+\input{content/2-metodo/simulation}
+
+\subsection{Detección de la retícula de estacionamiento}
+\input{content/2-metodo/reticule}
+
+\subsection{Representación de la posición relativa al estacionamiento}
+\input{content/2-metodo/position-representation}
+
+
 
 % Capítulo 3: Resultados
+\clearpage
 \section{Resultados}
 
+% Capítulo 4: Conclusiones y trabajo futuro
+\clearpage
+\section{Conclusiones y trabajo futuro}
+
 % Referencias
+\clearpage
 \bibliographystyle{acm}
-\bibliography{referencias}
+\bibliography{references}
 
 \end{document}
