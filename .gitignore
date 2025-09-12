@@ -6,3 +6,5 @@
 *.iml
 *.blg
 *.out
+thesis.lof
+thesis.fdb_latexmk
