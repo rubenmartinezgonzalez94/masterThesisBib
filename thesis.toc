@@ -1,6 +1,6 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {section}{\'{I}ndice}{2}{section*.1}%
-\contentsline {section}{\'{I}ndice de figuras}{2}{section*.2}%
+\contentsline {section}{\'{I}ndice de figuras}{3}{section*.2}%
 \contentsline {section}{\numberline {1}Introducción}{4}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Contexto y problemática}{4}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Preguntas de investigación}{5}{subsection.1.2}%
@@ -15,13 +15,24 @@
 \contentsline {subsection}{Carla Simulator}{13}{section*.11}%
 \contentsline {subsection}{Diseño del entorno de simulación}{14}{section*.13}%
 \contentsline {subsection}{Detección de la retícula de estacionamiento}{15}{section*.16}%
-\contentsline {subsection}{Detección de líneas paralelas:}{15}{section*.19}%
-\contentsline {subsection}{Experimentación y ajuste de parámetros:}{22}{section*.28}%
-\contentsline {subsection}{Representación de la posición relativa al estacionamiento}{23}{section*.30}%
-\contentsline {subsection}{Origen del sistema de coordenadas}{24}{section*.31}%
-\contentsline {subsection}{Puntos de referencia}{26}{section*.33}%
-\contentsline {subsection}{Coordenadas cilíndricas}{27}{section*.35}%
-\contentsline {subsection}{Posición relativa}{27}{section*.37}%
-\contentsline {section}{Resultados}{28}{section*.38}%
-\contentsline {section}{Conclusiones y trabajo futuro}{29}{section*.39}%
-\contentsline {section}{Referencias}{30}{section*.40}%
+\contentsline {subsubsection}{Área de interés:}{15}{section*.19}%
+\contentsline {subsubsection}{Umbralización:}{17}{section*.21}%
+\contentsline {subsubsection}{Detección de contornos (Canny):}{17}{section*.23}%
+\contentsline {subsubsection}{Detección de líneas (Hough):}{18}{section*.25}%
+\contentsline {subsubsection}{Representación de las ecuaciones de las líneas:}{18}{section*.27}%
+\contentsline {subsubsection}{Cálculo de ecuaciones de las líneas (SVD):}{18}{section*.28}%
+\contentsline {subsubsection}{Cálculo de intersecciones (Clustering):}{19}{section*.29}%
+\contentsline {subsubsection}{Selección del punto de fuga principal:}{21}{section*.33}%
+\contentsline {subsubsection}{Selección del 2do punto de fuga principal:}{21}{section*.35}%
+\contentsline {subsubsection}{Filtrado de intersecciones y líneas relevantes:}{22}{section*.36}%
+\contentsline {subsubsection}{Ajuste de la retícula de estacionamiento utilizando (RANSAC):}{22}{section*.37}%
+\contentsline {subsubsection}{Experimentación y ajuste de parámetros:}{22}{section*.38}%
+\contentsline {subsubsection}{Mediciones en la retícula detectada:}{23}{section*.40}%
+\contentsline {section}{Resultados}{25}{section*.41}%
+\contentsline {subsection}{Retículas obtenidas para diferentes escenarios}{25}{section*.42}%
+\contentsline {subsection}{Aplicación en algoritmos de aprendizaje por refuerzo}{25}{section*.43}%
+\contentsline {subsubsection}{Highway-env}{25}{section*.44}%
+\contentsline {subsubsection}{Highway-env aplicando la retícula detectada}{25}{section*.45}%
+\contentsline {subsubsection}{comparación de resultados}{25}{section*.46}%
+\contentsline {section}{Conclusiones y trabajo futuro}{26}{section*.47}%
+\contentsline {section}{Referencias}{27}{section*.48}%

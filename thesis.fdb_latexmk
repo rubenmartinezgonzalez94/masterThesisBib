@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex thesis"] 1757116579.88327 "thesis.aux" "thesis.bbl" "thesis" 1757117119.45378 0
-  "./references.bib" 1757094101.93947 4170 037f1278ef28929986d5a8610c9a3f58 ""
+["bibtex thesis"] 1757695257.27418 "thesis.aux" "thesis.bbl" "thesis" 1757695264.10663 0
+  "./references.bib" 1757691698.47003 6103 d5e352e34808b23635aec17b222f61b6 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/acm.bst" 1292289607 21064 c61a48664f3c347ce7f73c1a6a530506 ""
-  "thesis.aux" 1757117119.10851 15892 3d9013a4d108c8ee888be0e6a0b839e4 "pdflatex"
+  "thesis.aux" 1757695262.00734 15692 f0b551dc21a0dd477c7a40798e379473 "pdflatex"
   (generated)
   "thesis.bbl"
   "thesis.blg"
   (rewritten before read)
-["pdflatex"] 1757117114.39444 "/home/ruben/w/UADY/masterThesisBib/thesis.tex" "thesis.pdf" "thesis" 1757117119.45399 0
+["pdflatex"] 1757695257.39859 "/home/ruben/w/UADY/masterThesisBib/thesis.tex" "thesis.pdf" "thesis" 1757695264.1068 0
   "/etc/texmf/web2c/texmf.cnf" 1754006064.44567 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/ruben/w/UADY/masterThesisBib/thesis.tex" 1757111139.26338 3385 7876f899246477bfda8bfedc559a6a87 ""
+  "/home/ruben/w/UADY/masterThesisBib/thesis.tex" 1757694991.95832 3695 4330c34377d6f5d703d2361c475e34cb ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -105,8 +105,7 @@
   "content/1-intro/related-works-comparison.tex" 1755798017.50052 1969 5f989b18aa825515de8492ec1a39adc6 ""
   "content/1-intro/related-works.tex" 1757097722.9827 11369 ff7fbc2ba3e196565cbdc1da68fb61c3 ""
   "content/2-metodo/methodology.tex" 1757098864.61425 1025 43092986b7fb81bec72af1dff2e3ac74 ""
-  "content/2-metodo/position-representation.tex" 1757091704.91638 4222 3bc9920887a283785c3c8c3a0fe954c9 ""
-  "content/2-metodo/reticule.tex" 1757117114.17254 17126 3fa40ac641a0fb08b27b00ac17a946ae ""
+  "content/2-metodo/reticule.tex" 1757695252.02046 18094 d0ad10ff734942228e4b14742d294861 ""
   "content/2-metodo/simulation.tex" 1757116756.47038 4769 8925dbf5cae3ee6f4208ee202f67572d ""
   "content/abstract.tex" 1757101378.34049 569 b3788c25c43282cc6e2133c891ba6b5a ""
   "img/12Screenshot_20231106_142954.png" 1755798017.58052 409104 672b877e9682d4a1da50207b45c8b115 ""
@@ -129,12 +128,6 @@
   "img/carla_clima_example.png" 1755798017.62152 1924384 7ab1639a793501a41b510b77925c42c1 ""
   "img/distances.png" 1755798017.62252 810863 3106cda6b31ceca6e584dd6cc33343ab ""
   "img/distances2.png" 1755798017.62252 196116 cdb29bf0bfad58addf523a255b8dac1e ""
-  "img/distances_ubi_11.png" 1755798017.62352 142322 e14fed8added49018165711f4f4b7c85 ""
-  "img/distances_ubi_12.png" 1755798017.62352 2929 eb05544931db9e7aa0b7551bf8fa517b ""
-  "img/distances_ubi_21.png" 1755798017.62352 143891 d61ce6b3e4bf6265cbcff01d127e3260 ""
-  "img/distances_ubi_22.png" 1755798017.62352 4167 350ff0c7d63e59d908573f4ce97fa19d ""
-  "img/distances_ubi_31.png" 1755798017.62352 146860 6e0dd3529291e7df3c35093e6696ba19 ""
-  "img/distances_ubi_32.png" 1755798017.62352 7468 c665a1a2264a0f7b9fa1b4d95c82c269 ""
   "img/fmat.png" 1755798017.62352 17722 a3e01c73d862754b59db80772a969904 ""
   "img/mirrow_camara_ex.jpg" 1755798017.62452 653425 34a0befdb15071cc6178b39da0384811 ""
   "img/mirrow_camara_ex2.jpg" 1755798017.62452 378310 64200d98e1d88980d6a36476dbfb8ebc ""
@@ -153,12 +146,12 @@
   "img/reticule/svd-km.png" 1755798017.65852 2200114 e31db421ed41f65708e0b6b9f04f2b90 ""
   "img/reticule/thresholded.png" 1755798017.65852 21767 297000164b621a01b7331b87cbec1988 ""
   "img/reticule/vanishingPoint.png" 1755798017.65952 138886 52eb20d6f5fc25b8af02a1c9c8669a8f ""
-  "thesis.aux" 1757117119.10851 15892 3d9013a4d108c8ee888be0e6a0b839e4 "pdflatex"
-  "thesis.bbl" 1757116580.02136 1420 f322e1d91aad73012d16121196d5b55c "bibtex thesis"
-  "thesis.lof" 1757117119.11151 1711 32a74cf04fb223ee25fc08be9f1cb40b "pdflatex"
-  "thesis.out" 1757117119.11151 4595 0b60ed72f9373c5515274251c08a8604 "pdflatex"
-  "thesis.tex" 1757111139.26338 3385 7876f899246477bfda8bfedc559a6a87 ""
-  "thesis.toc" 1757117119.11151 2014 6907c9d89e72364e1f3b30ddfc136a57 "pdflatex"
+  "thesis.aux" 1757695262.00734 15692 f0b551dc21a0dd477c7a40798e379473 "pdflatex"
+  "thesis.bbl" 1757695257.39339 2536 8c6b6af77d654c1278490535bb8591a9 "bibtex thesis"
+  "thesis.lof" 1757695262.01134 1377 0ff54ed9a85d8082bf937566c7e9ba50 "pdflatex"
+  "thesis.out" 1757695262.01134 7638 35b2fc0058a345833a6af2ae10879068 "pdflatex"
+  "thesis.tex" 1757694991.95832 3695 4330c34377d6f5d703d2361c475e34cb ""
+  "thesis.toc" 1757695262.01134 3031 2884efd9997841ade18fa0e833e24e42 "pdflatex"
   (generated)
   "thesis.aux"
   "thesis.lof"
