@@ -215,7 +215,17 @@ representa el punto de fuga principal con un símbolo \texttt{+} amarillo.
 \end{figure}
 
 \subsubsection{Selección del 2do punto de fuga principal:}
-Pendiente de redacción.
+\noindent
+Una vez estimado el primer punto de fuga \(\mathbf{v}_1=(x_1,y_1)\), el segundo (\(\mathbf{v}_2\)) puede obtenerse
+aprovechando que corresponde a una dirección ortogonal en 3D. Con un modelo pinhole simple, pixeles cuadrados, punto principal
+en el centro \(C_x\), los puntos de fuga de direcciones ortogonales verifican la relación
+\( (x_1-C_x)(x_2-C_x) + f^2 \approx 0 \). De ahí se despeja la coordenada horizontal de \(\mathbf{v}_2\):
+\begin{equation}
+    x_2 = C_x - \frac{f^2}{\,x_1 - C_x\,}, \qquad y_2 = y_1.
+\end{equation}
+Aquí \(f\) es la longitud focal en píxeles, que aproximamos a partir del FOV horizontal y el ancho de imagen \(W\):
+\( f = \dfrac{W}{2\,\tan(\tfrac{\text{FOV}}{2})} \). En nuestro caso, con \(\text{FOV}=90^\circ\) y \(W=1920\), se fija
+\(C_x=W/2\) y se calcula \(x_2\) como en la ecuación anterior, manteniendo \(y_2=y_1\) por pertenecer ambos a la misma línea del horizonte.
 
 \subsubsection{Filtrado de intersecciones y líneas relevantes:}
 \noindent
@@ -225,12 +235,6 @@ Primero, se filtran las intersecciones que están cerca de los puntos de fuga pr
 Luego, se filtran las líneas que pasan por estas intersecciones relevantes.
 Este proceso ayuda a eliminar el ruido y las líneas que no contribuyen a la formación de la retícula de estacionamiento.
 
-
-\subsubsection{Experimentación y ajuste de parámetros}
-\noindent
-La herramienta de experimentación y la lista completa de parámetros ajustables se describen en el Marco teórico
-(Sección~\ref{sec:experimentation-tool}). Aquí nos limitamos a referenciarla, pues sirve como apoyo para calibrar
-los umbrales y validaciones usados a lo largo del pipeline práctico.
 
 \subsubsection{Mediciones en la retícula detectada:}
 Pendiente de redacción.

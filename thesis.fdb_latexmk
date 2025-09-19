@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex thesis"] 1758323710.30272 "thesis.aux" "thesis.bbl" "thesis" 1758323715.59788 0
+["bibtex thesis"] 1758325382.2328 "thesis.aux" "thesis.bbl" "thesis" 1758325387.51984 0
   "./references.bib" 1758305012.8875 6489 084e3d0c38533cebf9d1daaa6f2441fb ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/acm.bst" 1292289607 21064 c61a48664f3c347ce7f73c1a6a530506 ""
-  "thesis.aux" 1758323715.1428 19545 1be8ed933354c2b0932ea277916ef13d "pdflatex"
+  "thesis.aux" 1758325387.08021 19385 1f6b88067f23f77b1498ad0c1eb88bd1 "pdflatex"
   (generated)
   "thesis.bbl"
   "thesis.blg"
   (rewritten before read)
-["pdflatex"] 1758323710.42256 "/home/ruben/w/UADY/masterThesisBib/thesis.tex" "thesis.pdf" "thesis" 1758323715.59813 0
+["pdflatex"] 1758325382.35339 "/home/ruben/w/UADY/masterThesisBib/thesis.tex" "thesis.pdf" "thesis" 1758325387.52006 0
   "/etc/texmf/web2c/texmf.cnf" 1754006064.44567 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/ruben/w/UADY/masterThesisBib/thesis.tex" 1758315846.71238 4421 8b2c87dda52c711358cb731441795bd0 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -153,7 +153,7 @@
   "content/2-marcoteo/vision.tex" 1758322142.59511 5852 ceb1b7bb53e3434d1b41128551adcd1c ""
   "content/3-metodo/methodology.tex" 1758313812.32837 1025 1f9462ff5c73760e5ceb774f1e07a27a ""
   "content/3-metodo/ransac.tex" 1758305795.43199 2755 c2b9587b7eb36ea4889ccb360ac2dc40 ""
-  "content/3-metodo/reticule.tex" 1758323454.12284 13241 278532b410969957ea77abb40b602906 ""
+  "content/3-metodo/reticule.tex" 1758325376.74422 13771 f81ae1a03312628473f64132a9533290 ""
   "content/3-metodo/simulation.tex" 1758313449.83124 1632 9ca25ec2cc42965e1a8fcff383302544 ""
   "content/abstract.tex" 1757101378.34049 569 b3788c25c43282cc6e2133c891ba6b5a ""
   "img/12Screenshot_20231106_142954.png" 1755798017.58052 409104 672b877e9682d4a1da50207b45c8b115 ""
@@ -194,12 +194,12 @@
   "img/reticule/svd-km.png" 1755798017.65852 2200114 e31db421ed41f65708e0b6b9f04f2b90 ""
   "img/reticule/thresholded.png" 1755798017.65852 21767 297000164b621a01b7331b87cbec1988 ""
   "img/reticule/vanishingPoint.png" 1755798017.65952 138886 52eb20d6f5fc25b8af02a1c9c8669a8f ""
-  "thesis.aux" 1758323715.1428 19545 1be8ed933354c2b0932ea277916ef13d "pdflatex"
-  "thesis.bbl" 1758323710.41783 2800 df83b2e081d80c5bc98eb0b2134075cd "bibtex thesis"
-  "thesis.lof" 1758323715.1458 2159 e9606cd63df71138708628f50f67ab30 "pdflatex"
-  "thesis.out" 1758323715.1458 10306 1b4da8befc032db6284680af1b368cb4 "pdflatex"
+  "thesis.aux" 1758325387.08021 19385 1f6b88067f23f77b1498ad0c1eb88bd1 "pdflatex"
+  "thesis.bbl" 1758325382.34722 2800 df83b2e081d80c5bc98eb0b2134075cd "bibtex thesis"
+  "thesis.lof" 1758325387.08321 2159 e9606cd63df71138708628f50f67ab30 "pdflatex"
+  "thesis.out" 1758325387.08321 10029 3e9369579f274c918ee660611477ebf0 "pdflatex"
   "thesis.tex" 1758315846.71238 4421 8b2c87dda52c711358cb731441795bd0 ""
-  "thesis.toc" 1758323715.1458 4821 c4593276ab5611d9985a63cd66dfd369 "pdflatex"
+  "thesis.toc" 1758325387.08321 4702 032e1a4b3e0739e28aa089f88f414555 "pdflatex"
   (generated)
   "thesis.aux"
   "thesis.lof"

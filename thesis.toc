@@ -36,8 +36,7 @@
 \contentsline {subsubsection}{\numberline {3.2.8}Selección del punto de fuga principal:}{24}{subsubsection.3.2.8}%
 \contentsline {subsubsection}{\numberline {3.2.9}Selección del 2do punto de fuga principal:}{25}{subsubsection.3.2.9}%
 \contentsline {subsubsection}{\numberline {3.2.10}Filtrado de intersecciones y líneas relevantes:}{26}{subsubsection.3.2.10}%
-\contentsline {subsubsection}{\numberline {3.2.11}Experimentación y ajuste de parámetros}{26}{subsubsection.3.2.11}%
-\contentsline {subsubsection}{\numberline {3.2.12}Mediciones en la retícula detectada:}{26}{subsubsection.3.2.12}%
+\contentsline {subsubsection}{\numberline {3.2.11}Mediciones en la retícula detectada:}{26}{subsubsection.3.2.11}%
 \contentsline {subsection}{\numberline {3.3}Ajuste de la retícula mediante RANSAC}{26}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Resultados}{28}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Retículas obtenidas para diferentes escenarios}{28}{subsection.4.1}%
