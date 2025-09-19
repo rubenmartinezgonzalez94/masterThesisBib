@@ -1,0 +1,32 @@
+\noindent
+RANSAC (Random Sample Consensus) es un paradigma de estimación robusta de modelos que alterna 
+muestreos aleatorios mínimos con una evaluación de consenso (inliers) para encontrar hipótesis 
+consistentes aun en presencia de una proporción elevada de datos atípicos. 
+En cada iteración se selecciona un subconjunto mínimo de observaciones, se ajusta un modelo candidato 
+y se mide cuántas observaciones concuerdan con él dentro de una tolerancia; tras múltiples iteraciones, 
+se elige la hipótesis con mayor soporte y, opcionalmente, se refina con los inliers. 
+Esta estrategia, ampliamente utilizada en visión por computadora y cartografía automatizada, 
+fue introducida por Fischler y Bolles \cite{fischler1981ransac}.
+
+\noindent
+Beneficios clave del enfoque RANSAC:
+\begin{itemize}
+	\item Tolerancia a outliers y ruido: puede recuperar el modelo correcto aunque una parte sustancial de las observaciones sea espuria u ocluida.
+	\item Flexibilidad de modelo: se aplica a múltiples familias (rectas, homografías, transformaciones, etc.).
+	\item Sencillez operativa: alterna muestreo mínimo, ajuste y conteo de consenso.
+\end{itemize}
+
+\noindent
+Variación propuesta en este trabajo. 
+Como se explicará con más detalle en la Sección \ref{sec:metodo-ransac}, 
+en esta investigación adaptamos RANSAC para estimar una homografía que alinee una retícula ideal 
+con las líneas de los cajones de estacionamiento observadas en la imagen. 
+Bajo las siguientes consideraciones generales: 
+(i) se emplean dos puntos de fuga para agrupar las líneas en dos conjuntos según su punto de fuga; 
+(ii) la muestra mínima se construye eligiendo dos líneas de cada conjunto (uno por cada punto de fuga) para formar cuatro intersecciones 
+que hipotetizan un cajón; y 
+(iii) a partir de esas esquinas se estima una homografía y se extiende una retícula \(n\times n\) 
+sobre la imagen. Este planteamiento proporciona coherencia geométrica global del patrón 
+y permite extrapolar la retícula más allá del campo visible, infiriendo la ubicación de cajones 
+en puntos ciegos o parcialmente ocultos, lo cual resulta útil para la planificación 
+y el estacionamiento automático.

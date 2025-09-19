@@ -9,30 +9,31 @@
 \contentsline {subsubsection}{\numberline {1.4.1}Objetivo General}{5}{subsubsection.1.4.1}%
 \contentsline {subsubsection}{\numberline {1.4.2}Objetivos específicos}{5}{subsubsection.1.4.2}%
 \contentsline {subsection}{\numberline {1.5}Estado del arte - Trabajos previos relacionados}{6}{subsection.1.5}%
-\contentsline {subsubsection}{Tabla comparativa}{12}{section*.8}%
-\contentsline {section}{Metodología}{13}{section*.9}%
-\contentsline {subsection}{Entorno de simulación}{13}{section*.10}%
-\contentsline {subsection}{Carla Simulator}{13}{section*.11}%
-\contentsline {subsection}{Diseño del entorno de simulación}{14}{section*.13}%
-\contentsline {subsection}{Detección de la retícula de estacionamiento}{15}{section*.16}%
-\contentsline {subsubsection}{Área de interés:}{15}{section*.19}%
-\contentsline {subsubsection}{Umbralización:}{17}{section*.21}%
-\contentsline {subsubsection}{Detección de contornos (Canny):}{17}{section*.23}%
-\contentsline {subsubsection}{Detección de líneas (Hough):}{18}{section*.25}%
-\contentsline {subsubsection}{Representación de las ecuaciones de las líneas:}{18}{section*.27}%
-\contentsline {subsubsection}{Cálculo de ecuaciones de las líneas (SVD):}{18}{section*.28}%
-\contentsline {subsubsection}{Cálculo de intersecciones (Clustering):}{19}{section*.29}%
-\contentsline {subsubsection}{Selección del punto de fuga principal:}{21}{section*.33}%
-\contentsline {subsubsection}{Selección del 2do punto de fuga principal:}{21}{section*.35}%
-\contentsline {subsubsection}{Filtrado de intersecciones y líneas relevantes:}{22}{section*.36}%
-\contentsline {subsubsection}{Ajuste de la retícula de estacionamiento utilizando (RANSAC):}{22}{section*.37}%
-\contentsline {subsubsection}{Experimentación y ajuste de parámetros:}{22}{section*.38}%
-\contentsline {subsubsection}{Mediciones en la retícula detectada:}{23}{section*.40}%
-\contentsline {section}{Resultados}{25}{section*.41}%
-\contentsline {subsection}{Retículas obtenidas para diferentes escenarios}{25}{section*.42}%
-\contentsline {subsection}{Aplicación en algoritmos de aprendizaje por refuerzo}{25}{section*.43}%
-\contentsline {subsubsection}{Highway-env}{25}{section*.44}%
-\contentsline {subsubsection}{Highway-env aplicando la retícula detectada}{25}{section*.45}%
-\contentsline {subsubsection}{comparación de resultados}{25}{section*.46}%
-\contentsline {section}{Conclusiones y trabajo futuro}{26}{section*.47}%
-\contentsline {section}{Referencias}{27}{section*.48}%
+\contentsline {section}{\numberline {2}Marco teórico}{12}{section.2}%
+\contentsline {subsection}{\numberline {2.1}RANSAC para homografías basadas en líneas}{12}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Metodología}{14}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Entorno de simulación}{14}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Carla Simulator}{14}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Diseño del entorno de simulación}{15}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Detección de la retícula de estacionamiento}{16}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Área de interés:}{16}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Umbralización:}{18}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Detección de contornos (Canny):}{18}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Detección de líneas (Hough):}{19}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}Representación de las ecuaciones de las líneas:}{19}{subsubsection.3.4.5}%
+\contentsline {subsubsection}{\numberline {3.4.6}Cálculo de ecuaciones de las líneas (SVD):}{19}{subsubsection.3.4.6}%
+\contentsline {subsubsection}{\numberline {3.4.7}Cálculo de intersecciones (Clustering):}{20}{subsubsection.3.4.7}%
+\contentsline {subsubsection}{\numberline {3.4.8}Selección del punto de fuga principal:}{22}{subsubsection.3.4.8}%
+\contentsline {subsubsection}{\numberline {3.4.9}Selección del 2do punto de fuga principal:}{22}{subsubsection.3.4.9}%
+\contentsline {subsubsection}{\numberline {3.4.10}Filtrado de intersecciones y líneas relevantes:}{23}{subsubsection.3.4.10}%
+\contentsline {subsubsection}{\numberline {3.4.11}Experimentación y ajuste de parámetros:}{23}{subsubsection.3.4.11}%
+\contentsline {subsubsection}{\numberline {3.4.12}Mediciones en la retícula detectada:}{24}{subsubsection.3.4.12}%
+\contentsline {subsection}{\numberline {3.5}Ajuste de la retícula mediante RANSAC}{24}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Resultados}{28}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Retículas obtenidas para diferentes escenarios}{28}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Aplicación en algoritmos de aprendizaje por refuerzo}{28}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Highway-env}{28}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Highway-env aplicando la retícula detectada}{28}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}comparación de resultados}{28}{subsubsection.4.2.3}%
+\contentsline {section}{\numberline {5}Conclusiones y trabajo futuro}{29}{section.5}%
+\contentsline {section}{Referencias}{30}{section*.24}%

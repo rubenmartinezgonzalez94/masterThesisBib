@@ -5,6 +5,7 @@
 \usepackage[spanish]{babel}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{svg} % Para incluir gráficos SVG
 \usepackage{hyperref}
 \usepackage{tocbibind} % Para incluir referencias en el índice
 \usepackage{caption}
@@ -95,20 +96,30 @@
 \subsection{Estado del arte - Trabajos previos relacionados}
 \input{content/1-intro/related-works}
 
-\subsubsection{Tabla comparativa}
-\input{content/1-intro/related-works-comparison}
+% \subsubsection{Tabla comparativa}
+% \input{content/1-intro/related-works-comparison}
 
-
-% Capítulo 2: Metodología
+% Capítulo 2: Marco teórico
 \clearpage
-\section{Metodología}
-\input{content/2-metodo/methodology}
+\section{Marco teórico}\label{chap:marco-teorico}
+\input{content/2-marcoteo/intro}
 
-\subsection{Entorno de simulación}
-\input{content/2-metodo/simulation}
+\subsection{RANSAC para homografías basadas en líneas}\label{sec:ransac-teorico}
+\input{content/2-marcoteo/ransac}
 
-\subsection{Detección de la retícula de estacionamiento}
-\input{content/2-metodo/reticule}
+% Capítulo 3: Metodología
+\clearpage
+\section{Metodología}\label{chap:metodologia}
+\input{content/3-metodo/methodology}
+
+\subsection{Entorno de simulación}\label{sec:carla}
+\input{content/3-metodo/simulation}
+
+\subsection{Detección de la retícula de estacionamiento}\label{sec:metodo-reticula}
+\input{content/3-metodo/reticule}
+
+\subsection{Ajuste de la retícula mediante RANSAC}\label{sec:metodo-ransac}
+\input{content/3-metodo/ransac}
 
 %\subsection{Representación de la posición relativa al estacionamiento}
 %\input{content/2-metodo/position-representation}

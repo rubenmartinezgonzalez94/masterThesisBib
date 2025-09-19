@@ -1,0 +1,12 @@
+\noindent
+Este capítulo describe cómo se aplican en la práctica los conceptos del marco teórico 
+para estimar la retícula de estacionamiento. Primero se detalla la configuración del 
+entorno de simulación en CARLA (Sección \ref{sec:carla}). 
+Luego se aborda el preprocesado: área de interés, umbralización, 
+Canny y Hough (Sección \ref{sec:canny-hough}), seguido de la estimación de puntos de fuga 
+y el filtrado de intersecciones y líneas relevantes. A partir de ello, 
+se ejecuta el bucle RANSAC propuesto: muestreo de líneas por punto de fuga, cálculo de intersecciones 
+(candidato a cajón), estimación de la homografía hacia un cuadrado 1×1, proyección de una retícula n×n 
+y evaluación del error respecto a las líneas reales; al finalizar, se selecciona la homografía con menor 
+error como representación de la retícula (Sección \ref{sec:metodo-reticula}). Por último, se presenta la 
+construcción de la representación de la posición relativa y los criterios de validación experimental.
