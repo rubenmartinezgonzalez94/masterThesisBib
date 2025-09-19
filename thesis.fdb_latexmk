@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex thesis"] 1758305241.12993 "thesis.aux" "thesis.bbl" "thesis" 1758305801.45052 0
+["bibtex thesis"] 1758313455.77965 "thesis.aux" "thesis.bbl" "thesis" 1758313461.68405 0
   "./references.bib" 1758305012.8875 6489 084e3d0c38533cebf9d1daaa6f2441fb ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/acm.bst" 1292289607 21064 c61a48664f3c347ce7f73c1a6a530506 ""
-  "thesis.aux" 1758305801.04797 17950 ca0cd6267d744b653d0b5a6f6f973a01 "pdflatex"
+  "thesis.aux" 1758313461.263 18017 01c617d0daf3e9f206734bde741adcf7 "pdflatex"
   (generated)
   "thesis.bbl"
   "thesis.blg"
   (rewritten before read)
-["pdflatex"] 1758305795.66015 "/home/ruben/w/UADY/masterThesisBib/thesis.tex" "thesis.pdf" "thesis" 1758305801.45072 0
+["pdflatex"] 1758313455.89559 "/home/ruben/w/UADY/masterThesisBib/thesis.tex" "thesis.pdf" "thesis" 1758313461.68424 0
   "/etc/texmf/web2c/texmf.cnf" 1754006064.44567 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/ruben/w/UADY/masterThesisBib/thesis.tex" 1758302570.23697 4166 3996a60129bf265780534c04931f5a3d ""
+  "/home/ruben/w/UADY/masterThesisBib/thesis.tex" 1758310282.46856 4267 c8bbf4caa2382698e7e9bb6691894dbe ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -133,11 +133,12 @@
   "content/1-intro/questions.tex" 1755801951.63102 353 706721e8da024e352f29a401c920f498 ""
   "content/1-intro/related-works.tex" 1758296103.25836 11339 0004bb05baec0055cf7699170320ef3e ""
   "content/2-marcoteo/intro.tex" 1758300750.38741 1130 26b3ebf204a6cfb35d50d7002c59a561 ""
+  "content/2-marcoteo/plataformas.tex" 1758313050.09326 3039 20209dc4cbd8e3c6f501cbb51dd71884 ""
   "content/2-marcoteo/ransac.tex" 1758304443.42256 2199 02f8354ab19bc222eaa8907edda5f5f2 ""
   "content/3-metodo/methodology.tex" 1758301418.21278 1025 1f9462ff5c73760e5ceb774f1e07a27a ""
   "content/3-metodo/ransac.tex" 1758305795.43199 2755 c2b9587b7eb36ea4889ccb360ac2dc40 ""
   "content/3-metodo/reticule.tex" 1758305012.9675 17962 313d943fefbe0f2ad76bf96ea5de5014 ""
-  "content/3-metodo/simulation.tex" 1757695678.38524 4764 a8977334d8ae2b7fd62ec91fe066de7d ""
+  "content/3-metodo/simulation.tex" 1758313449.83124 1632 9ca25ec2cc42965e1a8fcff383302544 ""
   "content/abstract.tex" 1757101378.34049 569 b3788c25c43282cc6e2133c891ba6b5a ""
   "img/12Screenshot_20231106_142954.png" 1755798017.58052 409104 672b877e9682d4a1da50207b45c8b115 ""
   "img/13Screenshot_20231106_143018.png" 1755798017.58152 288442 714608491030bd5bc4362c006bb1cd60 ""
@@ -179,12 +180,12 @@
   "img/reticule/svd-km.png" 1755798017.65852 2200114 e31db421ed41f65708e0b6b9f04f2b90 ""
   "img/reticule/thresholded.png" 1755798017.65852 21767 297000164b621a01b7331b87cbec1988 ""
   "img/reticule/vanishingPoint.png" 1755798017.65952 138886 52eb20d6f5fc25b8af02a1c9c8669a8f ""
-  "thesis.aux" 1758305801.04797 17950 ca0cd6267d744b653d0b5a6f6f973a01 "pdflatex"
-  "thesis.bbl" 1758305241.24386 2800 df83b2e081d80c5bc98eb0b2134075cd "bibtex thesis"
-  "thesis.lof" 1758305801.05097 1850 89da91bb68f526b68ee9dda5e9359ea1 "pdflatex"
-  "thesis.out" 1758305801.05097 7932 4c919f5e57b9b16d16b0f8a80576ab72 "pdflatex"
-  "thesis.tex" 1758302570.23697 4166 3996a60129bf265780534c04931f5a3d ""
-  "thesis.toc" 1758305801.05097 3710 3272549a2b3ecb284eab9b2e230f1b01 "pdflatex"
+  "thesis.aux" 1758313461.263 18017 01c617d0daf3e9f206734bde741adcf7 "pdflatex"
+  "thesis.bbl" 1758313455.89011 2800 df83b2e081d80c5bc98eb0b2134075cd "bibtex thesis"
+  "thesis.lof" 1758313461.266 1876 0198e7dfe0a9484a70af095c03ed3956 "pdflatex"
+  "thesis.out" 1758313461.266 7986 0d6948760214bde32384a7921a1be147 "pdflatex"
+  "thesis.tex" 1758310282.46856 4267 c8bbf4caa2382698e7e9bb6691894dbe ""
+  "thesis.toc" 1758313461.266 3793 e82abceca558fc4ea5741a9d1f562df5 "pdflatex"
   (generated)
   "thesis.aux"
   "thesis.lof"

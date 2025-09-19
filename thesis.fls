@@ -329,6 +329,15 @@ INPUT ./content/2-marcoteo/intro.tex
 INPUT ./content/2-marcoteo/intro.tex
 INPUT ./content/2-marcoteo/intro.tex
 INPUT content/2-marcoteo/intro.tex
+INPUT ./content/2-marcoteo/plataformas.tex
+INPUT ./content/2-marcoteo/plataformas.tex
+INPUT ./content/2-marcoteo/plataformas.tex
+INPUT ./content/2-marcoteo/plataformas.tex
+INPUT content/2-marcoteo/plataformas.tex
+INPUT ./img/carla_clima_example.png
+INPUT ./img/carla_clima_example.png
+INPUT ./img/carla_clima_example.png
+INPUT ./img/carla_clima_example.png
 INPUT ./content/2-marcoteo/ransac.tex
 INPUT ./content/2-marcoteo/ransac.tex
 INPUT ./content/2-marcoteo/ransac.tex
@@ -345,12 +354,6 @@ INPUT ./content/3-metodo/simulation.tex
 INPUT ./content/3-metodo/simulation.tex
 INPUT ./content/3-metodo/simulation.tex
 INPUT content/3-metodo/simulation.tex
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
-INPUT ./img/carla_clima_example.png
-INPUT ./img/carla_clima_example.png
-INPUT ./img/carla_clima_example.png
-INPUT ./img/carla_clima_example.png
-INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT ./img/distances.png
 INPUT ./img/distances.png
 INPUT ./img/distances.png
@@ -380,6 +383,7 @@ INPUT ./img/reticule/pov.png
 INPUT ./img/reticule/pov.png
 INPUT ./img/reticule/pov.png
 INPUT ./img/reticule/pov.png
+INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT ./img/reticule/pov_reticule.png
 INPUT ./img/reticule/pov_reticule.png
 INPUT ./img/reticule/pov_reticule.png
@@ -409,6 +413,7 @@ INPUT ./img/reticule/hough.png
 INPUT ./img/reticule/hough.png
 INPUT ./img/reticule/hough.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT ./img/reticule/svd-km.png
 INPUT ./img/reticule/svd-km.png
 INPUT ./img/reticule/svd-km.png
