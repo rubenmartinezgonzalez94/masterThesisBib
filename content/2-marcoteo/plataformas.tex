@@ -42,3 +42,57 @@ de condiciones ambientales configurables en la plataforma.
 \subsubsection{OpenCV}
 \noindent
 OpenCV proporciona el conjunto de operaciones y estructuras necesarias para el preprocesado de imágenes y la extracción de primitivas geométricas, incluyendo umbralización, Canny y la transformada de Hough, que se emplean en la detección de la retícula de estacionamiento.
+
+\subsubsection{scikit-learn: \texttt{AgglomerativeClustering}}\label{sec:sklearn-agglomerative}
+\noindent
+Para la agrupación de intersecciones utilizamos el algoritmo de \emph{clustering} jerárquico aglomerativo provisto por \texttt{scikit-learn}.
+Este enfoque construye una jerarquía de fusiones de abajo hacia arriba, uniendo en cada paso los grupos más próximos según
+una métrica de distancia y un criterio de enlace (\texttt{linkage} en \{\texttt{ward}, \texttt{complete}, \texttt{average}, \texttt{single}\}).
+El parámetro \texttt{distance\_threshold} permite dejar que el propio algoritmo determine el número de clusters deteniendo
+las fusiones cuando la distancia supera un umbral, lo cual resulta práctico en escenas con variabilidad de densidad.
+Esta técnica es apropiada para consolidar intersecciones cercanas al horizonte en cúmulos cuya localización (centroide)
+sirve de estimación inicial de puntos de fuga \cite{tan2005introduction}.
+
+\subsubsection{Herramienta de experimentación y ajuste de parámetros}\label{sec:experimentation-tool}
+\noindent
+Para determinar la configuración óptima de parámetros de la solución propuesta, se desarrolló una aplicación en Python
+que carga una secuencia de imágenes de la trayectoria del vehículo en el estacionamiento y, para cada cuadro,
+calcula la retícula aplicando los pasos descritos en este trabajo. La herramienta permite visualizar el resultado de cada
+etapa y ajustar dinámicamente los parámetros para analizar su impacto en tiempo real.
+
+\noindent
+Parámetros ajustables considerados:
+\begin{itemize}
+	\item \texttt{threshold\_image}: Umbral de binarización de la imagen.
+	\item \texttt{canny\_threshold\_1}: Umbral inferior para Canny.
+	\item \texttt{canny\_threshold\_2}: Umbral superior para Canny.
+	\item \texttt{hough\_rho}: Resolución de distancia (píxeles) en Hough.
+	\item \texttt{hough\_theta}: Resolución angular (radianes) en Hough.
+	\item \texttt{hough\_threshold}: Umbral de votos en Hough.
+	\item \texttt{hough\_min\_line\_length}: Longitud mínima de segmento.
+	\item \texttt{hough\_max\_line\_gap}: Máxima separación para unir segmentos.
+	\item \texttt{relevant\_intersections\_horizon\_threshold}: Umbral de cercanía al horizonte.
+	\item \texttt{agglomerative\_distance\_threshold}: Distancia máxima para pertenecer al mismo cúmulo.
+\end{itemize}
+
+\noindent
+A modo ilustrativo, a continuación  en la figura \ref{fig:experimentationBinary-teo} 
+se muestra la herramienta donde se visualizan contornos, líneas detectadas,
+intersecciones, intersecciones relevantes, cúmulos y puntos de fuga.
+
+\begin{figure}[!ht]
+	% \begin{subfigure}{0.5\textwidth}
+	% 	\includegraphics[width=\textwidth]{img/reticule/experimentationRgb}
+	% 	\caption{Ejemplo de experimentación (RGB)}
+	% 	\label{fig:experimentationRgb-teo}
+	% \end{subfigure}
+	
+		\includegraphics[width=0.8\textwidth]{img/reticule/experimentationBinary}
+		\caption{Ejemplo de experimentación (Binaria)}
+		\label{fig:experimentationBinary-teo}
+	
+\end{figure}
+
+\noindent
+La interfaz incorpora una "Trackbar" para modificar parámetros en tiempo real y observar su efecto inmediato,
+facilitando la búsqueda de configuraciones estables y robustas para distintas condiciones de escena.
