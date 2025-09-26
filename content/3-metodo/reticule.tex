@@ -19,7 +19,7 @@ y estimar la posición de la retícula.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{img/3-metodo/piperline-reticule.png}
+    \includegraphics[width=0.9\textwidth]{img/3-metodo/piperline-reticule1.png}
     \caption{Diagrama general del pipeline para la detección de la retícula de estacionamiento.}
     \label{fig:reticula-pipeline}
 \end{figure}
@@ -59,7 +59,7 @@ Se utiliza el algoritmo de Canny \cite{canny1986edge} (véase Sección~\ref{sec:
 En la figura \ref{fig:edges} se muestra un ejemplo de la imagen con los bordes detectados.
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.9  \textwidth]{img/reticule/canny}
+    \includegraphics[width=0.99\textwidth]{img/reticule/canny}
     \caption{Detección de bordes mediante el algoritmo de Canny}
     \label{fig:edges}
 \end{figure}
@@ -234,7 +234,3 @@ relevantes para la retícula de estacionamiento.
 Primero, se filtran las intersecciones que están cerca de los puntos de fuga principales, utilizando un umbral de distancia que se puede ajustar experimentalmente.
 Luego, se filtran las líneas que pasan por estas intersecciones relevantes.
 Este proceso ayuda a eliminar el ruido y las líneas que no contribuyen a la formación de la retícula de estacionamiento.
-
-
-\subsubsection{Mediciones en la retícula detectada:}
-Pendiente de redacción.

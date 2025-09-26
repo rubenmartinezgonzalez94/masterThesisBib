@@ -4,15 +4,19 @@ aplicamos una adaptación de RANSAC para estimar una homografía que haga cohere
 las líneas de los cajones visibles en la imagen. Este enfoque conserva la robustez frente a outliers y
 oclusiones propias del escenario de estacionamiento.
 
+\subsubsection{Variación de RANSAC para ajuste de retícula:}
+\noindent
+La variación propuesta sigue el ciclo de la Figura~\ref{fig:ramsac-flujo}:
+
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{img/3-metodo/ramsac_loop.png}
+    \includegraphics[width=0.99\textwidth]{img/3-metodo/ramsac-loop1.png}
     \caption{Esquema del ciclo RANSAC propuesto para el ajuste de la retícula.}
     \label{fig:ramsac-flujo}
 \end{figure}
 
 \noindent
-La variación propuesta sigue el ciclo de la Figura~\ref{fig:ramsac-flujo}:
+Cada iteración del ciclo comprende los siguientes pasos:
 \begin{enumerate}
     \item A partir de dos puntos de fuga estimados, agrupar las líneas detectadas en dos conjuntos según su punto de fuga asociado.
     \item Muestrear aleatoriamente dos líneas de cada conjunto y calcular las cuatro intersecciones \(P_1, P_2, P_3, P_4\) (producto cruzado de pares de rectas), que definen un candidato a cajón.
@@ -36,7 +40,10 @@ la transformación de un cuadrado canónico a un cajón detectado en la imagen m
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{img/3-metodo/transformacion.png}
+    \includegraphics[width=0.99\textwidth]{img/3-metodo/transformacion.png}
     \caption{Estimación de una homografía \(\mathbf{H}\) que mapea un cuadrado canónico (izquierda) a un cuadrilátero de un cajón detectado en la imagen (derecha), permitiendo proyectar una retícula coherente aun cuando ciertas marcas no sean visibles.}
     \label{fig:ramsac-transform}
 \end{figure}
+
+\subsubsection{extracción de coordenadas en la retícula detectada:}
+Pendiente de redacción.
