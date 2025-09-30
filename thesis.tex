@@ -1,4 +1,4 @@
-\documentclass[10pt,letterpaper,final]{article}
+\documentclass[10pt,letterpaper,final]{report}
 
 % Paquetes
 \usepackage[utf8]{inputenc}
@@ -11,6 +11,68 @@
 \usepackage{tocbibind} % Para incluir referencias en el índice
 \usepackage{caption}
 \usepackage{subcaption} % Paquete para justificar el texto
+
+
+%% Various layout settings: may require adjustment
+
+\makeatletter
+%page layout
+\@twosidefalse 
+% distance from top of page to page's head
+\topmargin -0.35in      % head margin = .75in or 2cm
+% distance between the left side and text left margin
+\oddsidemargin 0.5in    % binding margin = 1.5in or 4cm
+
+\headheight 20pt 
+\headsep 15pt
+%\footheight 48pt    % this line doesn't work in latex2e
+\footskip 28pt
+\textheight 9.05in 
+\textwidth 5.68in
+\parskip 8pt
+\parindent 10pt
+\columnwidth \textwidth
+\footnotesep 12pt
+
+%floats and marginpar
+\floatsep 12pt plus 2pt minus 2pt
+\textfloatsep  20pt plus 2pt minus 4pt
+\intextsep 12pt plus 2pt minus 2pt
+\dblfloatsep 12pt plus 2pt minus 2pt
+\dbltextfloatsep 20pt plus 2pt minus 4pt
+%\@maxsep 20pt     % this line doesn't work in latex2e
+%\@dblmaxsep 20pt  % this line doesn't work in latex2e
+\@fptop 0pt plus 1fil
+\@fpsep 8pt plus 2fil
+\@fpbot 0pt plus 1fil
+\@dblfptop 0pt plus 1fil
+\@dblfpsep 8pt plus 2fil
+\@dblfpbot 0pt plus 1fil
+\marginparwidth 90pt
+\marginparsep 11pt
+\marginparpush 5pt
+\makeatother
+%% End of layout settings.
+
+% Following modified from article.doc to put a little indentation between
+% the footnote marker and the text of the footnote
+% The change is the explicit blank just before the second $ sign
+% This can be removed if you prefer ugly footnotes.
+
+\makeatletter
+\long\def\@makefntext#1{\@setpar{\@@par\@tempdima \hsize
+  \advance\@tempdima-10pt\parshape \@ne 10pt \@tempdima}\par
+  \parindent 1em\noindent \hbox to \z@{\hss$^{\@thefnmark}\ $}#1}
+\makeatother
+
+% Some commands to handle linespacing
+
+\newlength{\spacing}
+\setlength{\spacing}{\baselineskip}
+
+\newcommand{\nspace}[1]{\setlength{\baselineskip}{#1\spacing}}
+\newenvironment{linespacing}[1]{\nspace{#1}}{}
+
 
 % Información del documento
 \title{Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación}
@@ -75,26 +137,28 @@
 \listoffigures
 \clearpage
 
+\begin{linespacing}{1.5}
+
 % Capítulo 1: Introducción
-\section{Introducción}
+\chapter{Introducción}
 \input{content/1-intro/intro}
 
-\subsection{Contexto y problemática}
+\section{Contexto y problemática}
 \input{content/1-intro/context}
 
-\subsection{Preguntas de investigación}
+\section{Preguntas de investigación}
 \input{content/1-intro/questions}
 
 \subsection{Hipótesis}
 \input{content/1-intro/hypothesis}
 
-\subsection{Objetivos}
-\subsubsection{Objetivo General}
+\section{Objetivos}
+\subsection{Objetivo General}
 \input{content/1-intro/objective}
-\subsubsection{Objetivos específicos}
+\subsection{Objetivos específicos}
 \input{content/1-intro/objectives_specifics}
 
-\subsection{Estado del arte - Trabajos previos relacionados}
+\section{Estado del arte - Trabajos previos relacionados}
 \input{content/1-intro/related-works}
 
 % \subsubsection{Tabla comparativa}
@@ -102,58 +166,59 @@
 
 % Capítulo 2: Marco teórico
 \clearpage
-\section{Marco teórico}\label{chap:marco-teorico}
+\chapter{Marco teórico}\label{chap:marco-teorico}
 \input{content/2-marcoteo/intro}
 
-\subsection{Fundamentos de visión por computadora}\label{sec:vision}
+\section{Fundamentos de visión por computadora}\label{sec:vision}
 \input{content/2-marcoteo/vision}
 
-\subsection{Plataformas y librerías}\label{sec:plataformas}
+\section{Plataformas y librerías}\label{sec:plataformas}
 \input{content/2-marcoteo/plataformas}
 
-\subsection{RANSAC para homografías basadas en líneas}\label{sec:ransac-teorico}
+\section{RANSAC para homografías basadas en líneas}\label{sec:ransac-teorico}
 \input{content/2-marcoteo/ransac}
 
-\subsection{Aprendizaje por refuerzo}
+\section{Aprendizaje por refuerzo}
 \input{content/2-marcoteo/reinforcement-learning}
 
-\subsubsection{Highway-env}
+\subsection{Highway-env}
 \input{content/2-marcoteo/highway-env}
 
 % Capítulo 3: Metodología
 \clearpage
-\section{Metodología}\label{chap:metodologia}
+\chapter{Metodología}\label{chap:metodologia}
 \input{content/3-metodo/methodology}
 
-\subsection{Entorno de simulación}\label{sec:carla}
+\section{Entorno de simulación}\label{sec:carla}
 \input{content/3-metodo/simulation}
 
-\subsection{Detección de la retícula de estacionamiento}\label{sec:metodo-reticula}
+\section{Detección de la retícula de estacionamiento}\label{sec:metodo-reticula}
 \input{content/3-metodo/reticule}
 
-\subsection{Ajuste de la retícula mediante RANSAC}\label{sec:metodo-ransac}
+\section{Ajuste de la retícula mediante RANSAC}\label{sec:metodo-ransac}
 \input{content/3-metodo/ransac}
 
 % Capítulo 4: Resultados
 \clearpage
-\section{Resultados y aplicaciones}
+\chapter{Resultados y aplicaciones}
 Pendiente de redacción.
-\subsection{Retículas obtenidas para diferentes escenarios}
+\section{Retículas obtenidas para diferentes escenarios}
 Pendiente de redacción.
 
-\subsection{Aplicación en aprendizaje por refuerzo}
+\section{Aplicación en aprendizaje por refuerzo}
 \input{content/4-result/reinforcement-learning}
 
-\subsubsection{Highway-env aplicando la retícula detectada}
+\subsection{Highway-env aplicando la retícula detectada}
 \input{content/4-result/highway-carla-implementation}
 
-\subsubsection{comparación de resultados}
+\subsection{comparación de resultados}
 
 % Capítulo 4: Conclusiones y trabajo futuro
 \clearpage
-\section{Conclusiones y trabajo futuro}
+\chapter{Conclusiones y trabajo futuro}
 Pendiente de redacción.
 
+\end{linespacing}
 % Referencias
 \clearpage
 \bibliographystyle{acm}

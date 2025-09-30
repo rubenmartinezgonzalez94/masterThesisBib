@@ -1,2 +1,17 @@
-\noindent
-Este capítulo reúne los fundamentos necesarios para comprender la metodología propuesta. Inicia con la formación de imagen y el modelo pinhole (Sección \ref{sec:modelo-pinhole}); continúa con la calibración y las homografías (Sección \ref{sec:calibracion-homografia}); y revisa las técnicas de detección de bordes y líneas empleadas, en particular Canny y la transformada de Hough (Sección \ref{sec:canny-hough}). Se establecen también las convenciones de marcos de referencia y la representación de la pose (Sección \ref{sec:pose-frames}), y se describen las plataformas y librerías utilizadas, como CARLA y OpenCV (Sección \ref{sec:plataformas}). Sobre esta base, se formaliza la geometría de las retículas de estacionamiento y sus supuestos (Sección \ref{sec:reticula-teoria}). Finalmente, se presenta la contribución central que guía la metodología: un esquema RANSAC adaptado para estimar una homografía que alinee una retícula ideal con las líneas observadas en la imagen, evaluando su consistencia geométrica mediante una función de costo robusta (Sección \ref{sec:ransac-teorico}).
+\noindent  Este   capítulo  reúne  los  fundamentos   necesarios  para
+comprender la metodología propuesta. Inicia con la formación de imagen
+y el modelo pin--hole (Sección \ref{sec:modelo-pinhole}); continúa con
+la       calibración       y      las       homografías       (Sección
+\ref{sec:calibracion-homografia}) y  revisa las técnicas  de detección
+de bordes  y líneas empleadas, en  particular el método de  Canny y la
+transformada de  Hough (Sección \ref{sec:canny-hough}).  Se establecen
+también las convenciones  de marcos de referencia  y la representación
+de  la  pose  (Sección   \ref{sec:pose-frames})  y  se  describen  las
+plataformas  y bibliotecas  utilizadas, como  CARLA y  OpenCV (Sección
+\ref{sec:plataformas}). Sobre esta base,  se formaliza la geometría de
+las   retículas   de   estacionamiento  y   sus   supuestos   (Sección
+\ref{sec:reticula-teoria}).  Finalmente, se  presenta la  contribución
+central  que guía  la  metodología: un  esquema  RANSAC adaptado  para
+estimar una  homografía que alinee  una retícula ideal con  las líneas
+observadas en la imagen, evaluando su consistencia geométrica mediante
+una función de costo robusta (Sección \ref{sec:ransac-teorico}).

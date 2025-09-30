@@ -1,18 +1,23 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {figure}{\numberline {6}{\ignorespaces Paralelismo en 3D y su proyección al plano de imagen.}}{15}{figure.caption.8}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Ejemplos de condiciones ambientales configurables en el simulador CARLA.}}{16}{figure.caption.9}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Ejemplo de experimentación (Binaria)}}{18}{figure.caption.10}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Ciclo básico del aprendizaje por refuerzo: interacción agente-entorno.}}{20}{figure.caption.11}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Ejemplos de entornos disponibles en Highway-env: estacionamiento, intersecciones, fusión en autopistas y rotondas.}}{21}{figure.caption.12}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Diseño del entorno de simulación en CARLA.}}{23}{figure.caption.13}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Vista de la cámara en el entorno de simulación.}}{24}{figure.caption.14}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Diagrama general del pipeline para la detección de la retícula de estacionamiento.}}{24}{figure.caption.15}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Área de interés de la imagen}}{25}{figure.caption.16}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Imagen umbralizada}}{26}{figure.caption.17}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Detección de bordes mediante el algoritmo de Canny}}{26}{figure.caption.18}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Agrupacion de intersecciones de las líneas detectadas}}{29}{figure.caption.20}%
-\contentsline {figure}{\numberline {19}{\ignorespaces Intersecciones detectadas en la imagen original}}{29}{figure.caption.21}%
-\contentsline {figure}{\numberline {20}{\ignorespaces Intersecciones agrupadas en clusters}}{30}{figure.caption.22}%
-\contentsline {figure}{\numberline {21}{\ignorespaces Punto de fuga principal estimado}}{30}{figure.caption.23}%
-\contentsline {figure}{\numberline {22}{\ignorespaces Esquema del ciclo RANSAC propuesto para el ajuste de la retícula.}}{31}{figure.caption.24}%
-\contentsline {figure}{\numberline {23}{\ignorespaces Estimación de una homografía \(\mathbf {H}\) que mapea un cuadrado canónico (izquierda) a un cuadrilátero de un cajón detectado en la imagen (derecha), permitiendo proyectar una retícula coherente aun cuando ciertas marcas no sean visibles.}}{32}{figure.caption.25}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Paralelismo en 3D y su proyección al plano de imagen.\relax }}{14}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Ejemplos de condiciones ambientales configurables en el simulador CARLA.\relax }}{16}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Ejemplo de experimentación (Binaria)\relax }}{18}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Ciclo básico del aprendizaje por refuerzo: interacción agente-entorno.\relax }}{19}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Ejemplos de entornos disponibles en Highway-env: estacionamiento, intersecciones, fusión en autopistas y rotondas.\relax }}{21}{figure.caption.26}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diseño del entorno de simulación en CARLA.\relax }}{24}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Vista de la cámara en el entorno de simulación.\relax }}{24}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama general del pipeline para la detección de la retícula de estacionamiento.\relax }}{25}{figure.caption.31}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Área de interés de la imagen\relax }}{26}{figure.caption.33}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Imagen umbralizada\relax }}{26}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Detección de bordes mediante el algoritmo de Canny\relax }}{27}{figure.caption.37}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Agrupacion de intersecciones de las líneas detectadas\relax }}{29}{figure.caption.43}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Intersecciones detectadas en la imagen original\relax }}{30}{figure.caption.44}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Intersecciones agrupadas en clusters\relax }}{30}{figure.caption.45}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Punto de fuga principal estimado\relax }}{31}{figure.caption.47}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Esquema del ciclo RANSAC propuesto para el ajuste de la retícula.\relax }}{32}{figure.caption.51}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Estimación de una homografía \(\mathbf {H}\) que mapea un cuadrado canónico (izquierda) a un cuadrilátero de un cajón detectado en la imagen (derecha), permitiendo proyectar una retícula coherente aun cuando ciertas marcas no sean visibles.\relax }}{33}{figure.caption.52}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
