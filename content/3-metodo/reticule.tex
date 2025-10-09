@@ -1,15 +1,15 @@
-\noindent
+
 En esta sección desarrollamos el procedimiento práctico para detectar la
 retícula de estacionamiento a partir de una imagen de la cámara frontal.
 Nos apoyamos en los fundamentos del Marco teórico: Canny y Hough (Sección~\ref{sec:canny-hough}),
 la representación de rectas y su intersección en coordenadas homogéneas
-(Sección~\ref{sec:rectas-svd}), y los puntos de fuga (Sección~\ref{sec:vanishing-points}).
-\noindent
+(Sección~\ref{subsec:lines-points}), y los puntos de fuga (Sección~\ref{sec:vanishing-points}).
+
 Partimos de una imagen RGB capturada por la cámara frontal. Trabajamos sobre una región de interés (ROI)
 definida por debajo del horizonte excluyendo la franja superior para reducir ruido.
 Como resultado del procesamiento, obtenemos conjuntos de líneas agrupados según su punto de fuga y un conjunto de esquinas candidatas a vértices de cajón. Dada la naturaleza de la escena, pueden presentarse dificultades como baja textura o contraste, oclusiones y marcas del pavimento degradadas; para mitigarlas, empleamos umbrales ajustables y reintentos por cuadro.
 
-\noindent
+
 Por la proyección perspectiva, las líneas paralelas del mundo se intersectan en la imagen en un punto de fuga
 (véase Sección~\ref{sec:vanishing-points} y Fig.~\ref{fig:distorion-teo}).
 En nuestro contexto, las marcas de los cajones son aproximadamente paralelas y generan
@@ -24,13 +24,13 @@ y estimar la posición de la retícula.
     \label{fig:reticula-pipeline}
 \end{figure}
 
-\noindent
+
 A continuación, desarrollamos cada etapa del diagrama de la Figura~\ref{fig:reticula-pipeline},
 centrándonos en el procesamiento de imagen y la extracción de información geométrica relevante con técnicas clásicas de visión computacional.
 
 
-\subsubsection{Área de interés:}
-\noindent
+\subsection{Área de interés:}
+
 Teniendo en cuenta que la cámara del vehículo se encuentra ubicada en la parte delantera a una altura conocida y en un ángulo paralelo al suelo, el área de interés de la imagen donde se encuentran las líneas de los cajones de estacionamiento quedará siempre por debajo del horizonte de la imagen.
 Por lo tanto, se puede eliminar la parte superior de la imagen para
 reducir el ruido y mejorar la detección de las líneas, como se muestra en la figura \ref{fig:roi}. \\
@@ -41,8 +41,8 @@ reducir el ruido y mejorar la detección de las líneas, como se muestra en la f
     \label{fig:roi}
 \end{figure}
 
-\subsubsection{Umbralización:}
-\noindent
+\subsection{Umbralización:}
+
 Al área de interés de la imagen se le aplica una umbralización para realzar las líneas blancas de los cajones de estacionamiento
 y eliminar otros elementos no relevantes que puedan interferir en la detección.
 En la figura \ref{fig:threshold} se muestra un ejemplo de la imagen umbralizada.
@@ -53,8 +53,8 @@ En la figura \ref{fig:threshold} se muestra un ejemplo de la imagen umbralizada.
     \label{fig:threshold}
 \end{figure}
 
-\subsubsection{Detección de contornos (Canny):}
-\noindent
+\subsection{Detección de contornos (Canny):}
+
 Se utiliza el algoritmo de Canny \cite{canny1986edge} (véase Sección~\ref{sec:canny-hough}) para detectar los bordes de las líneas en la imagen umbralizada.
 En la figura \ref{fig:edges} se muestra un ejemplo de la imagen con los bordes detectados.
 \begin{figure}[!ht]
@@ -64,8 +64,8 @@ En la figura \ref{fig:edges} se muestra un ejemplo de la imagen con los bordes d
     \label{fig:edges}
 \end{figure}
 
-\subsubsection{Detección de líneas (Hough):}
-\noindent
+\subsection{Detección de líneas (Hough):}
+
 Se aplica la transformada de Hough \cite{ballard1981hough} (Sección~\ref{sec:canny-hough}) para detectar las coordenadas de inicio y fin de las líneas en la imagen.
 En las figuras \ref{fig:hough} y \ref{fig:lines} se muestran las líneas detectadas sin fondo y sobre la imagen original, respectivamente.
 \begin{figure}[!ht]
@@ -81,8 +81,8 @@ En las figuras \ref{fig:hough} y \ref{fig:lines} se muestran las líneas detecta
     \end{subfigure}
 \end{figure}
 
-\subsubsection{Representación de las ecuaciones de las líneas:}
-\noindent
+\subsection{Representación de las ecuaciones de las líneas:}
+
 Una vez obtenidas las coordenadas de inicio y fin de cada línea paralela, se puede utilizar la ecuación general de la recta (véase Sección~\ref{sec:rectas-svd}):
 \begin{equation}
     Ax + By + C = 0
@@ -109,19 +109,19 @@ Dicho sistema puede representarse de manera matricial como sigue:
         \end{bmatrix}
     \end{aligned}
 \end{equation}
-\noindent
+
 Esta representación permite calcular de forma precisa los coeficientes de la ecuación de la recta para cada línea detectada,
 lo cual es fundamental para analizar su orientación y posición dentro de la retícula de estacionamiento.
 
-\subsubsection{Cálculo de ecuaciones de las líneas (SVD):}
-\noindent
+\subsection{Cálculo de ecuaciones de las líneas (SVD):}
+
 Para calcular los coeficientes $[A, B, C]$ de las ecuaciones de las líneas detectadas, se utiliza el concepto de espacio nulo (\emph{null space}) y SVD (Sección~\ref{sec:rectas-svd}).
 Este enfoque se basa en el hecho de que cualquier vector en el espacio nulo de una matriz $\mathbf{M}$ satisface la ecuación
 \begin{equation}
     \mathbf{Mv} = 0
 \end{equation}
 
-\noindent
+
 Cada línea se representa mediante dos puntos $(x_1, y_1)$ y $(x_2, y_2)$. A partir de estas coordenadas homogéneas,
 se construye una matriz $\mathbf{M}$ de la forma:
 \[
@@ -142,16 +142,16 @@ La SVD descompone la matriz \(M\) en tres matrices \(U\), \(S\) y \(V\), donde e
 El vector resultante del espacio nulo se normaliza para que tenga una magnitud manejable.
 Esto asegura que los coeficientes \(A\), \(B\) y \(C\) sean comparables entre distintas líneas.
 
-\subsubsection{Cálculo de intersecciones (Clustering):}
-\noindent
+\subsection{Cálculo de intersecciones (Clustering):}
+
 Una vez que se tienen las ecuaciones de todas las líneas paralelas en el plano de la cámara, se pueden calcular las intersecciones de estas líneas realizando un producto cruz entre las ecuaciones homogéneas [\(A\),\(B\),\(C\)] de todos los pares de líneas.
-\noindent
+
 El resultado de este producto cruz es la coordenada homogénea de un punto en el espacio que corresponde a la intersección de las líneas.
 Si este punto es finito (cuando la tercera componente no es cero), se puede deshomogeneizar para obtener las coordenadas cartesianas en el plano de la cámara.
 En cambio, si el punto es infinito (cuando la tercera componente es muy cercana a cero), significa que las líneas son paralelas y se intersectan en el infinito.
 
 %https://scikit-learn.org/stable/modules/clustering.html#hierarchical-clustering
-\noindent
+
 Analizando los puntos de intersección obtenidos que se encuentran en el plano de la cámara, se pueden agrupar para determinar dónde está
 concentrada la mayor cantidad de intersecciones.
 Este punto de concentración de intersecciones debe corresponder al punto de fuga principal de la retícula de estacionamiento.
@@ -165,7 +165,7 @@ donde cada color representa un cluster diferente y el símbolo \texttt{+} blanco
     \caption{Agrupacion de intersecciones de las líneas detectadas}
     \label{fig:intersections}
 \end{figure}
-\noindent
+
 Como se discute en la Sección~\ref{sec:intersections-clustering}, para estimar la ubicación de este punto de fuga principal no es necesario tener en cuenta todas las intersecciones detectadas, sino solo aquellas que se encuentran en una zona cercana al horizonte de la imagen (Sección~\ref{sec:vanishing-points}).
 Para determinar las intersecciones relevantes cercanas al horizonte, se puede definir un umbral de cercanía en la imagen que se puede ajustar experimentalmente.
 Por ejemplo, en la siguiente imagen se muestran las intersecciones detectadas en la imagen original con puntos azules
@@ -178,7 +178,7 @@ En la figura \ref{fig:relevantInter} se muestra el resultado de la selección de
     \label{fig:relevantInter}
 \end{figure}
 
-\noindent
+
 Para agrupar las intersecciones relevantes empleamos \texttt{AgglomerativeClustering} de \texttt{scikit-learn}
 (véase Sección~\ref{sec:sklearn-agglomerative}). En nuestra configuración práctica,
 dejamos que el algoritmo determine el número de clusters fijando \texttt{distance\_threshold} (distancia máxima entre puntos del mismo
@@ -194,8 +194,8 @@ intersecciones relevantes del ejemplo anterior: se forman 3 clusters (colores di
 
 
 
-\subsubsection{Selección del punto de fuga principal:}
-\noindent
+\subsection{Selección del punto de fuga principal:}
+
 Para estimar la posición del punto de fuga principal, se puede seleccionar el cluster con mayor cantidad de intersecciones y
 utilizar las líneas que generaron estos puntos para calcular la intersección de estas líneas.
 La intersección de $n$ líneas (bajo un criterio de mínimos cuadrados) está dada por
@@ -214,10 +214,10 @@ representa el punto de fuga principal con un símbolo \texttt{+} amarillo.
     \label{fig:vanishingPoint}
 \end{figure}
 
-\subsubsection{Selección del 2do punto de fuga principal:}
-\noindent
+\subsection{Selección del 2do punto de fuga principal:}
+
 Una vez estimado el primer punto de fuga \(\mathbf{v}_1=(x_1,y_1)\), el segundo (\(\mathbf{v}_2\)) puede obtenerse
-aprovechando que corresponde a una dirección ortogonal en 3D. Con un modelo pinhole simple, pixeles cuadrados, punto principal
+aprovechando que corresponde a una dirección ortogonal en 3D. Con un modelo pin-hole simple, pixeles cuadrados, punto principal
 en el centro \(C_x\), los puntos de fuga de direcciones ortogonales verifican la relación
 \( (x_1-C_x)(x_2-C_x) + f^2 \approx 0 \). De ahí se despeja la coordenada horizontal de \(\mathbf{v}_2\):
 \begin{equation}
@@ -227,8 +227,8 @@ Aquí \(f\) es la longitud focal en píxeles, que aproximamos a partir del FOV h
 \( f = \dfrac{W}{2\,\tan(\tfrac{\text{FOV}}{2})} \). En nuestro caso, con \(\text{FOV}=90^\circ\) y \(W=1920\), se fija
 \(C_x=W/2\) y se calcula \(x_2\) como en la ecuación anterior, manteniendo \(y_2=y_1\) por pertenecer ambos a la misma línea del horizonte.
 
-\subsubsection{Filtrado de intersecciones y líneas relevantes:}
-\noindent
+\subsection{Filtrado de intersecciones y líneas relevantes:}
+
 Una vez que se han identificado los puntos de fuga principales, se puede proceder a filtrar las intersecciones y las líneas que son
 relevantes para la retícula de estacionamiento.
 Primero, se filtran las intersecciones que están cerca de los puntos de fuga principales, utilizando un umbral de distancia que se puede ajustar experimentalmente.

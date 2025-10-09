@@ -1,32 +1,33 @@
-\noindent
-RANSAC (Random Sample Consensus) es un paradigma de estimación robusta de modelos que alterna 
-muestreos aleatorios mínimos con una evaluación de consenso (inliers) para encontrar hipótesis 
-consistentes aun en presencia de una proporción elevada de datos atípicos. 
-En cada iteración se selecciona un subconjunto mínimo de observaciones, se ajusta un modelo candidato 
-y se mide cuántas observaciones concuerdan con él dentro de una tolerancia; tras múltiples iteraciones, 
-se elige la hipótesis con mayor soporte y, opcionalmente, se refina con los inliers. 
-Esta estrategia, ampliamente utilizada en visión por computadora y cartografía automatizada, 
-fue introducida por Fischler y Bolles \cite{fischler1981ransac}.
 
-\noindent
-Beneficios clave del enfoque RANSAC:
-\begin{itemize}
-	\item Tolerancia a outliers y ruido: puede recuperar el modelo correcto aunque una parte sustancial de las observaciones sea espuria u ocluida.
-	\item Flexibilidad de modelo: se aplica a múltiples familias (rectas, homografías, transformaciones, etc.).
-	\item Sencillez operativa: alterna muestreo mínimo, ajuste y conteo de consenso.
-\end{itemize}
 
-\noindent
-Variación propuesta en este trabajo. 
+RANSAC (Random Sample Consensus) es un algoritmo robusto para ajustar modelos a datos que pueden contener una proporción significativa de valores atípicos (outliers) \cite{fischler1981ransac,hartley2003multiple}. El objetivo es encontrar el modelo que mejor se ajusta a la mayor cantidad de datos consistentes (inliers), ignorando los outliers.
+
+El algoritmo puede resumirse en los siguientes pasos \cite[Alg. 4.4]{hartley2003multiple}:
+\begin{enumerate}
+	\item Seleccionar aleatoriamente un subconjunto mínimo de $s$ datos de $S$ y ajustar el modelo a este subconjunto.
+	\item Determinar el conjunto de datos $S_i$ que están a una distancia menor que un umbral $t$ del modelo. Este conjunto $S_i$ es el conjunto de consenso (inliers).
+	\item Si el tamaño de $S_i$ es mayor que un umbral $T$, reestimar el modelo usando todos los puntos de $S_i$ y terminar.
+	\item Si el tamaño de $S_i$ es menor que $T$, seleccionar un nuevo subconjunto y repetir los pasos anteriores.
+	\item Tras $N$ iteraciones, seleccionar el mayor conjunto de consenso $S_i$ encontrado y reestimar el modelo usando todos los puntos de ese conjunto.
+\end{enumerate}
+
+Los parámetros principales del algoritmo son: el tamaño mínimo de muestra $s$, el umbral de distancia $t$, el umbral de consenso $T$ y el número máximo de iteraciones $N$. RANSAC es ampliamente utilizado en visión por computadora para estimar modelos como rectas, homografías y transformaciones, incluso en presencia de ruido y datos espurios.
+
+
+\subsection{Variación propuesta en este trabajo}\label{sec:aply-ransac}
 Como se explicará con más detalle en la Sección \ref{sec:metodo-ransac}, 
 en esta investigación adaptamos RANSAC para estimar una homografía que alinee una retícula ideal 
 con las líneas de los cajones de estacionamiento observadas en la imagen. 
 Bajo las siguientes consideraciones generales: 
-(i) se emplean dos puntos de fuga para agrupar las líneas en dos conjuntos según su punto de fuga; 
-(ii) la muestra mínima se construye eligiendo dos líneas de cada conjunto (uno por cada punto de fuga) para formar cuatro intersecciones 
+\begin{itemize}
+\item Se emplean dos puntos de fuga para agrupar las líneas en dos conjuntos según su punto de fuga; 
+\item La muestra mínima se construye eligiendo dos líneas de cada conjunto (uno por cada punto de fuga) para formar cuatro intersecciones 
 que hipotetizan un cajón; y 
-(iii) a partir de esas esquinas se estima una homografía y se extiende una retícula \(n\times n\) 
-sobre la imagen. Este planteamiento proporciona coherencia geométrica global del patrón 
+\item A partir de esas esquinas se estima una homografía y se extiende una retícula \(n\times n\) 
+sobre la imagen.
+\end{itemize}
+
+Este planteamiento proporciona coherencia geométrica global del patrón 
 y permite extrapolar la retícula más allá del campo visible, infiriendo la ubicación de cajones 
 en puntos ciegos o parcialmente ocultos, lo cual resulta útil para la planificación 
 y el estacionamiento automático.

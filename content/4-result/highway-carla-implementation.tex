@@ -1,11 +1,11 @@
-\noindent
+
 En esta sección implementamos el modelo de aprendizaje por refuerzo combinando Highway-env con CARLA,
 utilizando los resultados de detección de retícula como sistema de observación. La implementación
 mantiene la estructura probada de Highway-env pero integra elementos realistas a través de wrappers
 personalizados que conectan con el simulador CARLA y nuestro sistema de visión por computadora.
 
-\subsubsection{Configuración del modelo}
-\noindent
+\subsection{Configuración del modelo}
+
 Utilizamos el algoritmo SAC (Soft Actor-Critic) de Stable-Baselines3 (Sección~\ref{sec:stable-baselines3})
 con Hindsight Experience Replay (HER) para manejar la naturaleza de objetivo disperso del estacionamiento.
 La configuración sigue las mejores prácticas de Highway-env (Sección~\ref{subsec:highway-env-theory}):
@@ -17,32 +17,32 @@ La configuración sigue las mejores prácticas de Highway-env (Sección~\ref{sub
     \item \textbf{Entorno base}: \texttt{parking-v0} de Highway-env con modificaciones mediante wrappers
 \end{itemize}
 
-\subsubsection{Arquitectura de wrappers}
-\noindent
+\subsection{Arquitectura de wrappers}
+
 Implementamos tres wrappers de Gymnasium (Sección~\ref{sec:gymnasium}) que adaptan el entorno original
 manteniendo compatibilidad con la interfaz estándar:
 
-\noindent
+
 \textbf{CarlaInitRoadWrapper}: Construye la geometría del estacionamiento usando coordenadas reales de CARLA
 (Sección~\ref{sec:carla-teorico}). Reemplaza el \texttt{RoadNetwork} predeterminado con cajones de estacionamiento
 generados a partir de la posición objetivo actual en el simulador, creando un layout de 7 cajones centrado
 en el objetivo.
 
-\noindent
+
 \textbf{CarlaObservationWrapper}: Sustituye las observaciones idealizadas de Highway-env por estimaciones
 realistas obtenidas mediante nuestro sistema de visión por computadora. Aplica los algoritmos de detección
 de retícula desarrollados (Sección~\ref{sec:metodo-reticula}) para extraer coordenadas $(x,y)$ y orientación
 $\theta$ del vehículo, complementadas con velocidad del sensor vehicular de CARLA.
 
-\noindent
+
 \textbf{CarlaActionWrapper}: Traduce las acciones continuas 
 aceleración, dirección del agente de RL
 a controles vehiculares en CARLA, aplicando throttle y steering al vehículo simulado 
 y sincronizando
 el tiempo de simulación.
 
-\subsubsection{Integración del sistema de visión}
-\noindent
+\subsection{Integración del sistema de visión}
+
 El componente crítico de nuestra adaptación reside en el \texttt{CarlaObservationWrapper}, que implementa
 el pipeline completo de visión por computadora como intérprete de observaciones:
 
@@ -56,13 +56,13 @@ el pipeline completo de visión por computadora como intérprete de observacione
     esperado por el agente de RL: $[x, y, v_x, v_y, \cos(\theta), \sin(\theta)]$
 \end{enumerate}
 
-\noindent
+
 Esta integración permite que el agente aprenda políticas de estacionamiento basándose en información
 visual procesada en tiempo real, replicando las condiciones que enfrentaría un sistema autónomo real
 donde la localización debe inferirse de sensores imperfectos en lugar de coordenadas globales ideales.
 
-\subsubsection{Ventajas de la implementación híbrida}
-\noindent
+\subsection{Ventajas de la implementación híbrida}
+
 La arquitectura propuesta combina las fortalezas de cada componente:
 \begin{itemize}
     \item \textbf{Highway-env}: Funciones de recompensa validadas y convergencia probada de algoritmos
@@ -71,7 +71,7 @@ La arquitectura propuesta combina las fortalezas de cada componente:
     \item \textbf{Gymnasium/SB3}: Interfaz estándar y algoritmos de RL de última generación
 \end{itemize}
 
-\noindent
+
 Esta configuración permite evaluar tanto la robustez del sistema de detección de retícula
 como su viabilidad en aplicaciones de control autónomo, demostrando que es posible sustituir
 sensores idealizados por sistemas de percepción visual en tareas complejas de navegación.

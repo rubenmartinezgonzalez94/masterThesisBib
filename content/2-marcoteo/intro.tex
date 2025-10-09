@@ -1,17 +1,9 @@
-\noindent  Este   capítulo  reúne  los  fundamentos   necesarios  para
-comprender la metodología propuesta. Inicia con la formación de imagen
-y el modelo pin--hole (Sección \ref{sec:modelo-pinhole}); continúa con
-la       calibración       y      las       homografías       (Sección
-\ref{sec:calibracion-homografia}) y  revisa las técnicas  de detección
-de bordes  y líneas empleadas, en  particular el método de  Canny y la
-transformada de  Hough (Sección \ref{sec:canny-hough}).  Se establecen
-también las convenciones  de marcos de referencia  y la representación
-de  la  pose  (Sección   \ref{sec:pose-frames})  y  se  describen  las
-plataformas  y bibliotecas  utilizadas, como  CARLA y  OpenCV (Sección
-\ref{sec:plataformas}). Sobre esta base,  se formaliza la geometría de
-las   retículas   de   estacionamiento  y   sus   supuestos   (Sección
-\ref{sec:reticula-teoria}).  Finalmente, se  presenta la  contribución
-central  que guía  la  metodología: un  esquema  RANSAC adaptado  para
-estimar una  homografía que alinee  una retícula ideal con  las líneas
-observadas en la imagen, evaluando su consistencia geométrica mediante
-una función de costo robusta (Sección \ref{sec:ransac-teorico}).
+Este capítulo reúne los fundamentos teóricos y computacionales necesarios para comprender la metodología propuesta. Se inicia con la formación de imagen y el modelo de cámara pin-hole, explicando de manera intuitiva la proyección de puntos y líneas, así como la representación homogénea para operaciones geométricas (Sección \ref{subsec:camera}).
+
+A continuación, se abordan las herramientas matemáticas para describir y manipular líneas y puntos en el plano imagen, incluyendo la obtención de líneas a partir de puntos, intersección de líneas, y el ajuste óptimo mediante formulaciones basadas en el espacio nulo, siguiendo la teoría de Kanatani y Hartley \& Zisserman.
+
+Se presentan las homografías para el plano del suelo (Sección \ref{subsec:homografias}), y las técnicas de detección de bordes y líneas empleadas, en particular el método de Canny y la transformada de Hough (Sección \ref{sec:canny-hough}).
+
+La sección central describe el algoritmo RANSAC para el ajuste robusto de modelos en presencia de outliers, detallando su funcionamiento y parámetros clave según la referencia clásica de Fischler y Bolles y la exposición de Hartley \& Zisserman (Sección \ref{sec:ransac-teorico}).
+
+Finalmente, se establecen las convenciones de marcos de referencia y representación de la pose, y se describen las plataformas y bibliotecas utilizadas, como CARLA y OpenCV (Sección \ref{sec:plataformas}).

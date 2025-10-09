@@ -1,11 +1,11 @@
-\noindent
+
 En esta sección demostramos la aplicación práctica de los conceptos de aprendizaje por refuerzo
 (Sección~\ref{subsec:rl-components}) al problema de estacionamiento automático, utilizando
 los resultados de detección de retícula obtenidos mediante las técnicas de visión por computadora
 desarrolladas en este trabajo.
 
-\subsubsection{Configuración del entorno con Gymnasium y CARLA}\label{subsec:rl-environment}
-\noindent
+\subsection{Configuración del entorno con Gymnasium y CARLA}\label{subsec:rl-environment}
+
 Implementamos el entorno de aprendizaje por refuerzo utilizando \texttt{Gymnasium} como framework
 estándar para la interfaz agente-entorno, integrado con el simulador CARLA que proporciona
 un mundo físicamente realista. Esta combinación nos permite:
@@ -22,12 +22,12 @@ un mundo físicamente realista. Esta combinación nos permite:
     intercambiar diferentes algoritmos de RL sin modificar el código del entorno.
 \end{itemize}
 
-\subsubsection{Definición del agente y espacio de acciones}\label{subsec:rl-agent}
-\noindent
+\subsection{Definición del agente y espacio de acciones}\label{subsec:rl-agent}
+
 El agente implementa una política que mapea observaciones a acciones de control vehicular.
 Siguiendo la terminología de la Sección~\ref{subsec:rl-components}, definimos:
 
-\noindent
+
 \textbf{Espacio de acciones}: Utilizamos un espacio continuo bidimensional
 $\mathcal{A} = \text{Box}([-1, -1], [1, 1])$ donde cada acción $\mathbf{a} = [a_{\text{acc}}, a_{\text{dir}}]$ representa:
 \begin{itemize}
@@ -37,8 +37,8 @@ $\mathcal{A} = \text{Box}([-1, -1], [1, 1])$ donde cada acción $\mathbf{a} = [a
     positivos a la derecha, y cero mantiene la dirección recta.
 \end{itemize}
 
-\subsubsection{Espacio de observaciones y sistema intérprete}\label{subsec:rl-observations}
-\noindent
+\subsection{Espacio de observaciones y sistema intérprete}\label{subsec:rl-observations}
+
 El estado del sistema se representa mediante un vector de observación $\mathbf{s} \in \mathbb{R}^6$:
 \begin{equation}
     \mathbf{s} = [x, y, v_x, v_y, \cos(\theta), \sin(\theta)]
@@ -51,29 +51,29 @@ donde:
     \item $(\cos(\theta), \sin(\theta))$: Orientación del vehículo (representación continua del ángulo)
 \end{itemize}
 
-\noindent
+
 \textbf{Sistema intérprete}: La estimación de posición y orientación $(x, y, \theta)$ se obtiene
 aplicando los procedimientos de visión por computadora desarrollados en este trabajo:
 detección de la retícula de estacionamiento (Sección~\ref{sec:metodo-reticula}) y
 su ajuste mediante RANSAC (Sección~\ref{sec:metodo-ransac}). La velocidad se obtiene
 directamente del sensor velocímetro del vehículo simulado.
 
-\subsubsection{Adaptación del framework Highway-env}\label{subsec:rl-highway-adaptation}
-\noindent
+\subsection{Adaptación del framework Highway-env}\label{subsec:rl-highway-adaptation}
+
 Para la implementación del aprendizaje por refuerzo adoptamos el framework Highway-env \cite{highway-env},
 una biblioteca especializada en entornos de conducción autónoma que proporciona implementaciones
 probadas y exitosas de espacios de acción, observación y funciones de recompensa para tareas
 de estacionamiento. En lugar de desarrollar estos componentes desde cero, nos enfocamos en
 integrar nuestra contribución de visión por computadora con esta solución establecida.
 
-\noindent
+
 \textbf{Contribución específica}: Nuestra aportación principal consiste en reemplazar el
 sistema de observación simplificado de Highway-env por un intérprete realista basado en
 los algoritmos de detección de retícula desarrollados en este trabajo, y migrar la
 simulación del entorno abstracto original a CARLA para obtener una física vehicular
 más precisa.
 
-\noindent
+
 \textbf{Componentes reutilizados de Highway-env}:
 \begin{itemize}
     \item \textbf{Espacio de acciones}: $\mathcal{A} = \text{Box}([-1, -1], [1, 1])$ para control continuo [aceleración, dirección]
@@ -81,13 +81,13 @@ más precisa.
     \item \textbf{Estrategia de episodios}: Criterios de terminación y reinicio del entorno
 \end{itemize}
 
-\noindent
+
 Los detalles completos del diseño original de Highway-env se describen en la
 Sección~\ref{subsec:highway-env-theory}. En la siguiente sección analizaremos
 la implementación específica y los resultados obtenidos con esta adaptación.
 
-\subsubsection{Integración de visión por computadora y RL}\label{subsec:rl-integration}
-\noindent
+\subsection{Integración de visión por computadora y RL}\label{subsec:rl-integration}
+
 La contribución principal de este trabajo radica en la integración del sistema de
 detección de retícula desarrollado como intérprete de observaciones en el framework
 de aprendizaje por refuerzo. Mientras que Highway-env utiliza información de pose
@@ -102,7 +102,7 @@ perfecta y simplificada, nuestro sistema debe:
     y condiciones de iluminación variables que no existen en el entorno abstracto original
 \end{itemize}
 
-\noindent
+
 Esta integración permite evaluar la robustez y utilidad práctica de los algoritmos
 de visión por computadora en una aplicación de control en tiempo real, demostrando
 que es posible reemplazar sensores idealizados por sistemas de percepción basados

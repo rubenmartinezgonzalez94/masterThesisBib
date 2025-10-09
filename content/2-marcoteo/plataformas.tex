@@ -1,4 +1,4 @@
-\noindent
+
 La simulación computacional se ha consolidado como una herramienta fundamental
 en el desarrollo y validación de sistemas de conducción autónoma.
 Permite recrear escenarios complejos y potencialmente peligrosos de manera segura,
@@ -12,7 +12,7 @@ todo ello sin los riesgos y costos asociados a las pruebas físicas.
 La simulación puede proporcionar información detallada sobre el vehículo y
 su entorno, lo que permite realizar mediciones y análisis exhaustivos de los
 datos obtenidos, de manera similar a como se haría en la vida real.
-\noindent
+
 En este trabajo se emplean plataformas y bibliotecas ampliamente adoptadas en visión
 por computadora y simulación para vehículos autónomos.
 En particular, utilizamos CARLA, un simulador de código abierto que permite recrear entornos urbanos realistas
@@ -20,8 +20,8 @@ con agentes dinámicos y sensores virtuales configurables, y OpenCV, una bibliot
 de imágenes que proporciona las operaciones básicas para umbralización, detección de bordes (Canny)
 y detección de líneas (Hough), entre otras.
 
-\subsubsection{CARLA Simulator}\label{sec:carla-teorico}
-\noindent
+\subsection{CARLA Simulator}\label{sec:carla-teorico}
+
 CARLA (Car Learning to Act) es una plataforma orientada a investigación que facilita la generación de escenas
 complejas y controladas, con variabilidad de clima, iluminación y tráfico, y un conjunto de sensores virtuales
 (cámaras, LiDAR, radar, GPS) que producen datos cercanos a los de un vehículo real.
@@ -39,12 +39,12 @@ de condiciones ambientales configurables en la plataforma.
 	\label{fig:carla-simulator-teo}
 \end{figure}
 
-\subsubsection{OpenCV}
-\noindent
+\subsection{OpenCV}
+
 OpenCV proporciona el conjunto de operaciones y estructuras necesarias para el preprocesado de imágenes y la extracción de primitivas geométricas, incluyendo umbralización, Canny y la transformada de Hough, que se emplean en la detección de la retícula de estacionamiento.
 
-\subsubsection{scikit-learn: \texttt{AgglomerativeClustering}}\label{sec:sklearn-agglomerative}
-\noindent
+\subsection{scikit-learn: \texttt{AgglomerativeClustering}}\label{sec:sklearn-agglomerative}
+
 Para la agrupación de intersecciones utilizamos el algoritmo de \emph{clustering} jerárquico aglomerativo provisto por \texttt{scikit-learn}.
 Este enfoque construye una jerarquía de fusiones de abajo hacia arriba, uniendo en cada paso los grupos más próximos según
 una métrica de distancia y un criterio de enlace (\texttt{linkage} en \{\texttt{ward}, \texttt{complete}, \texttt{average}, \texttt{single}\}).
@@ -53,8 +53,8 @@ las fusiones cuando la distancia supera un umbral, lo cual resulta práctico en 
 Esta técnica es apropiada para consolidar intersecciones cercanas al horizonte en cúmulos cuya localización (centroide)
 sirve de estimación inicial de puntos de fuga \cite{tan2005introduction}.
 
-\subsubsection{Gymnasium}\label{sec:gymnasium}
-\noindent
+\subsection{Gymnasium}\label{sec:gymnasium}
+
 Gymnasium es la biblioteca estándar para entornos de aprendizaje por refuerzo que proporciona una interfaz
 unificada entre agentes y entornos \cite{towers2024gymnasium}. Sus principales ventajas incluyen:
 compatibilidad con múltiples algoritmos de RL, estandarización de espacios de acción y observación,
@@ -62,22 +62,22 @@ y un ecosistema extenso de entornos preconfigurados. Los \texttt{Wrappers} permi
 de entornos existentes sin alterar su código base, facilitando adaptaciones como normalización de observaciones,
 transformación de espacios de acción, o integración con simuladores externos.
 
-\subsubsection{Stable-Baselines3}\label{sec:stable-baselines3}
-\noindent
+\subsection{Stable-Baselines3}\label{sec:stable-baselines3}
+
 Stable-Baselines3 (SB3) es una biblioteca que implementa algoritmos de aprendizaje por refuerzo de última
 generación con código confiable y bien documentado \cite{raffin2021stable}. Incluye algoritmos como
 PPO (Proximal Policy Optimization), SAC (Soft Actor-Critic), TD3 (Twin Delayed Deep Deterministic Policy Gradient),
 y soporte para técnicas avanzadas como HER (Hindsight Experience Replay). Su diseño modular permite
 experimentación rápida con diferentes algoritmos manteniendo consistencia en hiperparámetros y evaluación.
 
-\subsubsection{Herramienta de experimentación y ajuste de parámetros}\label{sec:experimentation-tool}
-\noindent
+\subsection{Herramienta de experimentación y ajuste de parámetros}\label{sec:experimentation-tool}
+
 Para determinar la configuración óptima de parámetros de la solución propuesta, se desarrolló una aplicación en Python
 que carga una secuencia de imágenes de la trayectoria del vehículo en el estacionamiento y, para cada cuadro,
 calcula la retícula aplicando los pasos descritos en este trabajo. La herramienta permite visualizar el resultado de cada
 etapa y ajustar dinámicamente los parámetros para analizar su impacto en tiempo real.
 
-\noindent
+
 Parámetros ajustables considerados:
 \begin{itemize}
 	\item \texttt{threshold\_image}: Umbral de binarización de la imagen.
@@ -92,7 +92,7 @@ Parámetros ajustables considerados:
 	\item \texttt{agglomerative\_distance\_threshold}: Distancia máxima para pertenecer al mismo cúmulo.
 \end{itemize}
 
-\noindent
+
 A modo ilustrativo, a continuación  en la figura \ref{fig:experimentationBinary-teo} 
 se muestra la herramienta donde se visualizan contornos, líneas detectadas,
 intersecciones, intersecciones relevantes, cúmulos y puntos de fuga.
@@ -110,6 +110,6 @@ intersecciones, intersecciones relevantes, cúmulos y puntos de fuga.
 	
 \end{figure}
 
-\noindent
+
 La interfaz incorpora una "Trackbar" para modificar parámetros en tiempo real y observar su efecto inmediato,
 facilitando la búsqueda de configuraciones estables y robustas para distintas condiciones de escena.

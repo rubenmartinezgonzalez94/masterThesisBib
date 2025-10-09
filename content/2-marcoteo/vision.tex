@@ -1,12 +1,90 @@
-\noindent
 En esta sección se resumen los fundamentos teóricos necesarios para el resto del trabajo. Se presentan el modelo de cámara, homografías para el plano del suelo, y los operadores de detección de bordes y líneas, así como la notación homogénea para rectas y el concepto de puntos de fuga.
 
-\subsubsection{Modelo de cámara pinhole y calibración}\label{subsec:camera}
-\noindent
-El modelo pinhole aproxima la formación de imagen como una proyección central desde el centro óptico al plano de imagen. Bajo esta aproximación, un punto del mundo en el plano del suelo (aproximadamente coplanar) se proyecta mediante una transformación proyectiva. La calibración intrínseca estima la matriz de cámara y la distorsión, permitiendo normalizar coordenadas y razonar geométricamente con menor sesgo \cite{hartley2003multiple}.
+\subsection{Modelo de cámara pin-hole y calibración}\label{subsec:camera}
 
-\subsubsection{Homografías en el plano del suelo}\label{subsec:homografias}
-\noindent
+El modelo pin-hole es una aproximación matemática que describe cómo se forma una imagen
+en una cámara. Como se muestra en la Fig.~\ref{fig:pinhole-model}, este modelo representa
+la cámara como una caja con un pequeño orificio (pin-hole) por donde pasa la luz.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.99\textwidth]{img/2-mt/pinhole.png}
+	\caption{Geometría del modelo de cámara pin-hole. (Imagen de \cite{hartley2003multiple}).}
+	\label{fig:pinhole-model}
+\end{figure}
+
+
+En este modelo, un punto tridimensional \(\mathbf{X}\) del mundo se proyecta a través
+del centro óptico \(\mathbf{C}\) hacia el plano de imagen, generando el punto bidimensional
+\(\mathbf{x}\) en la imagen. Esta proyección es una transformación geométrica que preserva
+las líneas rectas pero no las distancias ni los ángulos.
+
+
+Para aplicaciones prácticas, es necesario conocer los parámetros internos de la cámara
+a través del proceso de \emph{calibración intrínseca}. Esta calibración estima
+una matriz de cámara que contiene parámetros como la distancia focal,
+el punto principal y el factor de aspecto, así como coeficientes de distorsión.
+
+
+Con estos parámetros, es posible \emph{normalizar} las coordenadas de la imagen,
+es decir, corregir las distorsiones y convertir píxeles a coordenadas métricas normalizadas.
+Esto permite realizar mediciones geométricas más precisas y aplicar algoritmos
+de visión por computadora con menor error \cite{hartley2003multiple}.
+
+\subsection{Líneas y puntos en el modelo pin-hole}\label{subsec:lines-points}
+
+En el modelo pin-hole, tanto los puntos como las líneas pueden representarse de forma cartesiana o homogénea. La representación homogénea ofrece ventajas computacionales importantes para operaciones geométricas como intersecciones y ajustes de múltiples elementos.
+
+Representación de puntos:\\
+Un punto en la imagen puede expresarse en coordenadas cartesianas como $(x,y)$ o en coordenadas homogéneas como $\mathbf{x}=[x,y,1]^\top$. La representación homogénea permite trabajar con transformaciones proyectivas de forma más elegante y manejar puntos en el infinito de manera consistente.
+
+Representación de líneas:\\
+Una línea en la imagen se representa en coordenadas homogéneas como $\ell=[A,B,C]^\top$, donde $A$, $B$ y $C$ son los parámetros de la ecuación cartesiana de la línea:
+\begin{equation}
+	Ax + By + C = 0
+\end{equation}
+
+Relación entre líneas y puntos:\\
+Un punto homogéneo $\mathbf{x}$ pertenece a una línea $\ell$ si y solo si:
+\begin{equation}
+	\ell^\top\mathbf{x} = 0
+\end{equation}
+Esta relación fundamental permite verificar incidencia y realizar operaciones geométricas de forma algebraica.
+
+Línea a partir de dos puntos cartesianos:\\
+Dados dos puntos cartesianos $(x_1,y_1)$ y $(x_2,y_2)$, la línea que los contiene se obtiene resolviendo el sistema:
+\begin{equation}
+	\begin{bmatrix}x_1&y_1&1\\x_2&y_2&1\end{bmatrix}\begin{bmatrix}A\\B\\C\end{bmatrix} = \mathbf{0}
+\end{equation}
+La solución $\ell=[A,B,C]^\top$ se encuentra calculando el espacio nulo de la matriz $\mathbf{M}$. Existen varias formas de obtener este espacio nulo, entre ellas una posible forma de hacerlo de manera simple es mediante descomposición en valores singulares (SVD) para mayor robustez numérica \cite{golub2013matrix}.
+
+Línea a partir de dos puntos homogéneos:\\
+Si los puntos están en coordenadas homogéneas $\mathbf{x}_1$ y $\mathbf{x}_2$, la línea se calcula directamente con el producto cruz:
+\begin{equation}
+	\ell = \mathbf{x}_1 \times \mathbf{x}_2
+\end{equation}
+
+Intersección de dos líneas:\\
+Dadas dos líneas homogéneas $\ell_1$ y $\ell_2$, su punto de intersección se obtiene mediante:
+\begin{equation}
+	\mathbf{x} = \ell_1 \times \ell_2
+\end{equation}
+Si $x_3 \neq 0$, el punto es finito y se deshomogeneiza como $(x/x_3, y/x_3)$. Valores $x_3 \approx 0$ indican líneas prácticamente paralelas con intersección en el infinito \cite{hartley2003multiple}.
+
+Ajuste a múltiples elementos:\\
+Para encontrar la mejor línea que pase por múltiples puntos, o el mejor punto de intersección de múltiples líneas, la solución óptima está dada por el eigenvector asociado al eigenvalor más pequeño de la matriz $\mathbf{M}$ \cite{kanatani1998statistical}:
+\begin{equation}
+	\mathbf{M} = \sum_{i=1}^{n} w_i \mathbf{v}_i \mathbf{v}_i^T
+\end{equation}
+donde $w_i$ es una ponderación y $\mathbf{v}_i$ representa:
+\begin{itemize}
+	\item Puntos homogéneos $\mathbf{x}_i$ para encontrar la línea que mejor se ajuste a los puntos
+	\item Líneas homogéneas $\ell_i$ para encontrar el punto de intersección de las líneas
+\end{itemize}
+En ambos casos, la solución se obtiene mediante descomposición de la matriz $\mathbf{M}$.
+
+\subsection{Homografías en el plano del suelo}\label{subsec:homografias}
+
 Cuando los puntos pertenecen a un mismo plano (p. ej., el asfalto),
 la relación entre sus proyecciones en dos vistas o entre el plano del mundo
 y la imagen puede modelarse con una homografía
@@ -15,42 +93,35 @@ definida a escala \cite{hartley2003multiple}.
 Esta matriz permite mapear cuadriláteros en la imagen a cuadrados canónicos,
 facilitando medir y extrapolar una retícula en la imagen.
 
-\subsubsection{Bordes y líneas: Canny y Hough}\label{sec:canny-hough}
-\noindent
+\subsection{Bordes y líneas: Canny y Hough}\label{sec:canny-hough}
+
 La extracción de bordes con Canny proporciona contornos estables frente a ruido mediante suavizado, gradiente y supresión no máxima \cite{canny1986edge}. La transformada de Hough detecta rectas parametrizando \(\rho,\theta\) y acumulando votos para evidenciar alineamientos \cite{ballard1981hough}. Estas dos herramientas permiten obtener segmentos candidatos a las marcas viales de la retícula.
 
-\subsubsection{Rectas en coordenadas homogéneas y SVD}\label{sec:rectas-svd}
-\noindent
-Una recta en la imagen se representa como \(\ell=[A,B,C]^\top\) tal que \(\ell^\top\,\mathbf{x}=0\) para puntos homogéneos \(\mathbf{x}=[x,y,1]^\top\). Dadas dos observaciones \((x_i,y_i)\), resolver \(\mathbf{M}\,[A\ B\ C]^\top=\mathbf{0}\) con \(\mathbf{M}=\begin{bmatrix}x_1&y_1&1\\x_2&y_2&1\end{bmatrix}\) produce \(\ell\) como vector del espacio nulo. La SVD ofrece un procedimiento robusto para obtener dicho vector \cite{golub2013matrix}. Las intersecciones entre rectas se obtienen con el producto cruz \(\mathbf{x}=\ell_1\times\ell_2\) y se deshomogeneizan si \(x_3\neq 0\).
+\subsection{Intersecciones de líneas y \textit{clustering}}\label{sec:intersections-clustering}
 
-\subsubsection{Intersecciones de líneas y \textit{clustering}}\label{sec:intersections-clustering}
-\noindent
 Dados conjuntos de rectas \(\{\ell_i\}\) en coordenadas homogéneas, las intersecciones puntuales se calculan con el producto cruz
 \(\mathbf{x}_{ij} = \ell_i \times \ell_j\). Si \(x_{ij,3} \neq 0\), el punto es finito y se deshomogeneiza como \( (x_{ij}/x_{ij,3},\ y_{ij}/x_{ij,3}) \); valores \(x_{ij,3} \approx 0\) indican intersecciones en el infinito (rectas prácticamente paralelas) \cite{hartley2003multiple}.
 
-\noindent
-En escenas urbanas con estructura aproximadamente Manhattan, muchas rectas convergen hacia uno o varios puntos de fuga. Por tanto, las
-intersecciones finitas tienden a concentrarse en vecindades cercanas a la línea del horizonte. Un filtrado previo por banda horizontal
-reduce ruido: se retienen solo las intersecciones con \(y\) dentro de una franja alrededor del horizonte estimado (Sección~\ref{sec:vanishing-points}).
 
-\noindent
+En escenas urbanas muchas rectas convergen hacia uno o varios puntos de fuga. Por tanto, las
+intersecciones finitas tienden a concentrarse en vecindades cercanas a la línea del horizonte. Un filtrado previo por banda horizontal reduce ruido: se retienen solo las intersecciones con \(y\) dentro de una franja alrededor del horizonte estimado (Sección~\ref{sec:vanishing-points}).
+
+
 Para consolidar evidencia y atenuar outliers, se agrupan las intersecciones \emph{relevantes} mediante técnicas de \textit{clustering} no supervisado.
-Una opción práctica es el \texttt{AgglomerativeClustering} con umbral de distancia para dejar que los datos determinen el número de cúmulos; alternativas
-como DBSCAN también son adecuadas cuando existen densidades heterogéneas \cite{tan2005introduction}. Los centroides de los cúmulos proporcionan
-estimaciones iniciales de puntos de fuga que luego pueden refinarse por mínimos cuadrados o criterios estadísticamente consistentes
+Una opción práctica es el \texttt{AgglomerativeClustering} con umbral de distancia para dejar que los datos determinen el número de cúmulos \cite{tan2005introduction}. Los centroides de los cúmulos proporcionan estimaciones iniciales de puntos de fuga que luego pueden refinarse por mínimos cuadrados o criterios estadísticamente consistentes
 \cite{kanatani1998statistical,hartley2003multiple}.
 
-\noindent
+
 En resumen, el flujo teórico es: (i) estimar rectas, (ii) generar intersecciones por pares, (iii) filtrar por banda cercana al horizonte,
 (iv) agrupar por proximidad, y (v) usar los centroides de cúmulos como candidatos a puntos de fuga para la separación de haces de líneas.
 
-\subsubsection{Puntos de fuga}\label{sec:vanishing-points}
-\noindent
-Cuando proyectamos una escena del mundo real en tres dimensiones sobre un plano bidimensional, 
+\subsection{Puntos de fuga}\label{sec:vanishing-points}
+
+Cuando proyectamos una escena del mundo real en tres dimensiones sobre un plano bidimensional,
 como la película o el sensor de una cámara, se produce una transformación en la imagen.
 Esta transformación, conocida como transformación proyectiva, provoca que las líneas paralelas en el mundo real,
- al proyectarse en el plano de la cámara, se intersecten en un punto denominado punto de fuga.
-  La Fig.~\ref{fig:distorion-teo} ilustra el fenómeno de paralelismo en 3D y su proyección en 2D.
+al proyectarse en el plano de la cámara, se intersecten en un punto denominado punto de fuga.
+La Fig.~\ref{fig:distorion-teo} ilustra el fenómeno de paralelismo en 3D y su proyección en 2D.
 
 \begin{figure}[!ht]
 	\centering
@@ -66,7 +137,7 @@ Esta transformación, conocida como transformación proyectiva, provoca que las 
 	\label{fig:distorion-teo}
 \end{figure}
 
-\noindent
-Estimar puntos de fuga con múltiples líneas y criterios robustos reduce la sensibilidad a ruido y oclusiones 
+
+Estimar puntos de fuga con múltiples líneas y criterios robustos reduce la sensibilidad a ruido y oclusiones
 \cite{hartley2003multiple,kanatani1998statistical}. En este trabajo se emplean dos puntos de fuga para separar
- las marcas de la retícula en dos conjuntos según su punto de fuga, coherentes con la geometría del estacionamiento.
+las marcas de la retícula en dos conjuntos según su punto de fuga, coherentes con la geometría del estacionamiento.

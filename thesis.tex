@@ -62,7 +62,7 @@
 \makeatletter
 \long\def\@makefntext#1{\@setpar{\@@par\@tempdima \hsize
   \advance\@tempdima-10pt\parshape \@ne 10pt \@tempdima}\par
-  \parindent 1em\noindent \hbox to \z@{\hss$^{\@thefnmark}\ $}#1}
+  \parindent 1em \hbox to \z@{\hss$^{\@thefnmark}\ $}#1}
 \makeatother
 
 % Some commands to handle linespacing
@@ -161,7 +161,7 @@
 \section{Estado del arte - Trabajos previos relacionados}
 \input{content/1-intro/related-works}
 
-% \subsubsection{Tabla comparativa}
+% \subsection{Tabla comparativa}
 % \input{content/1-intro/related-works-comparison}
 
 % Capítulo 2: Marco teórico
@@ -172,11 +172,11 @@
 \section{Fundamentos de visión por computadora}\label{sec:vision}
 \input{content/2-marcoteo/vision}
 
-\section{Plataformas y librerías}\label{sec:plataformas}
-\input{content/2-marcoteo/plataformas}
-
 \section{RANSAC para homografías basadas en líneas}\label{sec:ransac-teorico}
 \input{content/2-marcoteo/ransac}
+
+\section{Plataformas y librerías}\label{sec:plataformas}
+\input{content/2-marcoteo/plataformas}
 
 \section{Aprendizaje por refuerzo}
 \input{content/2-marcoteo/reinforcement-learning}

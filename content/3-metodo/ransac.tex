@@ -1,11 +1,11 @@
-\noindent
+
 Con base en los principios expuestos en la Sección \ref{sec:ransac-teorico},
 aplicamos una adaptación de RANSAC para estimar una homografía que haga coherente una retícula ideal con
 las líneas de los cajones visibles en la imagen. Este enfoque conserva la robustez frente a outliers y
 oclusiones propias del escenario de estacionamiento.
 
-\subsubsection{Variación de RANSAC para ajuste de retícula:}
-\noindent
+\subsection{Variación de RANSAC para ajuste de retícula:}
+
 La variación propuesta sigue el ciclo de la Figura~\ref{fig:ramsac-flujo}:
 
 \begin{figure}[!ht]
@@ -15,7 +15,7 @@ La variación propuesta sigue el ciclo de la Figura~\ref{fig:ramsac-flujo}:
     \label{fig:ramsac-flujo}
 \end{figure}
 
-\noindent
+
 Cada iteración del ciclo comprende los siguientes pasos:
 \begin{enumerate}
     \item A partir de dos puntos de fuga estimados, agrupar las líneas detectadas en dos conjuntos según su punto de fuga asociado.
@@ -26,7 +26,7 @@ Cada iteración del ciclo comprende los siguientes pasos:
     \item Almacenar temporalmente \(\mathbf{H}\) y su medida de ajuste; repetir desde el paso 2 durante \(N\) iteraciones.
 \end{enumerate}
 
-\noindent
+
 Tras completar las iteraciones, se selecciona la homografía con mejor medida de consistencia 
 como representación de la retícula en la imagen. 
 Esta homografía permite extender el patrón más allá del campo visible, 
@@ -45,5 +45,5 @@ la transformación de un cuadrado canónico a un cajón detectado en la imagen m
     \label{fig:ramsac-transform}
 \end{figure}
 
-\subsubsection{extracción de coordenadas en la retícula detectada:}
+\subsection{extracción de coordenadas en la retícula detectada:}
 Pendiente de redacción.
