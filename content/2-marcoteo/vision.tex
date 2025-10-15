@@ -51,7 +51,7 @@ Un punto homogéneo $\mathbf{x}$ pertenece a una línea $\ell$ si y solo si:
 \end{equation}
 Esta relación fundamental permite verificar incidencia y realizar operaciones geométricas de forma algebraica.
 
-Línea a partir de dos puntos cartesianos:\\
+Línea a partir de dos puntos cartesianos: \label{subsec:line-from-points} \\
 Dados dos puntos cartesianos $(x_1,y_1)$ y $(x_2,y_2)$, la línea que los contiene se obtiene resolviendo el sistema:
 \begin{equation}
 	\begin{bmatrix}x_1&y_1&1\\x_2&y_2&1\end{bmatrix}\begin{bmatrix}A\\B\\C\end{bmatrix} = \mathbf{0}
@@ -71,7 +71,7 @@ Dadas dos líneas homogéneas $\ell_1$ y $\ell_2$, su punto de intersección se 
 \end{equation}
 Si $x_3 \neq 0$, el punto es finito y se deshomogeneiza como $(x/x_3, y/x_3)$. Valores $x_3 \approx 0$ indican líneas prácticamente paralelas con intersección en el infinito \cite{hartley2003multiple}.
 
-Ajuste a múltiples elementos:\\
+Ajuste a múltiples elementos: \label{sec:ajuste-multiples-elementos} \\
 Para encontrar la mejor línea que pase por múltiples puntos, o el mejor punto de intersección de múltiples líneas, la solución óptima está dada por el eigenvector asociado al eigenvalor más pequeño de la matriz $\mathbf{M}$ \cite{kanatani1998statistical}:
 \begin{equation}
 	\mathbf{M} = \sum_{i=1}^{n} w_i \mathbf{v}_i \mathbf{v}_i^T

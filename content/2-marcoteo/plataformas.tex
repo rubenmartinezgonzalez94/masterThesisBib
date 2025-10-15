@@ -53,22 +53,6 @@ las fusiones cuando la distancia supera un umbral, lo cual resulta práctico en 
 Esta técnica es apropiada para consolidar intersecciones cercanas al horizonte en cúmulos cuya localización (centroide)
 sirve de estimación inicial de puntos de fuga \cite{tan2005introduction}.
 
-\subsection{Gymnasium}\label{sec:gymnasium}
-
-Gymnasium es la biblioteca estándar para entornos de aprendizaje por refuerzo que proporciona una interfaz
-unificada entre agentes y entornos \cite{towers2024gymnasium}. Sus principales ventajas incluyen:
-compatibilidad con múltiples algoritmos de RL, estandarización de espacios de acción y observación,
-y un ecosistema extenso de entornos preconfigurados. Los \texttt{Wrappers} permiten modificar el comportamiento
-de entornos existentes sin alterar su código base, facilitando adaptaciones como normalización de observaciones,
-transformación de espacios de acción, o integración con simuladores externos.
-
-\subsection{Stable-Baselines3}\label{sec:stable-baselines3}
-
-Stable-Baselines3 (SB3) es una biblioteca que implementa algoritmos de aprendizaje por refuerzo de última
-generación con código confiable y bien documentado \cite{raffin2021stable}. Incluye algoritmos como
-PPO (Proximal Policy Optimization), SAC (Soft Actor-Critic), TD3 (Twin Delayed Deep Deterministic Policy Gradient),
-y soporte para técnicas avanzadas como HER (Hindsight Experience Replay). Su diseño modular permite
-experimentación rápida con diferentes algoritmos manteniendo consistencia en hiperparámetros y evaluación.
 
 \subsection{Herramienta de experimentación y ajuste de parámetros}\label{sec:experimentation-tool}
 
@@ -113,3 +97,20 @@ intersecciones, intersecciones relevantes, cúmulos y puntos de fuga.
 
 La interfaz incorpora una "Trackbar" para modificar parámetros en tiempo real y observar su efecto inmediato,
 facilitando la búsqueda de configuraciones estables y robustas para distintas condiciones de escena.
+
+\subsection{Gymnasium}\label{sec:gymnasium}
+
+Gymnasium es la biblioteca estándar para entornos de aprendizaje por refuerzo que proporciona una interfaz
+unificada entre agentes y entornos \cite{towers2024gymnasium}. Sus principales ventajas incluyen:
+compatibilidad con múltiples algoritmos de RL, estandarización de espacios de acción y observación,
+y un ecosistema extenso de entornos preconfigurados. Los \texttt{Wrappers} permiten modificar el comportamiento
+de entornos existentes sin alterar su código base, facilitando adaptaciones como normalización de observaciones,
+transformación de espacios de acción, o integración con simuladores externos.
+
+\subsection{Stable-Baselines3}\label{sec:stable-baselines3}
+
+Stable-Baselines3 (SB3) es una biblioteca que implementa algoritmos de aprendizaje por refuerzo de última
+generación con código confiable y bien documentado \cite{raffin2021stable}. Incluye algoritmos como
+PPO (Proximal Policy Optimization), SAC (Soft Actor-Critic), TD3 (Twin Delayed Deep Deterministic Policy Gradient),
+y soporte para técnicas avanzadas como HER (Hindsight Experience Replay). Su diseño modular permite
+experimentación rápida con diferentes algoritmos manteniendo consistencia en hiperparámetros y evaluación.
