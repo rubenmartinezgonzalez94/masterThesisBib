@@ -8,19 +8,14 @@ desarrolladas en este trabajo.
 
 Implementamos el entorno de aprendizaje por refuerzo utilizando \texttt{Gymnasium} como framework
 estándar para la interfaz agente-entorno, integrado con el simulador CARLA que proporciona
-un mundo físicamente realista. Esta combinación nos permite:
+un mundo físicamente realista. 
 
-\begin{itemize}
-    \item \textbf{Entorno físico}: CARLA simula las leyes de la física vehicular, incluyendo
-    dinámica de carrocería, fricción de neumáticos, y colisiones realistas en el contexto
-    de un estacionamiento con cajones delimitados.
-    
-    \item \textbf{Sensorización virtual}: El vehículo simulado está equipado con sensores
-    que replican los de un vehículo real: cámara frontal, velocímetro, y sensores de pose.
-    
-    \item \textbf{Interfaz estandarizada}: Gymnasium proporciona la API estándar que permite
-    intercambiar diferentes algoritmos de RL sin modificar el código del entorno.
-\end{itemize}
+CARLA simula las leyes de la física vehicular con alta fidelidad, incluyendo la dinámica de carrocería, 
+fricción de neumáticos y colisiones realistas en el contexto de un estacionamiento con cajones delimitados. 
+El vehículo simulado está equipado con sensores que replican los de un vehículo real: cámara frontal, 
+velocímetro y sensores de pose. Por su parte, Gymnasium proporciona la API estándar que permite 
+intercambiar diferentes algoritmos de aprendizaje por refuerzo sin necesidad de modificar el código 
+del entorno, facilitando la experimentación con distintos enfoques de entrenamiento.
 
 \subsection{Definición del agente y espacio de acciones}\label{subsec:rl-agent}
 
@@ -60,26 +55,50 @@ directamente del sensor velocímetro del vehículo simulado.
 
 \subsection{Adaptación del framework Highway-env}\label{subsec:rl-highway-adaptation}
 
-Para la implementación del aprendizaje por refuerzo adoptamos el framework Highway-env \cite{highway-env},
-una biblioteca especializada en entornos de conducción autónoma que proporciona implementaciones
+Para la implementación del aprendizaje por refuerzo adoptamos el framework Highway-env \cite{highway-env}, (véase Sección~\ref{subsec:rl-highway-theory}) una biblioteca especializada en entornos de conducción autónoma que proporciona implementaciones
 probadas y exitosas de espacios de acción, observación y funciones de recompensa para tareas
-de estacionamiento. En lugar de desarrollar estos componentes desde cero, nos enfocamos en
-integrar nuestra contribución de visión por computadora con esta solución establecida.
+de estacionamiento. En lugar de desarrollar estos componentes desde cero, utilizamos esta solución 
+establecida como plataforma de prueba para validar nuestros algoritmos de visión por computadora 
+en un contexto de aplicación real.
 
 
-\textbf{Contribución específica}: Nuestra aportación principal consiste en reemplazar el
-sistema de observación simplificado de Highway-env por un intérprete realista basado en
-los algoritmos de detección de retícula desarrollados en este trabajo, y migrar la
+\textbf{Adaptación realizada}: Para lograr un entorno más realista y cercano al mundo real, 
+reemplazamos el sistema de observación simplificado de Highway-env por nuestro intérprete basado en
+los algoritmos de detección de retícula desarrollados en este trabajo, y migramos la
 simulación del entorno abstracto original a CARLA para obtener una física vehicular
-más precisa.
+más precisa. Esta adaptación nos permite evaluar el desempeño de nuestros algoritmos de visión 
+en condiciones más cercanas a las de un sistema de estacionamiento automático real.
 
 
-\textbf{Componentes reutilizados de Highway-env}:
-\begin{itemize}
-    \item \textbf{Espacio de acciones}: $\mathcal{A} = \text{Box}([-1, -1], [1, 1])$ para control continuo [aceleración, dirección]
-    \item \textbf{Función de recompensa}: Basada en distancia al objetivo con penalización de acciones bruscas
-    \item \textbf{Estrategia de episodios}: Criterios de terminación y reinicio del entorno
-\end{itemize}
+\textbf{Componentes reutilizados de Highway-env}: Para la implementación del entorno de aprendizaje, 
+adoptamos los siguientes elementos del framework original que han demostrado ser efectivos para 
+tareas de estacionamiento:
+
+\textbf{Espacio de observaciones}: Vector continuo de 6 elementos $\mathbf{s} \in \mathbb{R}^6$ que representa
+el estado completo del vehículo:
+\begin{equation}
+\mathbf{s} = [x, y, v_x, v_y, \cos(\theta), \sin(\theta)]
+\end{equation}
+donde $(x, y)$ es la posición en coordenadas del estacionamiento, $(v_x, v_y)$ son las componentes 
+de velocidad, y $(\cos(\theta), \sin(\theta))$ representa la orientación del vehículo.
+
+\textbf{Espacio de acciones}: $\mathcal{A} = \text{Box}([-1, -1], [1, 1])$ para control continuo, 
+donde cada acción $\mathbf{a} = [a_{\text{acc}}, a_{\text{dir}}]$ controla aceleración y dirección 
+respectivamente.
+
+\textbf{Función de recompensa}: La recompensa en cada paso está dada por:
+\begin{equation}
+r = -|\mathbf{g} - \mathbf{s}| - \alpha \cdot |\mathbf{a}|
+\end{equation}
+donde $\mathbf{g}$ es la posición objetivo (desired goal), $\mathbf{s}$ es el estado actual 
+(achieved goal), $\mathbf{a}$ es la acción tomada, y $\alpha$ es un factor de regularización 
+que penaliza acciones extremas para promover maniobras suaves.
+
+\textbf{Objetivo}: El agente debe alcanzar una posición objetivo específica (landmark) con la 
+orientación deseada, correspondiente a un cajón de estacionamiento válido dentro de la retícula detectada.
+
+\textbf{Estrategia de episodios}: Se utilizan los criterios de terminación y reinicio del entorno 
+originales de Highway-env.
 
 
 Los detalles completos del diseño original de Highway-env se describen en la
@@ -98,8 +117,8 @@ perfecta y simplificada, nuestro sistema debe:
     a la imagen de la cámara frontal del vehículo simulado en CARLA
     \item \textbf{Estimar pose}: Convertir la detección de retícula en estimaciones de
     posición $(x,y)$ y orientación $\theta$ del vehículo respecto al estacionamiento
-    \item \textbf{Manejar incertidumbre}: Lidiar con detecciones imperfectas, oclusiones
-    y condiciones de iluminación variables que no existen en el entorno abstracto original
+    \item \textbf{Manejar incertidumbre}: Lidiar con detecciones imperfectas y oclusiones
+    variables que no existen en el entorno abstracto original
 \end{itemize}
 
 
