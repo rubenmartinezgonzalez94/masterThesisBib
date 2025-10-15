@@ -21,46 +21,46 @@
 \contentsline {subsection}{\numberline {2.2.1}Variación propuesta en este trabajo}{18}{subsection.2.2.1}%
 \contentsline {section}{\numberline {2.3}Plataformas y librerías}{19}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}CARLA Simulator}{19}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}OpenCV}{20}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.2}OpenCV}{19}{subsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.3.3}scikit-learn: \texttt {AgglomerativeClustering}}{20}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Gymnasium}{20}{subsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.3.5}Stable-Baselines3}{21}{subsection.2.3.5}%
-\contentsline {subsection}{\numberline {2.3.6}Herramienta de experimentación y ajuste de parámetros}{21}{subsection.2.3.6}%
+\contentsline {subsection}{\numberline {2.3.4}Herramienta de experimentación y ajuste de parámetros}{20}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Gymnasium}{21}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}Stable-Baselines3}{22}{subsection.2.3.6}%
 \contentsline {section}{\numberline {2.4}Aprendizaje por refuerzo}{22}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Componentes fundamentales del aprendizaje por refuerzo}{23}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Aplicación al estacionamiento automático}{24}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.1}Componentes fundamentales del aprendizaje por refuerzo}{22}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Aplicación al estacionamiento automático}{23}{subsection.2.4.2}%
 \contentsline {subsection}{\numberline {2.4.3}Highway-env}{24}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4}Entorno de estacionamiento en Highway-env}{24}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.4}Entorno de estacionamiento en Highway-env}{25}{subsection.2.4.4}%
 \contentsline {subsection}{\numberline {2.4.5}Ventajas y limitaciones para aplicaciones realistas}{25}{subsection.2.4.5}%
 \contentsline {chapter}{\numberline {3}Metodología}{27}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Entorno de simulación}{27}{section.3.1}%
+\contentsline {section}{\numberline {3.1}Entorno de simulación}{28}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Detección de la retícula de estacionamiento}{28}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Área de interés:}{29}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Umbralización:}{29}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Detección de contornos (Canny):}{29}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Detección de líneas (Hough):}{30}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Representación de las ecuaciones de las líneas:}{31}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.2}Umbralización:}{30}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Detección de contornos (Canny):}{31}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Detección de líneas (Hough):}{31}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Representación de las ecuaciones de las líneas:}{32}{subsection.3.2.5}%
 \contentsline {subsection}{\numberline {3.2.6}Cálculo de ecuaciones de las líneas (SVD):}{32}{subsection.3.2.6}%
-\contentsline {subsection}{\numberline {3.2.7}Cálculo de intersecciones (Clustering):}{32}{subsection.3.2.7}%
-\contentsline {subsection}{\numberline {3.2.8}Selección del punto de fuga principal:}{34}{subsection.3.2.8}%
+\contentsline {subsection}{\numberline {3.2.7}Cálculo de intersecciones (Clustering):}{33}{subsection.3.2.7}%
+\contentsline {subsection}{\numberline {3.2.8}Selección del punto de fuga principal:}{35}{subsection.3.2.8}%
 \contentsline {subsection}{\numberline {3.2.9}Selección del 2do punto de fuga principal:}{35}{subsection.3.2.9}%
-\contentsline {subsection}{\numberline {3.2.10}Filtrado de intersecciones y líneas relevantes:}{35}{subsection.3.2.10}%
+\contentsline {subsection}{\numberline {3.2.10}Filtrado de intersecciones y líneas relevantes:}{36}{subsection.3.2.10}%
 \contentsline {section}{\numberline {3.3}Ajuste de la retícula mediante RANSAC}{36}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Variación de RANSAC para ajuste de retícula:}{36}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}extracción de coordenadas en la retícula detectada:}{37}{subsection.3.3.2}%
-\contentsline {chapter}{\numberline {4}Resultados y aplicaciones}{38}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Retículas obtenidas para diferentes escenarios}{38}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Aplicación en aprendizaje por refuerzo}{38}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Configuración del entorno con Gymnasium y CARLA}{38}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Definición del agente y espacio de acciones}{39}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Espacio de observaciones y sistema intérprete}{39}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Adaptación del framework Highway-env}{39}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Integración de visión por computadora y RL}{40}{subsection.4.2.5}%
-\contentsline {subsection}{\numberline {4.2.6}Highway-env aplicando la retícula detectada}{41}{subsection.4.2.6}%
-\contentsline {subsection}{\numberline {4.2.7}Configuración del modelo}{41}{subsection.4.2.7}%
-\contentsline {subsection}{\numberline {4.2.8}Arquitectura de wrappers}{41}{subsection.4.2.8}%
-\contentsline {subsection}{\numberline {4.2.9}Integración del sistema de visión}{42}{subsection.4.2.9}%
-\contentsline {subsection}{\numberline {4.2.10}Ventajas de la implementación híbrida}{42}{subsection.4.2.10}%
-\contentsline {subsection}{\numberline {4.2.11}comparación de resultados}{43}{subsection.4.2.11}%
-\contentsline {chapter}{\numberline {5}Conclusiones y trabajo futuro}{44}{chapter.5}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{45}{chapter*.27}%
+\contentsline {subsection}{\numberline {3.3.2}Extracción de coordenadas en la retícula detectada}{38}{subsection.3.3.2}%
+\contentsline {chapter}{\numberline {4}Resultados y aplicaciones}{39}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Retículas obtenidas para diferentes escenarios}{39}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Aplicación en aprendizaje por refuerzo}{39}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Configuración del entorno con Gymnasium y CARLA}{39}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Definición del agente y espacio de acciones}{40}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Espacio de observaciones y sistema intérprete}{40}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Adaptación del framework Highway-env}{40}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Integración de visión por computadora y RL}{42}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}Highway-env aplicando la retícula detectada}{42}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Configuración del modelo}{42}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Arquitectura de wrappers}{43}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Integración del sistema de visión}{43}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Ventajas de la implementación híbrida}{44}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.5}Comparación de resultados}{44}{subsection.4.3.5}%
+\contentsline {chapter}{\numberline {5}Conclusiones y trabajo futuro}{45}{chapter.5}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{46}{chapter*.28}%
