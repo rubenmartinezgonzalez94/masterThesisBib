@@ -45,5 +45,39 @@ la transformación de un cuadrado canónico a un cajón detectado en la imagen m
     \label{fig:ramsac-transform}
 \end{figure}
 
-\subsection{extracción de coordenadas en la retícula detectada:}
-Pendiente de redacción.
+\subsection{Extracción de coordenadas en la retícula detectada}
+
+Una vez estimada la homografía óptima \(\mathbf{H}\) mediante el esquema RANSAC descrito, 
+es posible extraer información métrica y realizar mediciones en el espacio 3D del estacionamiento. 
+La homografía establece una correspondencia entre puntos del plano de la retícula ideal 
+(coordenadas normalizadas 2D) y puntos en el plano del suelo del mundo 3D.
+
+Dados dos puntos en coordenadas homogéneas de la retícula normalizada:
+\begin{equation}
+\mathbf{p}_1 = [x_1, y_1, 1]^T, \quad \mathbf{p}_2 = [x_2, y_2, 1]^T
+\end{equation}
+sus correspondientes en el plano del suelo se obtienen aplicando la homografía:
+\begin{equation}
+\mathbf{P}_1 = \mathbf{H} \cdot \mathbf{p}_1, \quad \mathbf{P}_2 = \mathbf{H} \cdot \mathbf{p}_2
+\end{equation}
+
+Tras deshomogeneizar (dividir por la tercera coordenada), se obtienen las coordenadas 
+métricas $(X_1, Y_1)$ y $(X_2, Y_2)$ en el plano del suelo. Con estas coordenadas, 
+es posible calcular distancias euclidianas reales:
+\begin{equation}
+d = \sqrt{(X_2 - X_1)^2 + (Y_2 - Y_1)^2}
+\end{equation}
+
+Este procedimiento permite realizar mediciones precisas entre puntos de interés en la retícula, 
+como las esquinas de los cajones, centros de cajones, o distancias relativas del vehículo 
+respecto a la estructura del estacionamiento. La Figura~\ref{fig:distances-grid} muestra 
+un ejemplo de varias distancias medidas en el espacio 3D a partir de la retícula detectada, 
+donde se pueden observar las distancias desde la posición del vehículo (representado por 
+el rectángulo azul en el origen) hacia diferentes puntos de la retícula proyectada.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/3-metodo/distances.png}
+    \caption{Ejemplo de mediciones de distancias en el espacio 3D a partir de la retícula detectada.}
+    \label{fig:distances-grid}
+\end{figure}

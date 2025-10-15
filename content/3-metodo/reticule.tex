@@ -53,7 +53,7 @@ En la figura \ref{fig:threshold} se muestra un ejemplo de la imagen umbralizada.
     \label{fig:threshold}
 \end{figure}
 
-\subsection{Detección de contornos (Canny):}
+\subsection{Detección de contornos (Canny):}\label{sec:canny}
 
 Se utiliza el algoritmo de Canny \cite{canny1986edge} (véase Sección~\ref{sec:canny-hough}) para detectar los bordes de las líneas en la imagen umbralizada.
 En la figura \ref{fig:edges} se muestra un ejemplo de la imagen con los bordes detectados.
@@ -64,7 +64,7 @@ En la figura \ref{fig:edges} se muestra un ejemplo de la imagen con los bordes d
     \label{fig:edges}
 \end{figure}
 
-\subsection{Detección de líneas (Hough):}
+\subsection{Detección de líneas (Hough):} \label{sec:hough}
 
 Se aplica la transformada de Hough \cite{ballard1981hough} (Sección~\ref{sec:canny-hough}) para detectar las coordenadas de inicio y fin de las líneas en la imagen.
 En las figuras \ref{fig:hough} y \ref{fig:lines} se muestran las líneas detectadas sin fondo y sobre la imagen original, respectivamente.
@@ -83,7 +83,7 @@ En las figuras \ref{fig:hough} y \ref{fig:lines} se muestran las líneas detecta
 
 \subsection{Representación de las ecuaciones de las líneas:}
 
-Una vez obtenidas las coordenadas de inicio y fin de cada línea paralela, se puede utilizar la ecuación general de la recta (véase Sección~\ref{sec:rectas-svd}):
+Una vez obtenidas las coordenadas de inicio y fin de cada línea paralela, se puede utilizar la ecuación general de la recta (véase Sección~\ref{subsec:lines-points}):
 \begin{equation}
     Ax + By + C = 0
 \end{equation}
@@ -115,7 +115,7 @@ lo cual es fundamental para analizar su orientación y posición dentro de la re
 
 \subsection{Cálculo de ecuaciones de las líneas (SVD):}
 
-Para calcular los coeficientes $[A, B, C]$ de las ecuaciones de las líneas detectadas, se utiliza el concepto de espacio nulo (\emph{null space}) y SVD (Sección~\ref{sec:rectas-svd}).
+Para calcular los coeficientes $[A, B, C]$ de las ecuaciones de las líneas detectadas, se utiliza el concepto de espacio nulo (\emph{null space}) y SVD (Sección~\ref{subsec:line-from-points}).
 Este enfoque se basa en el hecho de que cualquier vector en el espacio nulo de una matriz $\mathbf{M}$ satisface la ecuación
 \begin{equation}
     \mathbf{Mv} = 0
@@ -197,7 +197,7 @@ intersecciones relevantes del ejemplo anterior: se forman 3 clusters (colores di
 \subsection{Selección del punto de fuga principal:}
 
 Para estimar la posición del punto de fuga principal, se puede seleccionar el cluster con mayor cantidad de intersecciones y
-utilizar las líneas que generaron estos puntos para calcular la intersección de estas líneas.
+utilizar las líneas que generaron estos puntos para calcular la intersección de estas líneas. Véase Sección~\ref{sec:ajuste-multiples-elementos}.
 La intersección de $n$ líneas (bajo un criterio de mínimos cuadrados) está dada por
 el eigenvector asociado al eigenvalor más pequeño de la matriz $M$, donde:
 \[
@@ -217,7 +217,7 @@ representa el punto de fuga principal con un símbolo \texttt{+} amarillo.
 \subsection{Selección del 2do punto de fuga principal:}
 
 Una vez estimado el primer punto de fuga \(\mathbf{v}_1=(x_1,y_1)\), el segundo (\(\mathbf{v}_2\)) puede obtenerse
-aprovechando que corresponde a una dirección ortogonal en 3D. Con un modelo pin-hole simple, pixeles cuadrados, punto principal
+aprovechando que corresponde a una dirección ortogonal en 3D. Con un modelo pin-hole simple (Véase Sección~\ref{subsec:camera}), pixeles cuadrados, punto principal
 en el centro \(C_x\), los puntos de fuga de direcciones ortogonales verifican la relación
 \( (x_1-C_x)(x_2-C_x) + f^2 \approx 0 \). De ahí se despeja la coordenada horizontal de \(\mathbf{v}_2\):
 \begin{equation}
@@ -231,6 +231,6 @@ Aquí \(f\) es la longitud focal en píxeles, que aproximamos a partir del FOV h
 
 Una vez que se han identificado los puntos de fuga principales, se puede proceder a filtrar las intersecciones y las líneas que son
 relevantes para la retícula de estacionamiento.
-Primero, se filtran las intersecciones que están cerca de los puntos de fuga principales, utilizando un umbral de distancia que se puede ajustar experimentalmente.
+Primero, se filtran las intersecciones que están cerca de los puntos de fuga principales, utilizando un umbral de distancia que se puede ajustar experimentalmente. (Véase Sección~\ref{sec:experimentation-tool}).
 Luego, se filtran las líneas que pasan por estas intersecciones relevantes.
 Este proceso ayuda a eliminar el ruido y las líneas que no contribuyen a la formación de la retícula de estacionamiento.
