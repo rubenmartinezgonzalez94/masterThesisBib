@@ -2,9 +2,14 @@
 *.aux
 *.log
 *.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.out
+*.toc
 *.xml
 *.iml
 *.blg
 *.out
-thesis.lof
-thesis.fdb_latexmk
+thesis_protocol.pdf

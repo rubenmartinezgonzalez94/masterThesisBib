@@ -24,25 +24,25 @@ cuatro elementos principales representados en la figura \ref{fig:rl-cycle}:
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Agente}: Entidad que toma decisiones y ejecuta acciones. En el contexto de estacionamiento automático,
+    \item \textbf{Agente}: entidad que toma decisiones y ejecuta acciones. En el contexto de estacionamiento automático,
     el agente corresponde al sistema de control del vehículo que decide las maniobras a realizar.
     
-    \item \textbf{Entorno}: Sistema o mundo en el que opera el agente. Para estacionamiento, incluye
+    \item \textbf{Entorno}: sistema o mundo en el que opera el agente. Para estacionamiento, incluye
     el espacio físico del estacionamiento, otros vehículos, obstáculos y las leyes físicas que gobiernan
     el movimiento vehicular.
     
-    \item \textbf{Estado}: Representación de la situación actual del sistema. Típicamente incluye
+    \item \textbf{Estado}: representación de la situación actual del sistema. Típicamente incluye
     información sobre la posición, orientación y velocidad del vehículo, así como la disposición
     del entorno circundante.
     
-    \item \textbf{Acción}: Decisión o maniobra que el agente puede ejecutar para cambiar el estado
+    \item \textbf{Acción}: decisión o maniobra que el agente puede ejecutar para cambiar el estado
     del entorno. En conducción, las acciones básicas incluyen acelerar, frenar y girar el volante.
     
-    \item \textbf{Recompensa}: Señal numérica que evalúa qué tan buena o mala fue una acción particular
+    \item \textbf{Recompensa}: señal numérica que evalúa qué tan buena o mala fue una acción particular
     en un estado dado. Una función de recompensa bien diseñada guía al agente hacia comportamientos deseables
     (como estacionar correctamente) y penaliza acciones indeseables (como colisiones).
     
-    \item \textbf{Política}: Estrategia que determina qué acción tomar en cada estado. El objetivo
+    \item \textbf{Política}: estrategia que determina qué acción tomar en cada estado. El objetivo
     del aprendizaje por refuerzo es encontrar una política óptima que maximice la recompensa acumulada.
 \end{itemize}
 

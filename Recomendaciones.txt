@@ -1,0 +1,20 @@
+Recomendaciones.
+
+En latex, cuando quieras ecribir algo entre comillas, no uses las comillas dobles normales. En lugar de eso usa dos comillas graves (``) para abrir, y dos comillas verticales para cerrar ('').
+
+``Trackbar''
+
+Al hacer referencias a secciones usar minusculas en seccion. Lo mismo para otras partes: e.g. "...y el ajuste óptimo mediante formulaciones basadas en el espacio nulo (véase sección \ref{subsec:lines-points})". Lo mismo con figuras y tablas.
+
+Nunca poner coman antes de "y".
+
+Cuando tengas que usar un término en otro idioma, escríbelo en itálicas, e.g. \emph{outliers}
+
+Palabras extranjeras como píxel o pixel, se acentuan tal como tu las pronuncias. No como dice la RAE.
+
+Cuando quieras decir "por ejemplo", mejor escribe "\emph{e.g.} (exampli gratia).
+Ifuamlemnte cuando quieras escribir "esto es", usa mejor "\emph{i.e.} (id est).
+
+Anadir mas imagenes en la seccion 2.1.
+
+¡NO SON LIBRERIAS SON BIBLIOTECAS!
