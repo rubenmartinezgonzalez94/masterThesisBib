@@ -6,32 +6,32 @@ personalizados que conectan con el simulador CARLA y nuestro sistema de visión 
 
 \subsection{Configuración del modelo}
 
-Utilizamos el algoritmo SAC (Soft Actor-Critic) de Stable-Baselines3 (Sección~\ref{sec:stable-baselines3})
+Utilizamos el algoritmo SAC (Soft Actor-Critic) de Stable-Baselines3 (sección~\ref{sec:stable-baselines3})
 con Hindsight Experience Replay (HER) para manejar la naturaleza de objetivo disperso del estacionamiento.
-La configuración sigue las mejores prácticas de Highway-env (Sección~\ref{subsec:highway-env-theory}):
+La configuración sigue las mejores prácticas de Highway-env (sección~\ref{subsec:highway-env-theory}):
 
 \begin{itemize}
     \item \textbf{Algoritmo}: SAC con política \texttt{MultiInputPolicy} para manejar espacios de observación estructurados
-    \item \textbf{HER}: 4 objetivos muestreados por episodio con estrategia "future" para aprendizaje de objetivos dispersos
+    \item \textbf{HER}: 4 objetivos muestreados por episodio con estrategia ``future'' para aprendizaje de objetivos dispersos
     \item \textbf{Hiperparámetros}: Buffer de 1M transiciones, learning rate 1e-3, red neuronal [256, 256, 256]
     \item \textbf{Entorno base}: \texttt{parking-v0} de Highway-env con modificaciones mediante wrappers
 \end{itemize}
 
 \subsection{Arquitectura de wrappers}
 
-Implementamos tres wrappers de Gymnasium (Sección~\ref{sec:gymnasium}) que adaptan el entorno original
+Implementamos tres wrappers de Gymnasium (sección~\ref{sec:gymnasium}) que adaptan el entorno original
 manteniendo compatibilidad con la interfaz estándar:
 
 
 \textbf{CarlaInitRoadWrapper}: Construye la geometría del estacionamiento usando coordenadas reales de CARLA
-(Sección~\ref{sec:carla-teorico}). Reemplaza el \texttt{RoadNetwork} predeterminado con cajones de estacionamiento
+(sección~\ref{sec:carla-teorico}). Reemplaza el \texttt{RoadNetwork} predeterminado con cajones de estacionamiento
 generados a partir de la posición objetivo actual en el simulador, creando un layout de 7 cajones centrado
 en el objetivo.
 
 
 \textbf{CarlaObservationWrapper}: Sustituye las observaciones idealizadas de Highway-env por estimaciones
 realistas obtenidas mediante nuestro sistema de visión por computadora. Aplica los algoritmos de detección
-de retícula desarrollados (Sección~\ref{sec:metodo-reticula}) para extraer coordenadas $(x,y)$ y orientación
+de retícula desarrollados (sección~\ref{sec:metodo-reticula}) para extraer coordenadas $(x,y)$ y orientación
 $\theta$ del vehículo, complementadas con velocidad del sensor vehicular de CARLA.
 
 

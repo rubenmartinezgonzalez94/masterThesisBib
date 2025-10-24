@@ -1,6 +1,6 @@
 
 En esta sección demostramos la aplicación práctica de los conceptos de aprendizaje por refuerzo
-(Sección~\ref{subsec:rl-components}) al problema de estacionamiento automático, utilizando
+(sección~\ref{subsec:rl-components}) al problema de estacionamiento automático, utilizando
 los resultados de detección de retícula obtenidos mediante las técnicas de visión por computadora
 desarrolladas en este trabajo.
 
@@ -20,16 +20,16 @@ del entorno, facilitando la experimentación con distintos enfoques de entrenami
 \subsection{Definición del agente y espacio de acciones}\label{subsec:rl-agent}
 
 El agente implementa una política que mapea observaciones a acciones de control vehicular.
-Siguiendo la terminología de la Sección~\ref{subsec:rl-components}, definimos:
+Siguiendo la terminología de la sección~\ref{subsec:rl-components}, definimos:
 
 
 \textbf{Espacio de acciones}: Utilizamos un espacio continuo bidimensional
 $\mathcal{A} = \text{Box}([-1, -1], [1, 1])$ donde cada acción $\mathbf{a} = [a_{\text{acc}}, a_{\text{dir}}]$ representa:
 \begin{itemize}
     \item $a_{\text{acc}} \in [-1, 1]$: Control de aceleración. Valores positivos corresponden
-    a aceleración hacia adelante, negativos a reversa, y cero a frenado.
+    a aceleración hacia adelante, negativos a reversa y cero a frenado.
     \item $a_{\text{dir}} \in [-1, 1]$: Control de dirección. Valores negativos giran a la izquierda,
-    positivos a la derecha, y cero mantiene la dirección recta.
+    positivos a la derecha y cero mantiene la dirección recta.
 \end{itemize}
 
 \subsection{Espacio de observaciones y sistema intérprete}\label{subsec:rl-observations}
@@ -49,13 +49,13 @@ donde:
 
 \textbf{Sistema intérprete}: La estimación de posición y orientación $(x, y, \theta)$ se obtiene
 aplicando los procedimientos de visión por computadora desarrollados en este trabajo:
-detección de la retícula de estacionamiento (Sección~\ref{sec:metodo-reticula}) y
-su ajuste mediante RANSAC (Sección~\ref{sec:metodo-ransac}). La velocidad se obtiene
+detección de la retícula de estacionamiento (sección~\ref{sec:metodo-reticula}) y
+su ajuste mediante RANSAC (sección~\ref{sec:metodo-ransac}). La velocidad se obtiene
 directamente del sensor velocímetro del vehículo simulado.
 
 \subsection{Adaptación del framework Highway-env}\label{subsec:rl-highway-adaptation}
 
-Para la implementación del aprendizaje por refuerzo adoptamos el framework Highway-env \cite{highway-env}, (véase Sección~\ref{subsec:rl-highway-theory}) una biblioteca especializada en entornos de conducción autónoma que proporciona implementaciones
+Para la implementación del aprendizaje por refuerzo adoptamos el framework Highway-env \cite{highway-env}, (véase sección~\ref{subsec:rl-highway-theory}) una biblioteca especializada en entornos de conducción autónoma que proporciona implementaciones
 probadas y exitosas de espacios de acción, observación y funciones de recompensa para tareas
 de estacionamiento. En lugar de desarrollar estos componentes desde cero, utilizamos esta solución 
 establecida como plataforma de prueba para validar nuestros algoritmos de visión por computadora 
@@ -64,7 +64,7 @@ en un contexto de aplicación real.
 
 \textbf{Adaptación realizada}: Para lograr un entorno más realista y cercano al mundo real, 
 reemplazamos el sistema de observación simplificado de Highway-env por nuestro intérprete basado en
-los algoritmos de detección de retícula desarrollados en este trabajo, y migramos la
+los algoritmos de detección de retícula desarrollados en este trabajo y migramos la
 simulación del entorno abstracto original a CARLA para obtener una física vehicular
 más precisa. Esta adaptación nos permite evaluar el desempeño de nuestros algoritmos de visión 
 en condiciones más cercanas a las de un sistema de estacionamiento automático real.
@@ -80,7 +80,7 @@ el estado completo del vehículo:
 \mathbf{s} = [x, y, v_x, v_y, \cos(\theta), \sin(\theta)]
 \end{equation}
 donde $(x, y)$ es la posición en coordenadas del estacionamiento, $(v_x, v_y)$ son las componentes 
-de velocidad, y $(\cos(\theta), \sin(\theta))$ representa la orientación del vehículo.
+de velocidad y $(\cos(\theta), \sin(\theta))$ representa la orientación del vehículo.
 
 \textbf{Espacio de acciones}: $\mathcal{A} = \text{Box}([-1, -1], [1, 1])$ para control continuo, 
 donde cada acción $\mathbf{a} = [a_{\text{acc}}, a_{\text{dir}}]$ controla aceleración y dirección 
@@ -91,7 +91,7 @@ respectivamente.
 r = -|\mathbf{g} - \mathbf{s}| - \alpha \cdot |\mathbf{a}|
 \end{equation}
 donde $\mathbf{g}$ es la posición objetivo (desired goal), $\mathbf{s}$ es el estado actual 
-(achieved goal), $\mathbf{a}$ es la acción tomada, y $\alpha$ es un factor de regularización 
+(achieved goal), $\mathbf{a}$ es la acción tomada y $\alpha$ es un factor de regularización 
 que penaliza acciones extremas para promover maniobras suaves.
 
 \textbf{Objetivo}: El agente debe alcanzar una posición objetivo específica (landmark) con la 
@@ -102,7 +102,7 @@ originales de Highway-env.
 
 
 Los detalles completos del diseño original de Highway-env se describen en la
-Sección~\ref{subsec:highway-env-theory}. En la siguiente sección analizaremos
+sección~\ref{subsec:highway-env-theory}. En la siguiente sección analizaremos
 la implementación específica y los resultados obtenidos con esta adaptación.
 
 \subsection{Integración de visión por computadora y RL}\label{subsec:rl-integration}

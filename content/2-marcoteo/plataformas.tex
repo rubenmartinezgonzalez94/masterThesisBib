@@ -16,20 +16,20 @@ datos obtenidos, de manera similar a como se haría en la vida real.
 En este trabajo se emplean plataformas y bibliotecas ampliamente adoptadas en visión
 por computadora y simulación para vehículos autónomos.
 En particular, utilizamos CARLA, un simulador de código abierto que permite recrear entornos urbanos realistas
-con agentes dinámicos y sensores virtuales configurables, y OpenCV, una biblioteca de procesamiento
+con agentes dinámicos y sensores virtuales configurables y OpenCV, una biblioteca de procesamiento
 de imágenes que proporciona las operaciones básicas para umbralización, detección de bordes (Canny)
 y detección de líneas (Hough), entre otras.
 
 \subsection{CARLA Simulator}\label{sec:carla-teorico}
 
 CARLA (Car Learning to Act) es una plataforma orientada a investigación que facilita la generación de escenas
-complejas y controladas, con variabilidad de clima, iluminación y tráfico, y un conjunto de sensores virtuales
+complejas y controladas, con variabilidad de clima, iluminación y tráfico y un conjunto de sensores virtuales
 (cámaras, LiDAR, radar, GPS) que producen datos cercanos a los de un vehículo real.
 Su flexibilidad para instrumentar escenarios y capturar datos reproducibles lo hace idóneo para
 experimentación y validación de algoritmos de percepción, localización y control en contextos como el
 estacionamiento automático \cite{dosovitskiy2017carla}.
-En la Sección \ref{subsec:simulation-design} se detalla el diseño específico del entorno de simulación que
-utilizamos, y en la Figura~\ref{fig:carla-simulator-teo} (véase Sección \ref{sec:carla-teorico}) se ilustran ejemplos
+En la sección \ref{subsec:simulation-design} se detalla el diseño específico del entorno de simulación que
+utilizamos y en la Figura~\ref{fig:carla-simulator-teo} (véase sección \ref{sec:carla-teorico}) se ilustran ejemplos
 de condiciones ambientales configurables en la plataforma.
 
 \begin{figure}[!ht]

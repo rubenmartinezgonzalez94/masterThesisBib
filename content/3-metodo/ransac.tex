@@ -1,5 +1,5 @@
 
-Con base en los principios expuestos en la Sección \ref{sec:ransac-teorico},
+Con base en los principios expuestos en la sección \ref{sec:ransac-teorico},
 aplicamos una adaptación de RANSAC para estimar una homografía que haga coherente una retícula ideal con
 las líneas de los cajones visibles en la imagen. Este enfoque conserva la robustez frente a outliers y
 oclusiones propias del escenario de estacionamiento.
@@ -22,7 +22,7 @@ Cada iteración del ciclo comprende los siguientes pasos:
     \item Muestrear aleatoriamente dos líneas de cada conjunto y calcular las cuatro intersecciones \(P_1, P_2, P_3, P_4\) (producto cruzado de pares de rectas), que definen un candidato a cajón.
     \item Estimar la homografía \(\mathbf{H}\) que mapea el cuadrado canónico de lado 1 al cuadrilátero \(\{P_k\}_{k=1}^4\).
     \item Proyectar una retícula \(n\times n\) mediante \(\mathbf{H}\) sobre la imagen.
-    \item Evaluar la consistencia entre la retícula proyectada y las líneas reales (por ejemplo, concordancia de orientación y proximidad en las regiones de soporte) y registrar una medida de ajuste.
+    \item Evaluar la consistencia entre la retícula proyectada y las líneas reales (\emph{e.g.}, concordancia de orientación y proximidad en las regiones de soporte) y registrar una medida de ajuste.
     \item Almacenar temporalmente \(\mathbf{H}\) y su medida de ajuste; repetir desde el paso 2 durante \(N\) iteraciones.
 \end{enumerate}
 

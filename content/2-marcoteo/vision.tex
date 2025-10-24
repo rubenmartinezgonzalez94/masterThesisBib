@@ -103,7 +103,7 @@ retícula en la imagen.
 
 \subsection{Bordes y líneas: Canny y Hough}\label{sec:canny-hough}
 
-La extracción de bordes con Canny proporciona contornos estables frente a ruido mediante suavizado, gradiente y supresión no máxima \cite{canny1986edge}. La transformada de Hough detecta lineas rectas parametrizando la ecuación\[\rho=x\cos{\theta}+y\sin{\theta}\] donde $\rho$ es la distancia mínima de la recta al origen y $\theta$ es el ángulo de la normal a la recta\cite{DudaEtAl1972} {\bfseries TODO: Añadir grafica mostrando los parametros rho y theta, y mostrando el resultado de aplicar Canny a una imagen}. Estas dos herramientas permiten obtener segmentos candidatos a las marcas viales de la retícula.
+La extracción de bordes con Canny proporciona contornos estables frente a ruido mediante suavizado, gradiente y supresión no máxima \cite{canny1986edge}. La transformada de Hough detecta lineas rectas parametrizando la ecuación\[\rho=x\cos{\theta}+y\sin{\theta}\] donde $\rho$ es la distancia mínima de la recta al origen y $\theta$ es el ángulo de la normal a la recta\cite{DudaEtAl1972} {\bfseries TODO: Añadir grafica mostrando los parametros rho y theta y mostrando el resultado de aplicar Canny a una imagen}. Estas dos herramientas permiten obtener segmentos candidatos a las marcas viales de la retícula.
 
 \subsection{Intersecciones de líneas y \emph{clustering}}\label{sec:intersections-clustering}
 
@@ -114,7 +114,7 @@ intersecciones finitas tienden a concentrarse en vecindades cercanas a la línea
 Para consolidar evidencia y atenuar datos atípicos, se agrupan las intersecciones relevantes mediante técnicas de \emph{clustering} no supervisado. Una opción práctica es el \emph{Clustering acumulativo} con umbral de distancia para dejar que los datos determinen el número de cúmulos \cite{tan2005introduction}. Los centroides de los cúmulos proporcionan estimaciones iniciales de puntos de fuga\cite{kanatani1998statistical,hartley2003multiple}.
 
 
-En resumen, el proceso básico para encontrar puntos es fuga es el siguiente: (i) estimar rectas, (ii) generar intersecciones por pares, (iii) filtrar por banda cercana al horizonte, (iv) agrupar por proximidad, y (v) usar los centroides de cúmulos como candidatos a puntos de fuga para la separación de haces de líneas.
+En resumen, el proceso básico para encontrar puntos es fuga es el siguiente: (i) estimar rectas, (ii) generar intersecciones por pares, (iii) filtrar por banda cercana al horizonte, (iv) agrupar por proximidad y (v) usar los centroides de cúmulos como candidatos a puntos de fuga para la separación de haces de líneas.
 
 \subsection{Puntos de fuga}\label{sec:vanishing-points}
 
