@@ -18,3 +18,21 @@ Ifuamlemnte cuando quieras escribir "esto es", usa mejor "\emph{i.e.} (id est).
 Anadir mas imagenes en la seccion 2.1.
 
 ¡NO SON LIBRERIAS SON BIBLIOTECAS!
+
+Recomendaciones: 29.10.2025
+Recomendaciones.
+
+En al figura 3.3 usa cúmulos en lugar de clusters. y tambien usa 'el métodos de cumulos por aglomeración' en lugar de aglomerativeClustering.
+
+En la figura 3.4 arreglar colores.
+
+Considerar encontrar las ecuaciones de la lineas sin usar svd, planteandolo como un sistema lineal  Ax1+By1=-1, Ax2+By2=-1, y asignando el valor de 1 a C. Es mucho más simple y vas a evitar preguntas en tu examen. (Regla de Cramer: https://es.wikipedia.org/wiki/Regla_de_Cramer )
+
+Al incio de seccion 3.2.7 p1 hacer referencia a interseccion de lineas. en capitulo 2.
+
+Seccion 3.2.7 p 4 hacer referencia a numero de figura, no a la siguiente imagen.
+
+Cambiar los Véase por véase.
+
+En la seccion 3.3.2 poner explicar la reporyeccion de los puntos de la imagen a la superficies que hiciste. Tal como lo pones no esta bien. La matriz H mapea entre una reticula arbitraria y la imagen, pero no se involucra la relacion entre la escena y la imagen, que se describe a partir de la matriz de calibracion y la traslacion y rotacion de la cámara.
+

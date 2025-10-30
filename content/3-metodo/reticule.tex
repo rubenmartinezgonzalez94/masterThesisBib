@@ -1,13 +1,11 @@
 
 En esta sección desarrollamos el procedimiento práctico para detectar la
 retícula de estacionamiento a partir de una imagen de la cámara frontal.
-Nos apoyamos en los fundamentos del Marco teórico: Canny y Hough (sección~\ref{sec:canny-hough}),
-la representación de rectas y su intersección en coordenadas homogéneas
-(sección~\ref{subsec:lines-points}) y los puntos de fuga (sección~\ref{sec:vanishing-points}).
+Nos apoyamos en los fundamentos del Marco teórico: Canny y Hough (sección~\ref{sec:canny-hough}), la representación de rectas y su intersección en coordenadas homogéneas (sección~\ref{subsec:lines-points}) y los puntos de fuga (sección~\ref{sec:vanishing-points}).
 
-Partimos de una imagen RGB capturada por la cámara frontal. Trabajamos sobre una región de interés (ROI)
-definida por debajo del horizonte excluyendo la franja superior para reducir ruido.
-Como resultado del procesamiento, obtenemos conjuntos de líneas agrupados según su punto de fuga y un conjunto de esquinas candidatas a vértices de cajón. Dada la naturaleza de la escena, pueden presentarse dificultades como baja textura o contraste, oclusiones y marcas del pavimento degradadas; para mitigarlas, empleamos umbrales ajustables y reintentos por cuadro.
+Partimos de una imagen RGB capturada por la cámara frontal. Trabajamos sobre una región de interés (ROI) definida por debajo del horizonte excluyendo la sección superior de la imagen que corresponde al espacio sobre el horizonte pues no contiene información relevante para identificar el estacionamiento.
+
+Como resultado del procesamiento, obtenemos conjuntos de líneas agrupados según su punto de fuga y un conjunto de esquinas candidatas a vértices de cajón. Dada la naturaleza de la escena, pueden presentarse dificultades como baja textura o contraste, oclusiones y marcas del pavimento degradadas: para mitigarlas, empleamos umbrales ajustables y reintentos por cuadro.
 
 
 Por la proyección perspectiva, las líneas paralelas del mundo se intersectan en la imagen en un punto de fuga
@@ -167,8 +165,7 @@ donde cada color representa un cluster diferente y el símbolo \texttt{+} blanco
 \end{figure}
 
 Como se discute en la sección~\ref{sec:intersections-clustering}, para estimar la ubicación de este punto de fuga principal no es necesario tener en cuenta todas las intersecciones detectadas, sino solo aquellas que se encuentran en una zona cercana al horizonte de la imagen (sección~\ref{sec:vanishing-points}).
-Para determinar las intersecciones relevantes cercanas al horizonte, se puede definir un umbral de cercanía en la imagen que se puede ajustar experimentalmente.
-\emph{e.g.}, en la siguiente imagen se muestran las intersecciones detectadas en la imagen original con puntos azules
+Para determinar las intersecciones relevantes cercanas al horizonte, se puede definir un umbral de cercanía en la imagen que se puede ajustar experimentalmente, \emph{e.g.} en la siguiente imagen se muestran las intersecciones detectadas en la imagen original con puntos azules
 y las intersecciones relevantes con un umbral de 10 píxeles con puntos amarillos.
 En la figura \ref{fig:relevantInter} se muestra el resultado de la selección de las intersecciones relevantes. \\
 \begin{figure}[!ht]
@@ -179,12 +176,7 @@ En la figura \ref{fig:relevantInter} se muestra el resultado de la selección de
 \end{figure}
 
 
-Para agrupar las intersecciones relevantes empleamos \texttt{AgglomerativeClustering} de \texttt{scikit-learn}
-(véase sección~\ref{sec:sklearn-agglomerative}). En nuestra configuración práctica,
-dejamos que el algoritmo determine el número de clusters fijando \texttt{distance\_threshold} (distancia máxima entre puntos del mismo
-cluster), cuyo valor se ajusta experimentalmente al escenario. A continuación se ilustra el resultado sobre las mismas
-intersecciones relevantes del ejemplo anterior: se forman 3 clusters (colores distintos) y se marca con \texttt{+} blanco el centroide de cada uno
-(Fig.~\ref{fig:clusters}).
+Para agrupar las intersecciones relevantes empleamos una tecnica de construcción de cúmulos por aglomeración\footnote{\texttt{AgglomerativeClustering} de \texttt{scikit-learn}.} (véase sección~\ref{sec:sklearn-agglomerative}). En nuestra configuración práctica, dejamos que el algoritmo determine el número de clusters fijando el parámetro \texttt{distance\_threshold} (distancia máxima entre puntos del mismo cluster), cuyo valor se ajusta experimentalmente al escenario. A continuación se ilustra el resultado sobre las mismas intersecciones relevantes del ejemplo anterior: se forman 3 clusters (colores distintos) y se marca con \texttt{+} blanco el centroide de cada uno (véase figura~\ref{fig:clusters}).
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.9\textwidth]{img/reticule/AgglomerativeClustering}
@@ -197,14 +189,23 @@ intersecciones relevantes del ejemplo anterior: se forman 3 clusters (colores di
 \subsection{Selección del punto de fuga principal:}
 
 Para estimar la posición del punto de fuga principal, se puede seleccionar el cluster con mayor cantidad de intersecciones y
-utilizar las líneas que generaron estos puntos para calcular la intersección de estas líneas. Véase sección~\ref{sec:ajuste-multiples-elementos}.
-La intersección de $n$ líneas (bajo un criterio de mínimos cuadrados) está dada por
-el eigenvector asociado al eigenvalor más pequeño de la matriz $M$, donde:
+utilizar las líneas que generaron estos puntos para calcular la intersección de estas líneas, véase sección~\ref{sec:ajuste-multiples-elementos}.
+La intersección de $n$ líneas (bajo un criterio de mínimos cuadrados) está dada por el eigenvector asociado al eigenvalor más pequeño de la matriz $M$, donde:
 \[
-    M = \sum_{i=1}^{n} w_i l_i l_i^T
+    M = \sum_{i=1}^{n} w_i l_i l_i^\top
 \]
-Aquí, $w_i$ es un peso asociado a la línea $l_i$ y $l_i$ es la representación homogénea de la línea $i$ \cite{kanatani1998statistical}.
+Aquí, $w_i$ es un peso asociado a la línea $l_i$ y $l_i$ es la representación homogénea de la línea $i$ \cite{kanatani1998statistical}. En nuestro caso, los pesos $w$ asociados a cada linea se calculan en función de la longitud de cada linea, mientras mas larga sea la linea, mayor su peso.
+
+%
+%TODO:
+%
+%ESCRIBIR ECUACION.  w_i = long_i/ sum j=1 ^n long_j,
+%
+%donde long_i es el largo de la linea-i.
+%
+
 De esta forma, podemos conocer la posición del punto de fuga principal en el plano de la cámara.
+
 En la figura \ref{fig:vanishingPoint} se muestra el resultado de esta estimación utilizando las líneas del cluster más grande, donde se
 representa el punto de fuga principal con un símbolo \texttt{+} amarillo.
 \begin{figure}[!ht]
@@ -217,9 +218,7 @@ representa el punto de fuga principal con un símbolo \texttt{+} amarillo.
 \subsection{Selección del 2do punto de fuga principal:}
 
 Una vez estimado el primer punto de fuga \(\mathbf{v}_1=(x_1,y_1)\), el segundo (\(\mathbf{v}_2\)) puede obtenerse
-aprovechando que corresponde a una dirección ortogonal en 3D. Con un modelo pin-hole simple (Véase sección~\ref{subsec:camera}), pixeles cuadrados, punto principal
-en el centro \(C_x\), los puntos de fuga de direcciones ortogonales verifican la relación
-\( (x_1-C_x)(x_2-C_x) + f^2 \approx 0 \). De ahí se despeja la coordenada horizontal de \(\mathbf{v}_2\):
+aprovechando que corresponde a una dirección ortogonal tridimensional. Con un modelo \emph{pin-hole} simple (véase sección~\ref{subsec:camera}), con pixeles cuadrados y  punto principal en la coordenada \(C_x\), los puntos de fuga de direcciones ortogonales verifican la relación \( (x_1-C_x)(x_2-C_x) + f^2 = 0 \). De ahí se despeja la coordenada horizontal de \(\mathbf{v}_2\):
 \begin{equation}
     x_2 = C_x - \frac{f^2}{\,x_1 - C_x\,}, \qquad y_2 = y_1.
 \end{equation}
@@ -227,10 +226,14 @@ Aquí \(f\) es la longitud focal en píxeles, que aproximamos a partir del FOV h
 \( f = \dfrac{W}{2\,\tan(\tfrac{\text{FOV}}{2})} \). En nuestro caso, con \(\text{FOV}=90^\circ\) y \(W=1920\), se fija
 \(C_x=W/2\) y se calcula \(x_2\) como en la ecuación anterior, manteniendo \(y_2=y_1\) por pertenecer ambos a la misma línea del horizonte.
 
+% TODO: Hacer referencia a un apendice donde explicas de donde sale esta ecuación.
+
+%TODO: Explicar que pasa cuando el punto de fuga coincide con el centro de ka imagen \emph{i.e } \(C_x\).
+
 \subsection{Filtrado de intersecciones y líneas relevantes:}
 
 Una vez que se han identificado los puntos de fuga principales, se puede proceder a filtrar las intersecciones y las líneas que son
 relevantes para la retícula de estacionamiento.
-Primero, se filtran las intersecciones que están cerca de los puntos de fuga principales, utilizando un umbral de distancia que se puede ajustar experimentalmente. (Véase sección~\ref{sec:experimentation-tool}).
+Primero, se filtran las intersecciones que están cerca de los puntos de fuga principales, utilizando un umbral de distancia que se puede ajustar experimentalmente, véase sección~\ref{sec:experimentation-tool}.
 Luego, se filtran las líneas que pasan por estas intersecciones relevantes.
 Este proceso ayuda a eliminar el ruido y las líneas que no contribuyen a la formación de la retícula de estacionamiento.

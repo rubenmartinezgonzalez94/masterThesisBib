@@ -1,12 +1,7 @@
 
 De acuerdo con lo expuesto en la sección \ref{sec:plataformas},
 empleamos CARLA como entorno de simulación para nuestros experimentos.
-El escenario de estacionamiento incluye un vehículo con el objetivo de estacionarse y un área con cajones marcados.
-La posición inicial del vehículo se varía de forma controlada entre ejecuciones.
-La cámara frontal se monta en la zona del retrovisor a altura conocida,
-y se recopilan secuencias de imágenes para alimentar el pipeline de detección de líneas,
-estimación de puntos de fuga y ajuste de retícula por RANSAC.
-La Figura~\ref{fig:simulation-design} muestra un ejemplo del diseño del entorno.
+El escenario de estacionamiento incluye un vehículo con el objetivo de estacionarse y un área con cajones marcados. La posición inicial del vehículo se varía de forma controlada entre ejecuciones. La cámara frontal se monta en la zona del retrovisor a altura conocida y se recopilan secuencias de imágenes para alimentar el pipeline de detección de líneas, estimación de puntos de fuga y ajuste de retícula por RANSAC. La figura~\ref{fig:simulation-design} muestra un ejemplo del diseño del entorno.
 
 \begin{figure}[!ht]
     \centering
@@ -17,12 +12,12 @@ La Figura~\ref{fig:simulation-design} muestra un ejemplo del diseño del entorno
         \includegraphics[width=\textwidth]{img/distances2}\label {fig:distances2}
     \end{subfigure}
 
-    \caption{Diseño del entorno de simulación en CARLA.}
+    \caption{Diseño del entorno de simulación en CARLA. En las imágenes generadas se sobrepone flechas que indican el cajon de estacionamiento objetivo.}
     \label{fig:simulation-design}
 \end{figure}
 
 
-La Figura~\ref{fig:camera-view} ilustra ejemplos de la vista de la cámara frontal desde la ubicación definida.
+La figura~\ref{fig:camera-view} ilustra ejemplos de la vista de la cámara frontal desde la ubicación definida.
 
 \begin{figure}[!ht]
     \centering
