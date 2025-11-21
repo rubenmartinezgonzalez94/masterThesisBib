@@ -140,7 +140,7 @@
 \begin{linespacing}{1.5}
 
 % Capítulo 1: Introducción
-\chapter{Introducción}
+\chapter{Introducción}\label{chap:intro}
 \input{content/1-intro/intro}
 
 \section{Contexto y problemática}
@@ -152,7 +152,7 @@
 \subsection{Hipótesis}
 \input{content/1-intro/hypothesis}
 
-\section{Objetivos}
+\section{Objetivos}\label{sec:objetivos}
 \subsection{Objetivo General}
 \input{content/1-intro/objective}
 \subsection{Objetivos específicos}
@@ -201,12 +201,10 @@
 \section{Extracción de coordenadas 3D mediante proyección inversa}\label{sec:metodo-extraccion-3d}
 \input{content/3-metodo/extraccion-3d}
 
-% Capítulo 4: Resultados
+% Capítulo 4: Aplicaciones
 \clearpage
-\chapter{Resultados y aplicaciones}
-Pendiente de redacción.
-\section{Retículas obtenidas para diferentes escenarios}
-Pendiente de redacción.
+\chapter{Aplicaciones}
+\input{content/4-result/intro.tex}
 
 \section{Aplicación en aprendizaje por refuerzo}
 \input{content/4-result/reinforcement-learning}
@@ -214,12 +212,25 @@ Pendiente de redacción.
 \section{Highway-env aplicando la retícula detectada}
 \input{content/4-result/highway-carla-implementation}
 
-\subsection{Comparación de resultados}
+\section{Interpretación de resultados}
+\input{content/4-result/metrics}
 
-% Capítulo 4: Conclusiones y trabajo futuro
+% Capítulo 5: Conclusiones y trabajo futuro
 \clearpage
 \chapter{Conclusiones y trabajo futuro}
-Pendiente de redacción .
+\input{content/5-conclusion/intro}
+
+\section{Cumplimiento de objetivos}
+\input{content/5-conclusion/cumplimiento-objetivos}
+
+\section{Logros y contribuciones}
+\input{content/5-conclusion/logros}
+
+\section{Limitaciones y trabajo futuro}
+\input{content/5-conclusion/limitaciones-trabajo-futuro}
+
+\section{Conclusiones finales}
+\input{content/5-conclusion/conclusiones-finales}
 
 \end{linespacing}
 % Referencias
