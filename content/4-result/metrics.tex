@@ -1,0 +1,182 @@
+En esta sección se presentan los resultados del entrenamiento del agente de aprendizaje por 
+refuerzo comparando dos configuraciones: el entorno original de Highway-env con observaciones 
+idealizadas, y nuestra implementación con adaptadores (\emph{wrappers}) que integran el sistema de visión por 
+computadora desarrollado y la simulación física de CARLA. Se incluyen además las métricas 
+iniciales de ambas configuraciones en etapas tempranas de entrenamiento como referencia para 
+evaluar el progreso del aprendizaje.
+
+\subsection{Configuraciones evaluadas}
+
+Se compararon dos configuraciones de entrenamiento utilizando el algoritmo SAC (Soft Actor-Critic) 
+con Hindsight Experience Replay (HER):
+
+\begin{itemize}
+    \item \textbf{Highway-env Original}: Entorno estándar de Highway-env con observaciones perfectas 
+    del estado del vehículo y física simplificada, entrenado durante 2758 segundos (~46 minutos, 
+    3292 episodios, 99957 timesteps).
+    
+    \item \textbf{Nuestro Wrapper con VC}: Implementación híbrida que integra el sistema de visión 
+    por computadora desarrollado en este trabajo para estimar el estado a partir de imágenes, 
+    combinado con la simulación física de CARLA, entrenado durante 1520 segundos (~25 minutos, 
+    101 episodios, 9210 pasos de tiempo (\emph{timesteps})).
+\end{itemize}
+
+Adicionalmente, se registran las métricas de la etapa inicial de entrenamiento (~350 timesteps, 
+~6 segundos) como punto de referencia para evidenciar la progresión del aprendizaje en ambas 
+configuraciones.
+
+\subsection{Métricas de desempeño}
+
+La Tabla~\ref{tab:rl-metrics} presenta las métricas principales obtenidas en las dos configuraciones 
+evaluadas, incluyendo sus valores iniciales al comienzo del entrenamiento. Se incluyen indicadores 
+de desempeño del agente (longitud de episodios, recompensa promedio, tasa de éxito) y métricas de 
+entrenamiento (pérdidas del actor y crítico, coeficiente de entropía).
+
+\begin{table}[!ht]
+\centering
+\caption{Comparación de métricas de entrenamiento para las dos configuraciones evaluadas. Se incluyen 
+valores iniciales (~350 timesteps) como referencia del punto de partida del aprendizaje.}
+\label{tab:rl-metrics}
+\begin{tabular}{l|c|c|c}
+\hline
+\textbf{Métrica} & \textbf{Inicial} & \textbf{Highway-env} & \textbf{Nuestro Wrapper} \\
+ & \textbf{(~350 steps)} & \textbf{Original} & \textbf{con VC} \\
+\hline
+\hline
+\multicolumn{4}{c}{\textit{Desempeño del agente}} \\
+\hline
+Longitud promedio de episodio & 87.5 & 20.1 & 92.0 \\
+Recompensa promedio & -51.8 & -6.92 & -35.2 \\
+Tasa de éxito (\%) & 0 & 93 & 18 \\
+\hline
+\multicolumn{4}{c}{\textit{Información de entrenamiento}} \\
+\hline
+Episodios completados & 4 & 3292 & 101 \\
+Timesteps totales & 350 & 99957 & 9210 \\
+Tiempo transcurrido & 6 s & 2758 s (~46 min) & 1520 s (~25 min) \\
+FPS & 52 & 36 & 12 \\
+\hline
+\multicolumn{4}{c}{\textit{Métricas de la red neuronal}} \\
+\hline
+Pérdida del actor & -2.41 & 1.44 & -0.76 \\
+Pérdida del crítico & 0.0353 & 0.00482 & 0.011 \\
+Coeficiente de entropía & 0.78 & 0.00608 & 0.62 \\
+Pérdida del coef. de entropía & -0.832 & 0.622 & -0.34 \\
+Actualizaciones de red & 249 & 99856 & 8215 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Análisis de resultados}
+
+\subsubsection{Evidencia de aprendizaje progresivo}
+
+La comparación entre las métricas iniciales y las obtenidas después del período de entrenamiento 
+en nuestra configuración con visión por computadora demuestra un progreso significativo en el 
+aprendizaje del agente:
+
+\begin{itemize}
+    \item \textbf{Tasa de éxito}: Incremento del 0\% al 18\%, indicando que el agente logró 
+    aprender a completar exitosamente la tarea de estacionamiento en aproximadamente 1 de cada 
+    5 intentos utilizando únicamente información visual procesada.
+    
+    \item \textbf{Recompensa promedio}: Mejora del 32\% (de -51.8 a -35.2), reflejando que el 
+    agente desarrolló políticas que lo acercan más consistentemente al objetivo deseado.
+    
+    \item \textbf{Reducción del coeficiente de entropía}: Disminución de 0.78 a 0.62, señal 
+    de que el agente reduce gradualmente la exploración aleatoria a favor de acciones más 
+    determinísticas basadas en la política aprendida.
+\end{itemize}
+
+Estos resultados evidencian que el sistema de visión por computadora desarrollado proporciona 
+información de estado suficientemente precisa y consistente para permitir que un agente de 
+aprendizaje por refuerzo aprenda políticas de control viables para la tarea de estacionamiento.
+
+\subsubsection{Realismo vs. abstracción}
+
+La comparación directa entre Highway-env original y nuestro wrapper revela el impacto de 
+introducir realismo en la percepción y simulación física:
+
+\textbf{Mayor complejidad del problema:} El entorno original utiliza observaciones perfectas 
+del estado del vehículo (posición, orientación y velocidad conocidas con precisión infinita), 
+mientras que nuestro sistema debe inferir estas variables a partir de imágenes procesadas mediante 
+detección de bordes, transformada de Hough y RANSAC. Esta capa adicional de incertidumbre en la 
+percepción incrementa significativamente la dificultad de la tarea de control, lo cual se refleja 
+en la menor tasa de éxito (18\% vs 93\%).
+
+\textbf{Costo computacional:} La diferencia en FPS (12 vs 36) refleja tres factores principales:
+\begin{enumerate}
+    \item \textbf{Renderizado 3D realista}: CARLA genera imágenes fotorrealistas con iluminación, 
+    sombras y texturas de alta fidelidad, mientras que Highway-env utiliza representaciones 
+    abstractas 2D.
+    
+    \item \textbf{Física vehicular compleja}: CARLA simula dinámica de carrocería, fricción de 
+    neumáticos, suspensión y colisiones con modelo físico detallado, en contraste con el modelo 
+    cinemático simplificado de Highway-env.
+    
+    \item \textbf{Procesamiento de visión}: Cada paso de simulación requiere ejecutar el pipeline 
+    completo de visión por computadora (preprocesamiento, detección de bordes, Hough, clustering 
+    de puntos de fuga, RANSAC, proyección inversa 3D), agregando overhead computacional.
+\end{enumerate}
+
+Como resultado, con recursos de hardware limitados (GPU RTX 3060, 32GB RAM, procesador i5-10400F 
+con refrigeración líquida), el tiempo de entrenamiento permite completar significativamente menos 
+episodios: 101 episodios en 25 minutos versus 3292 episodios en 46 minutos. Esta diferencia 
+de aproximadamente 30x en capacidad de procesamiento de episodios limita la cantidad de experiencia 
+que el agente puede acumular en un tiempo razonable de entrenamiento.
+
+\subsubsection{Ventajas del enfoque híbrido}
+
+A pesar del mayor costo computacional, la implementación con visión por computadora ofrece 
+ventajas significativas para aplicaciones en el mundo real:
+
+\textbf{Transferibilidad a sistemas reales:} El agente aprende a tomar decisiones basándose en 
+información visual procesada, similar a cómo operaría en un vehículo real equipado con cámaras. 
+En contraste, el entorno original depende de acceso directo a variables de estado que no estarían 
+disponibles sin sistemas de localización global (GPS de alta precisión, sensores de posición absoluta).
+
+\textbf{Validación del sistema de visión:} El hecho de que el agente logre una tasa de éxito del 
+18\% utilizando únicamente la información proporcionada por el sistema de visión desarrollado 
+demuestra que este sistema es capaz de extraer características geométricas suficientemente precisas 
+para guiar decisiones de control en tiempo real.
+
+\textbf{Entorno de prueba más exigente:} La introducción de incertidumbre perceptual y física 
+realista genera políticas potencialmente más robustas, ya que el agente debe aprender a manejar 
+variabilidad en las observaciones (detecciones imperfectas, oclusiones parciales) y dinámica 
+vehicular compleja.
+
+\subsection{Limitaciones y trabajo futuro}
+
+\subsubsection{Recursos computacionales}
+
+El principal factor limitante en el entrenamiento fue la disponibilidad de recursos de cómputo. 
+El hardware utilizado (RTX 3060, 32GB RAM) requiere compartir recursos de GPU entre el renderizado 
+de CARLA y el entrenamiento de la red neuronal de SAC, lo cual reduce la capacidad de procesamiento 
+del entrenamiento. Con acceso a infraestructura de mayor capacidad (GPU de gama profesional, 
+clúster de entrenamiento), sería posible:
+
+\begin{itemize}
+    \item Extender el tiempo de entrenamiento para acumular más episodios
+    \item Ejecutar múltiples instancias del entorno en paralelo (entornos vectorizados)
+    \item Implementar técnicas de aceleración como renderizado fuera de pantalla optimizado
+\end{itemize}
+
+\subsection{Interpretación global}
+
+Los resultados presentados cumplen el objetivo de demostrar la viabilidad de integración
+del sistema de visión por computadora desarrollado en aplicaciones de control autónomo. Aunque la 
+tasa de éxito del 18\% es sustancialmente menor que la del entorno idealizado (93\%), este resultado 
+debe interpretarse en el contexto de las diferencias fundamentales entre ambas configuraciones:
+
+\begin{itemize}
+    \item El entorno original fue diseñado y optimizado específicamente para facilitar el aprendizaje 
+    rápido con observaciones perfectas
+    \item Nuestra configuración enfrenta el desafío adicional de percepción visual con incertidumbre real
+    \item El tiempo de entrenamiento fue limitado por recursos computacionales disponibles
+\end{itemize}
+
+Lo relevante es que el agente sí logró aprender a partir de información visual procesada, 
+evidenciando que el sistema de visión por computadora proporciona señales suficientemente informativas 
+para guiar el aprendizaje de políticas de control. Este resultado valida la utilidad del sistema 
+desarrollado como componente de percepción en arquitecturas de conducción autónoma, cumpliendo el 
+objetivo de ejemplificar aplicaciones prácticas del método propuesto en los capítulos anteriores.
