@@ -1,0 +1,82 @@
+Esta investigación tuvo como objetivo desarrollar un sistema de visión por computadora para la 
+detección de retículas de estacionamiento y estimación de pose vehicular mediante procesamiento 
+de imágenes. A continuación, se presenta el análisis del cumplimiento de cada uno de los objetivos 
+específicos planteados en la Sección~\ref{sec:objetivos}:
+
+\subsection{Implementación del entorno de simulación}
+
+Se implementó exitosamente un entorno de simulación realista utilizando CARLA , 
+configurando escenarios de estacionamiento con marcado de cajones, vehículos equipados con cámaras 
+RGB frontales y física vehicular de alta fidelidad. El entorno permite capturar imágenes en 
+resolución 1920×1080 a diferentes posiciones del vehículo, 
+proporcionando datos sintéticos pero realistas para el desarrollo y prueba de algoritmos de 
+visión por computadora.
+
+\subsection{Desarrollo de algoritmos de procesamiento de imágenes}
+
+Se diseñó e implementó un flujo de procesamiento (\emph{pipeline}) completo de imágenes que incluye:
+\begin{itemize}
+    \item Preprocesamiento mediante conversión a escala de grises
+    \item Detección de bordes utilizando el algoritmo de Canny con umbrales adaptativos
+    \item Extracción de líneas mediante la Transformada de Hough Probabilística
+    \item Agrupamiento (\emph{clustering}) de líneas detectadas según su orientación para identificar dos familias 
+    principales de líneas correspondientes a las direcciones de los cajones de estacionamiento
+\end{itemize}
+
+Este pipeline demuestra ser efectivo para detectar las líneas de marcado de cajones incluso 
+en presencia de ruido y oclusiones parciales.
+
+\subsection{Método basado en RANSAC para ajuste de retículas}
+
+Se desarrolló una variación del algoritmo RANSAC adaptada específicamente para el problema de 
+ajuste de retículas de estacionamiento. El método propuesto:
+\begin{itemize}
+    \item Estima puntos de fuga a partir de las familias de líneas detectadas
+    \item Genera candidatos de cajones mediante muestreo aleatorio de líneas
+    \item Calcula homografías que mapean cuadrados canónicos a cuadriláteros detectados
+    \item Evalúa la consistencia entre retículas proyectadas y líneas reales
+    \item Selecciona la mejor homografía mediante criterios de consenso
+\end{itemize}
+
+Esta adaptación de RANSAC resulta robusta frente a outliers y permite detectar la estructura 
+regular de los estacionamientos de manera confiable.
+
+\subsection{Reconstrucción 3D mediante proyección perspectiva inversa}
+
+Se implementó el método de intersección de rayos con el plano del suelo para obtener coordenadas 
+tridimensionales métricas a partir de puntos detectados en la imagen. El sistema:
+\begin{itemize}
+    \item Calcula la matriz de parámetros intrínsecos de la cámara a partir del campo de visión 
+    y resolución de imagen
+    \item Aplica la transformación inversa de la matriz intrínseca para generar rayos de proyección
+    \item Escala los rayos hasta intersectar el plano Y=0 (nivel del suelo)
+    \item Obtiene coordenadas (X, Z) métricas en el plano del estacionamiento
+\end{itemize}
+
+Este procedimiento permite calcular distancias euclidianas reales entre puntos de interés, 
+proporcionando información geométrica precisa del entorno.
+
+\subsection{Validación mediante integración en aplicación de control}
+
+Se validó la utilidad del sistema integrándolo como componente de percepción en un entorno de 
+aprendizaje por refuerzo para estacionamiento automático. Los resultados demostraron que:
+\begin{itemize}
+    \item El sistema de visión proporciona estimaciones de estado suficientemente informativas 
+    para permitir el aprendizaje de políticas de control
+    \item Un agente de RL logró una tasa de éxito del 18\% en la tarea de estacionamiento 
+    utilizando la información visual procesada
+    \item La mejora progresiva en las métricas de entrenamiento (recompensa, tasa de éxito) 
+    evidencia que el sistema extrae características geométricas relevantes
+\end{itemize}
+
+Esta validación confirma que el sistema desarrollado puede ser utilizado en aplicaciones prácticas 
+de conducción autónoma como módulo de percepción.
+
+\subsection{Cumplimiento del objetivo general}
+
+El objetivo general de desarrollar un sistema de visión por computadora para la detección de 
+retículas de estacionamiento y estimación de pose vehicular se cumplió satisfactoriamente. El 
+sistema resultante integra técnicas clásicas de visión por computadora (Canny, Hough, RANSAC) 
+con geometría proyectiva 3D para proporcionar información métrica precisa del entorno de 
+estacionamiento, aplicable a diversos sistemas de asistencia al conductor y aplicaciones de 
+conducción autónoma.

@@ -1,0 +1,39 @@
+Este trabajo presenta un sistema completo de visión por computadora para la detección de retículas 
+de estacionamiento y estimación de pose vehicular, demostrando que técnicas clásicas de procesamiento 
+de imágenes pueden proporcionar información geométrica precisa y útil para aplicaciones de conducción 
+autónoma.
+
+El sistema desarrollado integra exitosamente algoritmos de detección de bordes (Canny), extracción 
+de líneas (Hough), ajuste robusto de modelos geométricos (RANSAC) y reconstrucción tridimensional 
+mediante proyección perspectiva inversa. Esta combinación de técnicas resulta en un flujo de 
+procesamiento (\emph{pipeline}) robusto capaz de procesar imágenes de cámara en tiempo real y 
+producir estimaciones de pose con coordenadas métricas en el espacio 3D.
+
+La validación mediante integración en una aplicación de aprendizaje por refuerzo confirma que el 
+sistema proporciona información suficientemente precisa y consistente para guiar decisiones de 
+control en tareas complejas de navegación autónoma. Aunque los resultados de la aplicación de RL 
+muestran margen de mejora, lo relevante es que el agente logró aprender políticas viables 
+utilizando únicamente información visual procesada, validando la utilidad del sistema de visión 
+como componente de percepción.
+
+Las contribuciones principales del trabajo son:
+\begin{itemize}
+    \item Un método adaptado de RANSAC específico para ajuste de retículas regulares en entornos 
+    de estacionamiento
+    \item La clarificación conceptual entre homografías planares (útiles para detección 2D) y 
+    proyección perspectiva 3D (necesaria para mediciones métricas)
+    \item La demostración de viabilidad de sistemas de percepción basados en visión clásica como 
+    alternativa a métodos exclusivamente basados en aprendizaje profundo
+    \item Una implementación completa de extremo a extremo (\emph{end-to-end}) desde imágenes RGB hasta coordenadas 3D métricas
+\end{itemize}
+
+El trabajo sienta las bases para futuras investigaciones que podrían extender el sistema mediante 
+métodos híbridos (combinando técnicas clásicas con aprendizaje profundo), optimizaciones de 
+eficiencia computacional, y validación en vehículos reales. La arquitectura modular desarrollada 
+facilita la experimentación con mejoras incrementales sin necesidad de rediseñar el sistema completo.
+
+En conclusión, se ha demostrado que es posible desarrollar sistemas de visión por computadora 
+efectivos para estimación de pose vehicular en entornos de estacionamiento utilizando únicamente 
+cámaras RGB estándar y técnicas clásicas de procesamiento de imágenes, proporcionando una 
+alternativa viable y comprensible a enfoques puramente basados en datos que requieren grandes 
+cantidades de ejemplos de entrenamiento anotados.

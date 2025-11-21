@@ -140,9 +140,10 @@ La SVD descompone la matriz \(M\) en tres matrices \(U\), \(S\) y \(V\), donde e
 El vector resultante del espacio nulo se normaliza para que tenga una magnitud manejable.
 Esto asegura que los coeficientes \(A\), \(B\) y \(C\) sean comparables entre distintas líneas.
 
+
 \subsection{Cálculo de intersecciones (Clustering):}
 
-Una vez que se tienen las ecuaciones de todas las líneas paralelas en el plano de la cámara, se pueden calcular las intersecciones de estas líneas realizando un producto cruz entre las ecuaciones homogéneas [\(A\),\(B\),\(C\)] de todos los pares de líneas.
+Una vez que se tienen las ecuaciones de todas las líneas paralelas en el plano de la cámara, se pueden calcular las intersecciones de estas líneas realizando un producto cruz entre las ecuaciones homogéneas [\(A\),\(B\),\(C\)] de todos los pares de líneas (véase sección~\ref{subsec:intersection-of-lines}).
 
 El resultado de este producto cruz es la coordenada homogénea de un punto en el espacio que corresponde a la intersección de las líneas.
 Si este punto es finito (cuando la tercera componente no es cero), se puede deshomogeneizar para obtener las coordenadas cartesianas en el plano de la cámara.
@@ -164,7 +165,7 @@ donde cada color representa un cluster diferente y el símbolo \texttt{+} blanco
     \label{fig:intersections}
 \end{figure}
 
-Como se discute en la sección~\ref{sec:intersections-clustering}, para estimar la ubicación de este punto de fuga principal no es necesario tener en cuenta todas las intersecciones detectadas, sino solo aquellas que se encuentran en una zona cercana al horizonte de la imagen (sección~\ref{sec:vanishing-points}).
+Como se discute en la sección~\ref{sec:intersections-clustering}, para estimar la ubicación de este punto de fuga principal no es necesario tener en cuenta todas las intersecciones detectadas, sino solo aquellas que se encuentran en una zona cercana al horizonte de la imagen (véase sección~\ref{sec:vanishing-points}).
 Para determinar las intersecciones relevantes cercanas al horizonte, se puede definir un umbral de cercanía en la imagen que se puede ajustar experimentalmente, \emph{e.g.} en la siguiente imagen se muestran las intersecciones detectadas en la imagen original con puntos azules
 y las intersecciones relevantes con un umbral de 10 píxeles con puntos amarillos.
 En la figura \ref{fig:relevantInter} se muestra el resultado de la selección de las intersecciones relevantes. \\

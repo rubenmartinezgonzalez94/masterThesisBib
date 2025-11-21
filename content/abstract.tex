@@ -1,6 +1,16 @@
 
-Este documento presenta un enfoque para la estimación de la posición de un vehículo en un entorno de estacionamiento
-utilizando técnicas de visión por computadora y aprendizaje automático. Se describe la implementación de un sistema
-de simulación que permite la recolección de datos de sensores y la generación de imágenes sintéticas para entrenar 
-modelos de detección de objetos. Los resultados muestran la efectividad del enfoque propuesto en la identificación de 
-espacios de estacionamiento y la navegación autónoma en entornos complejos.
+Este trabajo presenta el desarrollo de un sistema de visión por computadora para la detección de 
+retículas de estacionamiento y estimación de pose vehicular mediante procesamiento de imágenes de 
+cámara. El sistema integra técnicas clásicas de visión por computadora incluyendo detección de 
+bordes con Canny, extracción de líneas mediante la Transformada de Hough, y ajuste robusto de 
+homografías utilizando una variación del algoritmo RANSAC adaptada específicamente para retículas 
+regulares. Se implementa además un método de proyección perspectiva inversa que permite obtener 
+coordenadas tridimensionales métricas a partir de puntos detectados en la imagen, proporcionando 
+información geométrica precisa del entorno de estacionamiento. El desarrollo se realiza en el 
+simulador CARLA, el cual proporciona un entorno de prueba realista con física vehicular de alta 
+fidelidad. La validación del sistema se lleva a cabo mediante su integración como componente de 
+percepción en una aplicación de aprendizaje por refuerzo para estacionamiento automático, 
+demostrando que la información proporcionada por el sistema de visión es consistente para guiar decisiones de control en tiempo real. Los resultados confirman la 
+viabilidad de utilizar técnicas clásicas de visión por computadora como alternativa efectiva a 
+métodos exclusivamente basados en aprendizaje profundo para aplicaciones de asistencia al 
+conductor y conducción autónoma.

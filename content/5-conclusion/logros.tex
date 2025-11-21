@@ -1,0 +1,48 @@
+El desarrollo y validación del sistema de visión por computadora permitió alcanzar los siguientes 
+logros principales:
+
+\subsubsection{Flujo de procesamiento completo de visión por computadora}
+
+Se diseñó e implementó un sistema de extremo a extremo (\emph{end-to-end}) que procesa imágenes 
+RGB de cámara y produce estimaciones de pose vehicular con coordenadas métricas en el espacio 3D. 
+El flujo de procesamiento (\emph{pipeline}) integra múltiples técnicas clásicas de visión por 
+computadora de manera coherente, demostrando que es posible construir sistemas de percepción 
+efectivos sin depender exclusivamente de métodos de aprendizaje profundo.
+
+\subsubsection{Adaptación de RANSAC para retículas regulares}
+
+La variación propuesta de RANSAC aprovecha la estructura regular de los estacionamientos para 
+mejorar la robustez y eficiencia del ajuste de homografías. A diferencia de aplicaciones estándar 
+de RANSAC que trabajan con correspondencias de puntos, el método desarrollado opera directamente 
+sobre líneas detectadas y aprovecha la información de puntos de fuga, resultando especialmente 
+adecuado para escenarios con patrones geométricos repetitivos.
+
+\subsubsection{Reconstrucción métrica 3D sin calibración externa}
+
+El sistema calcula coordenadas tridimensionales métricas utilizando únicamente los parámetros 
+intrínsecos de la cámara (derivados del campo de visión y resolución) y la altura conocida de 
+la cámara sobre el suelo. No requiere calibración externa con patrones de referencia ni marcadores 
+artificiales, lo cual facilita su implementación en vehículos reales.
+
+\subsubsection{Validación mediante aplicación práctica}
+
+En lugar de depender únicamente de métricas sintéticas, el sistema fue validado integrándolo en una aplicación de control real. 
+Esta validación "de extremo a extremo" demuestra que la información proporcionada es 
+consistente para guiar decisiones de control en tiempo real.
+
+\subsection{Demostración de viabilidad}
+
+\subsubsection{Integración con aprendizaje por refuerzo}
+
+La integración del sistema de visión como componente de percepción en un entorno de RL demostró 
+que es posible reemplazar observaciones perfectas por estimaciones visuales en aplicaciones de 
+control autónomo. Aunque la tasa de éxito obtenida (18\%) es menor que la del entorno idealizado 
+(93\%), este resultado debe interpretarse considerando la mayor complejidad del problema: el agente 
+debe aprender políticas de control mientras lidia con incertidumbre perceptual realista.
+
+\subsubsection{Transferibilidad a sistemas reales}
+
+Al basarse en procesamiento de imágenes de cámara RGB estándar, el sistema es directamente 
+transferible a vehículos reales equipados con cámaras. No depende de sensores especializados 
+(LiDAR, GPS de alta precisión) ni de infraestructura externa (marcadores, balizas), lo cual 
+facilita su implementación práctica en sistemas de asistencia al conductor comerciales.

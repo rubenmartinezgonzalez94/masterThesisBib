@@ -1,0 +1,78 @@
+Si bien el sistema desarrollado cumple los objetivos y demuestra viabilidad práctica, 
+existen limitaciones y áreas de mejora identificadas durante el desarrollo y validación.
+
+\subsubsection{Recursos computacionales limitados}
+
+La validación mediante aprendizaje por refuerzo se vio limitada por la disponibilidad de recursos 
+de cómputo. El hardware utilizado (GPU RTX 3060, 32GB RAM, procesador i5-10400F) permite ejecutar 
+el sistema pero limita significativamente la capacidad de procesamiento de entrenamiento (12 cuadros 
+por segundo vs 36 cuadros por segundo del entorno abstracto). Esto resultó en:
+\begin{itemize}
+    \item Menor cantidad de episodios completados (101 vs 3292 en tiempo comparable)
+    \item Tiempo de entrenamiento insuficiente para convergencia completa
+    \item Imposibilidad de ejecutar múltiples instancias en paralelo (vectorización de entornos)
+\end{itemize}
+
+Con acceso a infraestructura de mayor capacidad (GPU profesional, clúster de entrenamiento) 
+sería posible realizar validaciones más exhaustivas.
+
+\subsection{Trabajo futuro}
+
+Las siguientes líneas de investigación y desarrollo podrían extender y mejorar el sistema:
+
+\subsubsection{Optimizaciones de eficiencia computacional}
+
+Existen diversas oportunidades para reducir el costo computacional del flujo de procesamiento 
+(\emph{pipeline}) de visión sin sacrificar excesivamente la precisión:
+
+\begin{itemize}
+    \item \textbf{Caché de retícula}: Una vez detectada una retícula estable, reutilizarla en 
+    cuadros subsecuentes aplicando solo correcciones incrementales basadas en el movimiento del 
+    vehículo, en lugar de ejecutar la redetección completa en cada cuadro.
+    
+    \item \textbf{Procesamiento asíncrono}: Ejecutar el pipeline de visión completo en un proceso 
+    separado con frecuencia reducida (por ejemplo, cada 3-5 cuadros) mientras se interpola 
+    el estado en cuadros intermedios.
+
+    \item \textbf{Filtrado de Kalman}: Integrar un filtro de Kalman extendido que combine las 
+    mediciones visuales con el modelo de movimiento del vehículo, suavizando el ruido de medición 
+    y permitiendo predicciones robustas cuando las detecciones visuales son temporalmente 
+    inestables o ausentes.
+    
+    \item \textbf{Implementación en GPU}: Portar las operaciones de procesamiento de imágenes 
+    (Canny, Hough, transformaciones geométricas) a implementaciones optimizadas para GPU, 
+    aprovechando mejor el paralelismo disponible en hardware moderno.
+\end{itemize}
+
+
+\subsubsection{Validación en vehículos reales}
+
+El siguiente paso natural sería implementar el sistema en un vehículo real equipado con cámara:
+
+\begin{itemize}
+    \item Recolectar conjuntos de datos (\emph{datasets}) de estacionamientos reales con valores 
+    de referencia (\emph{ground truth}) de pose obtenidos mediante sistemas de localización 
+    precisos.
+
+    \item Evaluar cuantitativamente la precisión del sistema en condiciones reales (error de 
+    posición, error angular, tasa de detección exitosa)
+    
+    \item Identificar y caracterizar casos de falla (condiciones que causan estimaciones erróneas)
+    
+    \item Ajustar parámetros y umbrales basándose en datos reales en lugar de sintéticos
+\end{itemize}
+
+\subsubsection{Extensión a escenarios más complejos}
+
+Ampliar las capacidades del sistema para manejar escenarios más desafiantes:
+
+\begin{itemize}
+    \item \textbf{Estacionamientos sin marcado regular}: Detectar límites de espacios de 
+    estacionamiento basándose en vehículos adyacentes u otros elementos del entorno
+    
+    \item \textbf{Entornos dinámicos}: Incorporar seguimiento temporal de la retícula detectada 
+    para mantener estimaciones consistentes cuando vehículos u objetos se mueven en el entorno
+    
+    \item \textbf{Fusión multisensor}: Integrar información de múltiples cámaras (frontal, lateral, 
+    trasera) y/o otros sensores (ultrasónico, radar) para estimaciones más robustas
+\end{itemize}

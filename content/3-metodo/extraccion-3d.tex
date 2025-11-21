@@ -1,0 +1,78 @@
+Una vez estimada la homografía óptima \(\mathbf{H}\) que define la retícula de estacionamiento 
+en el plano imagen, es necesario transformar los puntos detectados en la imagen 2D a coordenadas 
+métricas en el espacio 3D para realizar mediciones reales de distancias y posiciones. Para ello se requiere 
+aplicar la proyección perspectiva inversa utilizando los parámetros de la cámara (véase sección~\ref{sec:proyeccion-3d}).
+
+\subsubsection{Implementación del método de intersección de rayos}
+
+La implementación práctica de la transformación \(T^{-1}\) descrita en la ecuación~\eqref{eq:transform-T-inv} 
+se realiza mediante la intersección de rayos con el plano del suelo.
+
+\begin{enumerate}
+    \item \textbf{Cálculo de parámetros intrínsecos:} A partir de las características de la cámara 
+    (resolución de imagen y campo de visión FOV), se calcula la distancia focal en píxeles:
+    \begin{equation}
+    f = \frac{w}{2 \tan(\text{FOV}/2)}
+    \end{equation}
+    donde \(w\) es el ancho de la imagen en píxeles. Con la distancia focal y el centro óptico 
+    \((c_x, c_y)\) se construye la matriz de parámetros intrínsecos \(\mathbf{K}\).
+    
+    \item \textbf{Construcción de rayos de proyección:} Para cada punto \((u, v)\) detectado 
+    en la imagen (por ejemplo, extremos de líneas de la retícula), se calcula el rayo normalizado 
+    que pasa por el centro óptico:
+    \begin{equation}
+    \mathbf{r}_{cam} = \mathbf{K}^{-1} \begin{bmatrix} u \\ v \\ 1 \end{bmatrix}
+    \end{equation}
+    
+    \item \textbf{Escalado para intersección con el plano del suelo:} El rayo se escala hasta 
+    que su componente Y alcanza 0 (el plano \(Y=0\) representa el suelo):
+    \begin{equation}
+    \lambda = \frac{h}{r_{cam,y}}
+    \end{equation}
+    donde \(h\) es la altura de la cámara sobre el nivel del suelo (en metros) y \(r_{cam,y}\) 
+    es la componente Y del rayo normalizado.
+    
+    \item \textbf{Obtención de coordenadas 3D en el plano del suelo:} El punto 3D resultante es:
+    \begin{equation}
+    \mathbf{P}_{suelo} = \lambda \cdot \mathbf{r}_{cam} = \begin{bmatrix} X \\ 0 \\ Z \end{bmatrix}
+    \end{equation}
+    donde \(X\) y \(Z\) son las coordenadas horizontales en metros en el plano del suelo.
+\end{enumerate}
+
+Este proceso se aplica a todos los puntos relevantes de la retícula detectada (esquinas de cajones, 
+intersecciones de líneas, etc.), generando un conjunto de coordenadas 3D métricas que representan 
+la estructura del estacionamiento en el espacio real.
+
+\subsubsection{Cálculo de distancias métricas}
+
+Una vez obtenidas las coordenadas 3D de puntos de interés \(\mathbf{P}_1 = (X_1, 0, Z_1)\) y 
+\(\mathbf{P}_2 = (X_2, 0, Z_2)\), se pueden calcular distancias euclidianas reales en el plano del suelo:
+
+\begin{equation}
+d = \sqrt{(X_2 - X_1)^2 + (Z_2 - Z_1)^2}
+\end{equation}
+
+Estas distancias métricas son fundamentales para:
+\begin{itemize}
+    \item Determinar si un cajón tiene dimensiones suficientes para estacionar el vehículo
+    \item Calcular la posición relativa del vehículo respecto a los cajones disponibles
+    \item Planificar trayectorias de estacionamiento con restricciones geométricas precisas
+    \item Validar que el vehículo cumpla con las dimensiones permitidas en el espacio
+\end{itemize}
+
+La Figura~\ref{fig:distances-3d-implementation} muestra un ejemplo de mediciones de distancias 
+realizadas en el espacio 3D utilizando este método. Las líneas azules representan la retícula 
+proyectada en el plano del suelo (vista desde arriba), las líneas rojas indican las distancias 
+medidas en metros desde la posición del vehículo (rectángulo azul en el origen) hacia diferentes 
+puntos de interés en la retícula. Todas las mediciones están en metros y reflejan distancias 
+reales en el espacio tridimensional.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/3-metodo/distances.png}
+    \caption{Visualización de mediciones de distancias métricas en el espacio 3D. El rectángulo 
+    azul representa la posición del vehículo en el origen, las líneas azules muestran la retícula 
+    proyectada en el plano del suelo, y las líneas rojas indican distancias medidas en metros 
+    desde el vehículo hacia puntos de la retícula obtenidos mediante la proyección inversa.}
+    \label{fig:distances-3d-implementation}
+\end{figure}
