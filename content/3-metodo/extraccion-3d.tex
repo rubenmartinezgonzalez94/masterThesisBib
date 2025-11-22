@@ -1,36 +1,30 @@
-Una vez estimada la homografía óptima \(\mathbf{H}\) que define la retícula de estacionamiento 
-en el plano imagen, es necesario transformar los puntos detectados en la imagen 2D a coordenadas 
-métricas en el espacio 3D para realizar mediciones reales de distancias y posiciones. Para ello se requiere 
+Una vez estimada la homografía óptima \(\mathbf{H}\) que define la retícula de estacionamiento en el plano imagen, es necesario transformar los puntos detectados en la imagen 2D a coordenadas métricas en el espacio 3D para realizar mediciones reales de distancias y posiciones. Para ello se requiere 
 aplicar la proyección perspectiva inversa utilizando los parámetros de la cámara (véase sección~\ref{sec:proyeccion-3d}).
 
 \subsubsection{Implementación del método de intersección de rayos}
 
-La implementación práctica de la transformación \(T^{-1}\) descrita en la ecuación~\eqref{eq:transform-T-inv} 
-se realiza mediante la intersección de rayos con el plano del suelo.
+La implementación práctica de la transformación \(T^{-1}\) descrita en la ecuación~\eqref{eq:transform-T-inv} se realiza mediante la intersección de rayos con el plano del suelo.
 
 \begin{enumerate}
-    \item \textbf{Cálculo de parámetros intrínsecos:} A partir de las características de la cámara 
-    (resolución de imagen y campo de visión FOV), se calcula la distancia focal en píxeles:
+    \item \textbf{Cálculo de parámetros intrínsecos:} A partir de las características de la cámara (resolución de imagen y campo de visión FOV), se calcula la distancia focal en píxeles:
     \begin{equation}
     f = \frac{w}{2 \tan(\text{FOV}/2)}
     \end{equation}
     donde \(w\) es el ancho de la imagen en píxeles. Con la distancia focal y el centro óptico 
     \((c_x, c_y)\) se construye la matriz de parámetros intrínsecos \(\mathbf{K}\).
     
-    \item \textbf{Construcción de rayos de proyección:} Para cada punto \((u, v)\) detectado 
-    en la imagen (por ejemplo, extremos de líneas de la retícula), se calcula el rayo normalizado 
-    que pasa por el centro óptico:
+    \item \textbf{Construcción de rayos de proyección:} Para cada punto \((u, v)\) detectado en la imagen (por ejemplo, extremos de líneas de la retícula), se calcula el rayo normalizado     que pasa por el centro óptico:
     \begin{equation}
     \mathbf{r}_{cam} = \mathbf{K}^{-1} \begin{bmatrix} u \\ v \\ 1 \end{bmatrix}
     \end{equation}
     
     \item \textbf{Escalado para intersección con el plano del suelo:} El rayo se escala hasta 
-    que su componente Y alcanza 0 (el plano \(Y=0\) representa el suelo):
+    que su componente $Y$ alcanza $0$ (el plano \(Y=0\) representa el suelo):
     \begin{equation}
     \lambda = \frac{h}{r_{cam,y}}
     \end{equation}
     donde \(h\) es la altura de la cámara sobre el nivel del suelo (en metros) y \(r_{cam,y}\) 
-    es la componente Y del rayo normalizado.
+    es la componente $Y$ del rayo normalizado.
     
     \item \textbf{Obtención de coordenadas 3D en el plano del suelo:} El punto 3D resultante es:
     \begin{equation}
@@ -39,9 +33,7 @@ se realiza mediante la intersección de rayos con el plano del suelo.
     donde \(X\) y \(Z\) son las coordenadas horizontales en metros en el plano del suelo.
 \end{enumerate}
 
-Este proceso se aplica a todos los puntos relevantes de la retícula detectada (esquinas de cajones, 
-intersecciones de líneas, etc.), generando un conjunto de coordenadas 3D métricas que representan 
-la estructura del estacionamiento en el espacio real.
+Este proceso se aplica a todos los puntos relevantes de la retícula detectada (esquinas de cajones, intersecciones de líneas, etc.), generando un conjunto de coordenadas métricas 3D que representan la estructura del estacionamiento en el espacio real.
 
 \subsubsection{Cálculo de distancias métricas}
 

@@ -1,14 +1,8 @@
-La reconstrucción de coordenadas tridimensionales a partir de imágenes 2D capturadas por una cámara 
-requiere comprender el modelo de proyección perspectiva y su inversión. En esta sección se presentan 
-los fundamentos matemáticos necesarios para transformar puntos detectados en el plano imagen a coordenadas 
-reales en el espacio 3D, específicamente para el caso de estructuras planas como la retícula de estacionamiento.
+La reconstrucción de coordenadas tridimensionales a partir de imágenes 2D capturadas por una cámara requiere comprender el modelo de proyección perspectiva y su inversión. En esta sección se presentan los fundamentos matemáticos necesarios para transformar puntos detectados en el plano imagen a coordenadas reales en el espacio 3D, específicamente para el caso de estructuras planas como la retícula de estacionamiento.
 
 \subsection{Proyección perspectiva}
 
-El modelo de cámara \emph{pin-hole} es la base de la geometría proyectiva en visión por computadora.
-En este modelo, todos los rayos de luz que atraviesan el centro óptico (foco) de la cámara se proyectan 
-sobre el plano imagen, generando una proyección perspectiva que preserva líneas rectas pero introduce 
-distorsión en distancias y ángulos.
+El modelo de cámara \emph{pin-hole} es la base de la geometría proyectiva en visión por computadora. En este modelo, todos los rayos de luz que atraviesan el centro óptico (foco) de la cámara se proyectan sobre el plano imagen, generando una proyección perspectiva que preserva la colinealidad de puntos y la intersección de líneas rectas pero puede modificar propiedades tales como distancias, ángulos, paralelismo de lineas entre otras. {\bfseries TODO-Referenciar a Hartley}
 
 La transformación de un punto 3D en coordenadas de mundo \(\mathbf{P} = (X, Y, Z)^T\) a un punto 2D 
 en el plano imagen \(\mathbf{p} = (u, v)^T\) está dada por la ecuación de proyección perspectiva:
@@ -47,75 +41,60 @@ La Figura~\ref{fig:proyeccion-3d-esquema} ilustra la geometría de esta proyecci
     \item El plano XZ (plano vertical) representa el plano imagen de la cámara
     \item El punto ``Foco'' representa el centro óptico de la cámara
     \item Los rayos amarillos muestran la proyección de puntos 3D al plano imagen
-    \item Los puntos \(a, b, c, d, \ldots\) son coordenadas reales en el plano del suelo
-    \item Los puntos \(T(a), T(b), T(c), T(d), \ldots\) son sus proyecciones en la imagen
+    \item Los puntos \(A, B, C, D, \ldots\) son coordenadas reales en el plano del suelo
+    \item Los puntos \(T(A), T(B), T(C), T(D), \ldots\) son sus proyecciones en la imagen
 \end{itemize}
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.99\textwidth]{img/2-mt/proyeccion_estereografica_foco_camara_suelo}
-    \caption{Geometría de la proyección perspectiva de un plano 3D al plano imagen. Los cuadriláteros 
-    con líneas verdes punteadas en el plano XY representan espacios de estacionamiento reales, mientras 
-    que los cuadriláteros con líneas negras gruesas en el plano XZ representan su proyección en la imagen 
+    \caption{Geometría de la proyección perspectiva de un plano 3D al plano imagen. Los cuadriláteros con líneas verdes punteadas en el plano XY representan espacios de estacionamiento reales, mientras que los cuadriláteros con líneas negras gruesas en el plano XZ representan su proyección en la imagen 
     capturada por la cámara ubicada en el Foco.}
     \label{fig:proyeccion-3d-esquema}
 \end{figure}
 
-La transformación que mapea puntos del plano del suelo (plano XY) al plano imagen (plano XZ) 
-con distancias deformadas por la perspectiva está dada por:
+La transformación que mapea puntos del plano del suelo (plano XY) al plano imagen (plano XZ) con distancias deformadas por la perspectiva está dada por:
 
 \begin{equation}\label{eq:transform-T}
 \begin{aligned}
 T &: \mathbb{R}^2 \to \mathbb{R}^2 \\
-T(x, y) &= \frac{1}{d + y} (dx, hy) = (u, v)
+T(x, y) &= \frac{1}{f + y} (fx, hy) = (u, v)
 \end{aligned}
 \end{equation}
 
-donde:
-\begin{itemize}
-    \item \((x, y)\) son coordenadas en el plano del suelo (en metros)
-    \item \((u, v)\) son coordenadas en el plano imagen (en píxeles o normalizadas)
-    \item \(d\) es la distancia focal de la cámara
-    \item \(h\) es la altura de la cámara sobre el nivel del suelo
-    \item El término \(\frac{1}{d+y}\) introduce la distorsión perspectiva característica
-\end{itemize}
+donde \((x,  y)\) son  coordenadas en  metros en  el plano  del suelo,
+\((u, v)\) son coordenadas rn pixeles  en el plano imagen, \(f\) es la
+distancia  focal medida  en pixeles  de  la cámara.  Por último  \(h\)
+denota a la altura de la cámara sobre el nivel del suelo. El término \(\frac{1}{f+y}\) introduce la distorsión perspectiva característica.
 
-Esta transformación \(T\) genera las \textit{distancias deformadas} observables en la imagen 2D, 
-donde objetos más lejanos aparecen más pequeños y distancias iguales en el espacio 3D no se preservan 
-en la proyección.
+Esta  transformación \(T\)  genera la transformación que afecta la proyección de objetos observables en  la imagen bidimensional,  donde aquellos más lejanos  aparecen más pequeños y distancias iguales a distancidas diferentes en el espacio tridimensional no se preservan en la proyección.
 
-\subsection{Reconstrucción 3D: la transformación inversa \texorpdfstring{T\(^{-1}\)}{T⁻¹}}
+\subsection{Reconstrucción 3D: la transformación inversa \texorpdfstring {T\(^{-1}\)}{T⁻¹}}
 
-Para realizar mediciones métricas en el espacio 3D a partir de puntos detectados en la imagen, 
-es necesario invertir la proyección perspectiva. La transformación inversa \(T^{-1}\) permite 
-recuperar coordenadas reales en el plano del suelo a partir de coordenadas en la imagen:
+Para realizar mediciones métricas en el espacio 3D a partir de puntos detectados en la imagen, es necesario invertir la proyección perspectiva. La transformación inversa \(T^{-1}\) permite recuperar coordenadas reales en el plano del suelo a partir de coordenadas en la imagen:
 
 \begin{equation}\label{eq:transform-T-inv}
 \begin{aligned}
 T^{-1} &: \mathbb{R}^2 \to \mathbb{R}^2 \\
-T^{-1}(u, v) &= \frac{1}{h - v} (hu, dv)
+T^{-1}(u, v) &= \frac{1}{h - v} (hu, fv)
 \end{aligned}
 \end{equation}
 
-Esta transformación ``desproyecta'' los puntos de la imagen al plano del suelo, deshaciendo 
-la distorsión perspectiva. El factor \(\frac{1}{h-v}\) compensa la deformación introducida 
-por la proyección, permitiendo recuperar distancias euclidianas reales.
+Esta transformación ``desproyecta'' los puntos de la imagen al plano del suelo, deshaciendo la distorsión perspectiva. El factor \(\frac{1}{h-v}\) compensa la deformación introducida por la proyección, permitiendo recuperar distancias euclidianas reales.
 
 \subsection{Reconstrucción mediante intersección de rayos}
 
-En la práctica, la transformación \(T^{-1}\) se implementa mediante el método de intersección 
-de rayos con el plano del suelo. El proceso consta de los siguientes pasos:
+En la práctica, la transformación \(T^{-1}\) se implementa mediante el método de intersección de rayos con el plano del suelo. El proceso consta de los siguientes pasos:
 
 \begin{enumerate}
     \item \textbf{Normalización de coordenadas imagen:} Dado un punto \((u, v)\) en píxeles, 
-    se aplica la matriz inversa de parámetros intrínsecos para obtener coordenadas normalizadas 
-    (sin distorsión de la cámara):
+    se aplica la matriz inversa de parámetros intrínsecos para obtener coordenadas métricas:
     \begin{equation}
     \begin{bmatrix} x_n \\ y_n \\ 1 \end{bmatrix} = 
     \mathbf{K}^{-1} \begin{bmatrix} u \\ v \\ 1 \end{bmatrix}
     \end{equation}
     
-    \item \textbf{Generación del rayo de proyección:} El vector \((x_n, y_n, 1)^T\) define 
+    \item \textbf{Generación del rayo de proyección:} El vector \((x_n, y_n, 1)^\top\) define 
     la dirección del rayo que pasa por el centro óptico de la cámara y el punto imagen.
     
     \item \textbf{Intersección con el plano del suelo:} Se escala el rayo hasta que su 
@@ -132,7 +111,4 @@ de rayos con el plano del suelo. El proceso consta de los siguientes pasos:
 \end{enumerate}
 
 Este método es equivalente a la transformación \(T^{-1}\) de la ecuación~\eqref{eq:transform-T-inv} 
-y permite obtener coordenadas métricas reales que pueden utilizarse para calcular distancias, 
-áreas y otras medidas geométricas en el espacio 3D del estacionamiento. Para obtener mediciones en metros en el espacio 3D, es necesario aplicar la proyección inversa \(T^{-1}\) utilizando los parámetros intrínsecos 
-y extrínsecos de la cámara. La Sección~\ref{sec:metodo-extraccion-3d} describe la implementación 
-práctica de este proceso.
+y permite obtener coordenadas métricas reales que pueden utilizarse para calcular distancias, áreas y otras medidas geométricas en el espacio 3D del estacionamiento. Para obtener mediciones en metros en el espacio 3D, es necesario aplicar la proyección inversa \(T^{-1}\) utilizando los parámetros intrínsecos y extrínsecos de la cámara. La sección~\ref{sec:metodo-extraccion-3d} describe la implementación práctica de este proceso.

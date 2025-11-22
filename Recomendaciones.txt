@@ -36,3 +36,14 @@ Cambiar los Véase por véase.
 
 En la seccion 3.3.2 poner explicar la reporyeccion de los puntos de la imagen a la superficies que hiciste. Tal como lo pones no esta bien. La matriz H mapea entre una reticula arbitraria y la imagen, pero no se involucra la relacion entre la escena y la imagen, que se describe a partir de la matriz de calibracion y la traslacion y rotacion de la cámara.
 
+
+# Recomendaciones 21/XI/2025
+
+Seccion 2.3.2: usar $f$ como distancia focal en lugar de $d$.
+
+cambiar 2D por bidimensional y 3D por tridimensional.
+
+todas las transposiciones de vectores o matrices cambiar de ^T a ^\top.
+
+Corregir que el Suelo es el plano XY en la ecuacion 3.9.
+
